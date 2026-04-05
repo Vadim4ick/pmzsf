@@ -46,6 +46,13 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
+
+  --breakpoint-mobileSmall: 450px;
+  --breakpoint-mobile: 768px;
+  --breakpoint-tablet: 991px;
+  --breakpoint-desktop: 1150px;
+  --breakpoint-desktop1250: 1250px;
+  --breakpoint-desktop1350: 1350px;
 }
 
 :root {
