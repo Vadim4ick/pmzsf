@@ -32,6 +32,11 @@ export const trola = localFont({
       style: "normal",
     },
     {
+      path: "./trola-latCyr/Trola-LatCyr-Bold.woff2",
+      weight: "700",
+      style: "normal",
+    },
+    {
       path: "./trola-latCyr/Trola-LatCyr-SemiBold.woff2",
       weight: "600",
       style: "normal",

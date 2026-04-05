@@ -1,0 +1,61 @@
+@layer utilities {
+  .body-small-strong {
+    @apply text-[14px] leading-[100%];
+  }
+
+  .body-strong {
+    @apply text-[16px] leading-[100%];
+  }
+
+  .body-m {
+    @apply text-[16px] leading-5;
+  }
+
+  .body-m-strong {
+    @apply text-[16px] leading-[130%] font-bold;
+  }
+
+  .menu-font {
+    @apply text-[18px] leading-[100%] font-medium;
+  }
+
+  .serif-l {
+    @apply font-trola text-[24px] leading-7 font-bold;
+  }
+
+  .serif-m {
+    @apply font-trola text-[18px] leading-6 font-bold;
+  }
+
+  .serif-s {
+    @apply font-trola text-[22px] leading-6 font-bold;
+  }
+
+  .capton-strong {
+    @apply text-[14px] leading-4.5 font-bold;
+  }
+
+  .capton {
+    @apply text-[14px] leading-4.5;
+  }
+
+  .header-xxl {
+    @apply font-montserrat text-[56px] leading-15.5 font-bold -tracking-[0.84px];
+  }
+
+  .header-xl {
+    @apply font-montserrat text-[40px] leading-11 font-bold;
+  }
+
+  .header-l {
+    @apply font-montserrat text-[32px] leading-9 font-bold -tracking-[0.32px];
+  }
+
+  .header-caps {
+    @apply font-montserrat text-[24px] leading-8 font-bold -tracking-[0.24px];
+  }
+
+  .header-m {
+    @apply font-montserrat text-[20px] leading-6 font-bold -tracking-[0.3px];
+  }
+}
