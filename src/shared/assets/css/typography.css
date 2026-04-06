@@ -1,3 +1,6 @@
+@reference "tailwindcss";
+@reference "./globals.css";
+
 @layer utilities {
   .body-small-strong {
     @apply text-[14px] leading-[100%];

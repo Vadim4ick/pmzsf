@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
-import "./../shared/assets/css/globals.css";
 import { lato, trola } from "@/shared/assets/fonts";
+import "@/shared/assets/css/globals.css";
+import "@/shared/assets/css/typography.css";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
