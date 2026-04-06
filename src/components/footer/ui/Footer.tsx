@@ -73,13 +73,13 @@ const Footer = () => {
           <div className="flex shrink-0 items-center gap-2.5">
             <Link
               href={TG_LINK}
-              className="border-border-default flex size-8 items-center justify-center rounded-full border-2"
+              className="border-border-default hover:border-text-brand flex size-8 items-center justify-center rounded-full border-2"
             >
               <Tg />
             </Link>
 
             <Link
-              className="border-border-default flex size-8 items-center justify-center rounded-full border-2"
+              className="border-border-default hover:border-text-brand flex size-8 items-center justify-center rounded-full border-2"
               href={VK_LINK}
             >
               <Vk />

@@ -1,6 +1,7 @@
 import { Button } from "@/shared/ui/button";
 import { Container } from "@/shared/ui/container";
 import { Typography } from "@/shared/ui/typography";
+import { CustomVideo } from "@/shared/ui/сustom-video";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -57,11 +58,10 @@ const Chairman = () => {
             <div className="mobile:flex-row mobile:h-[260px] desktop:h-[300px] desktop:gap-10 flex flex-col gap-6">
               {/* Видео */}
               <div className="mobile:w-1/2 mobile:h-full h-[220px] w-full shrink-0">
-                <video
+                <CustomVideo
+                  src="https://www.w3schools.com/html/mov_bbb.mp4"
                   poster="/img/chairman.png"
-                  className="h-full w-full rounded-[12px] object-cover"
-                  controls
-                  src="/video/chairman.mp4"
+                  title="Граница обучения кадров сделала своё дело Граница обучения кадров сделала своё дело "
                 />
               </div>
 
@@ -98,14 +98,23 @@ const Chairman = () => {
           {/* Правая колонка — большое фото */}
           <article className="mobile:min-h-[360px] desktop:h-full desktop:min-h-0 relative min-h-[280px] w-full">
             <Image
-              src="/img/chairman.png"
+              src="/img/chairman/1.png"
               alt="chairman"
               className="rounded-[12px] object-cover"
               fill
             />
 
-            {/* Затемняющий градиент */}
-            <div className="absolute inset-0 rounded-[12px] bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+            {/* Тёмный оверлей — базовый слой */}
+            {/* <div className="absolute inset-0 rounded-[12px] bg-[#030816]/30" /> */}
+
+            {/* Градиент снизу вверх — до 51% непрозрачный, выше прозрачный */}
+            <div
+              className="absolute inset-0 rounded-[12px]"
+              style={{
+                background:
+                  "linear-gradient(to top, #030816 0%, rgba(3,8,22,0) 51%)",
+              }}
+            />
 
             <div className="desktop:gap-6 desktop:p-6 absolute bottom-0 left-0 flex flex-col gap-4 p-4">
               <Typography variant="serif-l" tag="p" className="text-white">
