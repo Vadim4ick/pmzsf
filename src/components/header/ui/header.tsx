@@ -12,12 +12,14 @@ import { ThemeSwitcher } from "./theme-switcher";
 import { HeaderNav } from "./header-nav";
 import { MobileMenu } from "./mobile-menu";
 import { TG_LINK, VK_LINK } from "@/shared/const/company.const";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { cn } from "@/shared/lib/utils";
 import Link from "next/link";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isNavSticky, setIsNavSticky] = useState(false);
+  const topHeaderRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
@@ -26,11 +28,22 @@ const Header = () => {
     };
   }, [menuOpen]);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!topHeaderRef.current) return;
+      const { bottom } = topHeaderRef.current.getBoundingClientRect();
+      setIsNavSticky(bottom <= 0);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <>
       {/* ─── Desktop ─── */}
       <div className="desktop:block hidden">
-        <header className="py-6">
+        <header className="py-6" ref={topHeaderRef}>
           <Container className="grid grid-cols-[242px_1fr_242px] gap-4">
             <div className="flex flex-col justify-between gap-4">
               <div className="flex items-center gap-2.5">
@@ -68,11 +81,21 @@ const Header = () => {
           </Container>
         </header>
 
-        <div className="border-border-default border-b py-6">
+        <div
+          className={cn(
+            "border-border-default border-b py-6 transition-shadow duration-200",
+            isNavSticky
+              ? "bg-background-default/95 fixed top-0 right-0 left-0 z-50 shadow-sm backdrop-blur-sm"
+              : "relative",
+          )}
+        >
           <Container>
             <HeaderNav />
           </Container>
         </div>
+
+        {/* Спейсер — занимает место навбара когда он зафиксирован */}
+        {isNavSticky && <div className="h-[80.5px]" />}
       </div>
 
       {/* ─── Mobile / Tablet ─── */}
