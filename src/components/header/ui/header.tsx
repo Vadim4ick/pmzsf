@@ -56,9 +56,11 @@ const Header = () => {
         </Container>
       </header>
 
-      <Container>
-        <HeaderNav />
-      </Container>
+      <div className="border-border-default border-b py-6">
+        <Container>
+          <HeaderNav />
+        </Container>
+      </div>
     </div>
   );
 };

@@ -5,7 +5,7 @@ import { Search } from "@/shared/icons/search";
 
 const HeaderNav = () => {
   return (
-    <div className="flex items-center justify-between gap-4 py-6">
+    <div className="flex items-center justify-between gap-4">
       <nav>
         <ul className="flex items-center gap-10">
           {navbar.map((item, index) => (
