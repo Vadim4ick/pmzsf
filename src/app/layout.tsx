@@ -3,6 +3,7 @@ import { Montserrat } from "next/font/google";
 import { lato, trola } from "@/shared/assets/fonts";
 import "@/shared/assets/css/globals.css";
 import "@/shared/assets/css/typography.css";
+import { Header } from "@/modules/header";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -25,7 +26,11 @@ export default function RootLayout({
       lang="en"
       className={`${montserrat.variable} ${lato.variable} ${trola.variable} h-full antialiased`}
     >
-      <body className="flex min-h-full flex-col">{children}</body>
+      <body className="flex min-h-full flex-col">
+        <Header />
+
+        {children}
+      </body>
     </html>
   );
 }
