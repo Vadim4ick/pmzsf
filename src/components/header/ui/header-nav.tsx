@@ -10,9 +10,9 @@ const HeaderNav = () => {
         <ul className="flex items-center gap-10">
           {navbar.map((item, index) => (
             <li key={index}>
-              <Link href={item.href}>
+              <Link href={item.href} className="group">
                 <Typography
-                  className="text-text-neutral"
+                  className="text-text-neutral group-hover:text-text-default transition-colors"
                   variant="menu-font"
                   tag="span"
                 >
@@ -24,7 +24,7 @@ const HeaderNav = () => {
         </ul>
       </nav>
 
-      <button className="cursor-pointer">
+      <button className="text-text-neutral hover:text-text-default cursor-pointer transition-colors">
         <Search />
       </button>
     </div>
