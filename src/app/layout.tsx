@@ -4,6 +4,8 @@ import { lato, trola } from "@/shared/assets/fonts";
 import "@/shared/assets/css/globals.css";
 import "@/shared/assets/css/typography.css";
 import { Header } from "@/modules/header";
+import { Footer } from "@/modules/footer";
+import { Providers } from "@/shared/providers/providers";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -27,9 +29,13 @@ export default function RootLayout({
       className={`${montserrat.variable} ${lato.variable} ${trola.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
-        <Header />
+        <Providers>
+          <Header />
 
-        {children}
+          <main className="grow-1">{children}</main>
+
+          <Footer />
+        </Providers>
       </body>
     </html>
   );

@@ -61,6 +61,8 @@
 
   --color-text-brand: #028de3;
 
+  --color-text-light: #cdcdcd;
+
   --color-text-neutral: #5a5a5a;
 
   --color-background-default: #ffffff;
@@ -70,6 +72,7 @@
   --color-border-default: #d9d9d9;
   --color-border-secondary: #7a7e86;
   --color-border-tertiary: #383838;
+  --color-border-neutral: #303030;
 }
 
 :root {

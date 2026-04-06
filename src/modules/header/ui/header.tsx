@@ -9,6 +9,7 @@ import { Typography } from "@/shared/ui/typography";
 import Link from "next/link";
 import { ThemeSwitcher } from "./theme-switcher";
 import { HeaderNav } from "./header-nav";
+import { TG_LINK, VK_LINK } from "@/shared/const/company.const";
 
 const Header = () => {
   return (
@@ -17,11 +18,17 @@ const Header = () => {
         <Container className="grid grid-cols-[242px_1fr_242px] gap-4">
           <div className="flex flex-col justify-between gap-4">
             <div className="flex items-center gap-2.5">
-              <Link href={"/"}>
+              <Link
+                href={TG_LINK}
+                className="border-border-neutral flex size-8 items-center justify-center rounded-full border-2"
+              >
                 <Tg />
               </Link>
 
-              <Link href={"/"}>
+              <Link
+                href={VK_LINK}
+                className="border-border-neutral flex size-8 items-center justify-center rounded-full border-2"
+              >
                 <Vk />
               </Link>
             </div>
