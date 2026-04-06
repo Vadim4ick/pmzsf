@@ -34,12 +34,12 @@ const Header = () => {
             </div>
 
             <button className="flex cursor-pointer items-center gap-2">
-              <div className="border-default rounded-full border p-2.5">
+              <div className="border-border-default rounded-full border p-2.5">
                 <Glasses />
               </div>
 
               <Typography variant="body-small-strong" tag="p">
-                Версия для слабовидящих
+                Версия для слабовидящих
               </Typography>
             </button>
           </div>
