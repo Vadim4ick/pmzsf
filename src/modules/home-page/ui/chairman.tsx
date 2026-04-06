@@ -4,18 +4,37 @@ import { Typography } from "@/shared/ui/typography";
 import Image from "next/image";
 import Link from "next/link";
 
+const newsItems = [
+  {
+    href: "#",
+    title:
+      "Каждый из нас понимает очевидную вещь: существующая теория предполагает независимые",
+  },
+  {
+    href: "#",
+    title: "Воистину радостный звук: ласковый перезвон вертикали власти",
+  },
+  {
+    href: "#",
+    title: "Цена вопроса не важна, когда небо темнеет!",
+  },
+];
+
 const Chairman = () => {
   return (
-    <section className="pb-24">
-      <Container className="flex flex-col gap-14">
+    <section className="desktop:pb-24 pb-12">
+      <Container className="desktop:gap-14 flex flex-col gap-8">
         <Typography variant="header-l" tag="h2">
           Председатель палаты
         </Typography>
 
-        <div className="grid grid-cols-2 gap-10">
-          <div className="flex flex-col gap-10">
-            <div className="bg-background-default border-border-default flex items-center gap-4 rounded-[12px] border p-6">
-              <div className="size-[72px] shrink-0">
+        {/* Основная сетка */}
+        <div className="max-desktop:flex max-desktop:flex-col max-desktop:gap-6 grid grid-cols-2 gap-10">
+          {/* Левая колонка */}
+          <div className="desktop:gap-10 flex flex-col gap-6">
+            {/* Карточка председателя */}
+            <div className="bg-background-default border-border-default desktop:p-6 flex items-center gap-4 rounded-[12px] border p-4">
+              <div className="desktop:size-[72px] size-14 shrink-0">
                 <Image
                   src="/img/chairman.png"
                   alt="chairman"
@@ -24,118 +43,82 @@ const Chairman = () => {
                   height={100}
                 />
               </div>
-
               <div>
                 <Typography variant="header-m" tag="h3">
                   Соболев Михаил Владимирович
                 </Typography>
                 <Typography variant="serif-m" tag="p">
-                  Председатель Палаты молодых законодателей при Совете Федерации
+                  Председатель Палаты молодых законодателей при Совете Федерации
                 </Typography>
               </div>
             </div>
 
-            <div className="flex h-[300px] gap-10">
-              <div className="w-full">
+            {/* Видео + новости */}
+            <div className="mobile:flex-row mobile:h-[260px] desktop:h-[300px] desktop:gap-10 flex flex-col gap-6">
+              {/* Видео */}
+              <div className="mobile:w-1/2 mobile:h-full h-[220px] w-full shrink-0">
                 <video
                   poster="/img/chairman.png"
-                  className="h-full rounded-[12px] object-cover"
+                  className="h-full w-full rounded-[12px] object-cover"
                   controls
                   src="/video/chairman.mp4"
                 />
               </div>
 
-              <div className="flex w-full flex-col gap-4">
-                <Link
-                  href="#"
-                  className="border-border-default flex items-center gap-4 border-b pb-4"
-                >
-                  <Typography
-                    className="line-clamp-4"
-                    variant="capton-strong"
-                    tag="p"
+              {/* Список новостей */}
+              <div className="desktop:gap-4 flex w-full flex-col gap-3">
+                {newsItems.map((item, i) => (
+                  <Link
+                    key={i}
+                    href={item.href}
+                    className="border-border-default group desktop:gap-4 desktop:pb-4 flex items-center gap-3 border-b pb-3"
                   >
-                    Каждый из нас понимает очевидную вещь: существующая теория
-                    предполагает независимые
-                  </Typography>
-
-                  <div className="size-[72px] shrink-0">
-                    <Image
-                      src="/img/chairman.png"
-                      alt="chairman"
-                      className="rounded-[6px] object-cover"
-                      width={100}
-                      height={100}
-                    />
-                  </div>
-                </Link>
-
-                <Link
-                  href="#"
-                  className="border-border-default flex items-center gap-4 border-b pb-4"
-                >
-                  <Typography
-                    className="line-clamp-4"
-                    variant="capton-strong"
-                    tag="p"
-                  >
-                    Воистину радостный звук: ласковый перезвон вертикали власти
-                  </Typography>
-
-                  <div className="size-[72px] shrink-0">
-                    <Image
-                      src="/img/chairman.png"
-                      alt="chairman"
-                      className="rounded-[6px] object-cover"
-                      width={100}
-                      height={100}
-                    />
-                  </div>
-                </Link>
-
-                <Link
-                  href="#"
-                  className="border-border-default flex items-center gap-4 border-b pb-4"
-                >
-                  <Typography
-                    className="line-clamp-4"
-                    variant="capton-strong"
-                    tag="p"
-                  >
-                    Цена вопроса не важна, когда небо темнеет!
-                  </Typography>
-
-                  <div className="size-[72px] shrink-0">
-                    <Image
-                      src="/img/chairman.png"
-                      alt="chairman"
-                      className="rounded-[6px] object-cover"
-                      width={100}
-                      height={100}
-                    />
-                  </div>
-                </Link>
+                    <Typography
+                      className="group-hover:text-text-brand line-clamp-3 flex-1 transition-colors"
+                      variant="capton-strong"
+                      tag="p"
+                    >
+                      {item.title}
+                    </Typography>
+                    <div className="desktop:size-[72px] size-14 shrink-0">
+                      <Image
+                        src="/img/chairman.png"
+                        alt="news"
+                        className="rounded-[6px] object-cover"
+                        width={100}
+                        height={100}
+                      />
+                    </div>
+                  </Link>
+                ))}
               </div>
             </div>
           </div>
 
-          <article className="relative h-full w-full shrink-0">
+          {/* Правая колонка — большое фото */}
+          <article className="mobile:min-h-[360px] desktop:h-full desktop:min-h-0 relative min-h-[280px] w-full">
             <Image
               src="/img/chairman.png"
               alt="chairman"
-              className="rounded-[6px] object-cover"
+              className="rounded-[12px] object-cover"
               fill
             />
 
-            <div className="absolute bottom-0 left-0 flex flex-col gap-6 p-6">
+            {/* Затемняющий градиент */}
+            <div className="absolute inset-0 rounded-[12px] bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+
+            <div className="desktop:gap-6 desktop:p-6 absolute bottom-0 left-0 flex flex-col gap-4 p-4">
               <Typography variant="serif-l" tag="p" className="text-white">
                 Рабочие встречи молодых законодателей в Ереване продолжаются
               </Typography>
 
               <div className="flex items-end justify-between gap-4 text-white">
                 <Button className="text-white">Читать далее</Button>
-
-                <Typography variant="capton-strong" tag="span">
+                <Typography
+                  variant="capton-strong"
+                  tag="span"
+                  className="text-white/80"
+                >
                   10 ноября 2026
                 </Typography>
               </div>
