@@ -3,8 +3,8 @@ import { Montserrat } from "next/font/google";
 import { lato, trola } from "@/shared/assets/fonts";
 import "@/shared/assets/css/globals.css";
 import "@/shared/assets/css/typography.css";
-import { Header } from "@/modules/header";
-import { Footer } from "@/modules/footer";
+import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
 import { Providers } from "@/shared/providers/providers";
 
 const montserrat = Montserrat({
@@ -32,7 +32,7 @@ export default function RootLayout({
         <Providers>
           <Header />
 
-          <main className="grow-1">{children}</main>
+          <main className="grow">{children}</main>
 
           <Footer />
         </Providers>
