@@ -47,7 +47,7 @@
   }
 
   .header-xl {
-    @apply font-montserrat text-[40px] leading-11 font-bold;
+    @apply font-montserrat max-mobile:text-[32px] max-mobile:leading-9 text-[40px] leading-11 font-bold -tracking-[0.4px];
   }
 
   .header-l {
