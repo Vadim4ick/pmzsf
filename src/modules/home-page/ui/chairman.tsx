@@ -55,13 +55,14 @@ const Chairman = () => {
             </div>
 
             {/* Видео + новости */}
-            <div className="mobile:flex-row mobile:h-[260px] desktop:h-[300px] desktop:gap-10 flex flex-col gap-6">
-              {/* Видео */}
-              <div className="mobile:w-1/2 mobile:h-full h-[220px] w-full shrink-0">
+            <div className="mobile:flex-row desktop:gap-10 flex flex-col gap-6">
+              {/* Видео — квадратное превью */}
+              <div className="mobile:aspect-auto mobile:w-[45%] mobile:self-stretch aspect-video w-full shrink-0">
                 <CustomVideo
                   src="https://www.w3schools.com/html/mov_bbb.mp4"
                   poster="/img/chairman.png"
-                  title="Граница обучения кадров сделала своё дело Граница обучения кадров сделала своё дело "
+                  title="Граница обучения кадров сделала своё дело"
+                  className="h-full"
                 />
               </div>
 
@@ -71,7 +72,7 @@ const Chairman = () => {
                   <Link
                     key={i}
                     href={item.href}
-                    className="border-border-default group desktop:gap-4 desktop:pb-4 flex items-center gap-3 border-b pb-3"
+                    className="group border-border-default desktop:gap-4 desktop:pb-4 flex items-center gap-3 border-b pb-3"
                   >
                     <Typography
                       className="group-hover:text-text-brand line-clamp-3 flex-1 transition-colors"
