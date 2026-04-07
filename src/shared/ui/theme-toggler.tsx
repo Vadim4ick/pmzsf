@@ -108,7 +108,7 @@ function ThemeToggle({
         {/* Thumb: 20×20, positioned top:2 left:2, translates 16px to the right */}
         <span
           className={cn(
-            "absolute top-[2px] left-[2px] flex h-[20px] w-[20px] items-center justify-center overflow-hidden rounded-full transition-all duration-[400ms]",
+            "absolute top-[2px] left-[2px] flex h-[20px] w-[20px] items-center justify-center overflow-hidden rounded-full transition-all duration-400",
             active
               ? "translate-x-0 bg-white"
               : "translate-x-[16px] bg-amber-50",

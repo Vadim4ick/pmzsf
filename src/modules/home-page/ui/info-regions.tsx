@@ -3,6 +3,7 @@ import { Container } from "@/shared/ui/container";
 import { Typography } from "@/shared/ui/typography";
 import Image from "next/image";
 import Link from "next/link";
+import { RegionPicker } from "./region-picker";
 
 const InfoRegions = () => {
   return (
@@ -70,7 +71,9 @@ const InfoRegions = () => {
               <Button className="w-fit">Деятельность в регионе</Button>
             </div>
 
-            <div></div>
+            <div>
+              <RegionPicker />
+            </div>
           </div>
         </Container>
       </section>
