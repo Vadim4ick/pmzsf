@@ -10,6 +10,7 @@ import {
 } from "@/shared/ui/select";
 import { regions } from "@/shared/const/regions.const";
 import { RussianMap } from "@/shared/ui/russian-map";
+import { Typography } from "@/shared/ui/typography";
 
 export const RegionPicker = memo(() => {
   const [selectedCode, setSelectedCode] = useState("RU-MOW");
@@ -37,10 +38,16 @@ export const RegionPicker = memo(() => {
       />
 
       {selectedTitle && (
-        <p className="text-text-secondary text-sm">
+        <Typography variant="capton-strong" className="text-text-secondary">
           Выбран регион:{" "}
-          <span className="text-text-default font-medium">{selectedTitle}</span>
-        </p>
+          <Typography
+            variant="capton-strong"
+            tag="span"
+            className="text-text-default"
+          >
+            {selectedTitle}
+          </Typography>
+        </Typography>
       )}
     </div>
   );

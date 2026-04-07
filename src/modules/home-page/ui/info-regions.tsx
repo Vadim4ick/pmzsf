@@ -10,8 +10,8 @@ const InfoRegions = () => {
     <>
       <section className="pb-10">
         <Container>
-          <div className="grid grid-cols-2">
-            <div className="flex flex-col justify-between gap-14">
+          <div className="max-tablet:grid-cols-1 max-tablet:gap-8 grid grid-cols-2 gap-4">
+            <div className="desktop:gap-14 flex flex-col justify-between gap-8">
               <Typography variant="header-l" tag="h2">
                 Представители в регионах
               </Typography>
@@ -79,12 +79,12 @@ const InfoRegions = () => {
       </section>
 
       <section className="pb-24">
-        <Container className="flex flex-col gap-14">
+        <Container className="desktop:gap-14 fap-8 flex flex-col">
           <Typography variant="header-l" tag="h2">
             Новости региона
           </Typography>
 
-          <div className="grid grid-cols-2 gap-x-10 gap-y-8">
+          <div className="max-mobile:grid-cols-1 grid grid-cols-2 gap-x-10 gap-y-8">
             <Link
               href="#"
               className="border-border-default flex flex-col gap-6 border-b pb-8"
