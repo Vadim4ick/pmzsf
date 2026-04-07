@@ -8,7 +8,7 @@ type NewsItem = (typeof mockNews)[number];
 
 function SmallCard({ item }: { item: NewsItem }) {
   return (
-    <article className="group flex flex-1 cursor-pointer flex-col">
+    <article className="group group flex flex-1 cursor-pointer flex-col">
       <div className="relative min-h-48 w-full flex-1">
         <Image
           src={item.img}
@@ -19,7 +19,11 @@ function SmallCard({ item }: { item: NewsItem }) {
       </div>
 
       <div className="desktop:gap-4 desktop:pt-4 desktop:pb-5 flex flex-col gap-3 pt-3 pb-4">
-        <Typography variant="serif-l" tag="h3" className="line-clamp-4">
+        <Typography
+          variant="serif-l"
+          tag="h3"
+          className="group-hover:text-text-brand line-clamp-4 transition-all"
+        >
           {item.title}
         </Typography>
 
@@ -37,7 +41,7 @@ function SmallCard({ item }: { item: NewsItem }) {
 
 function FeaturedCard({ item }: { item: NewsItem }) {
   return (
-    <article className="bg-background-default flex h-full cursor-pointer flex-col rounded-[12px]">
+    <article className="bg-background-default group flex h-full cursor-pointer flex-col rounded-[12px]">
       <div className="mobile:min-h-72 desktop:min-h-85 relative min-h-52 w-full">
         <Image
           src={item.img}

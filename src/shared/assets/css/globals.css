@@ -162,8 +162,9 @@
   --text-secondary: #9a9ea6;
   --text-tertiary: #5a5a5a;
   --text-disabled: #4a4a4a;
-  --text-brand: #2196d4;
-  --text-light: #3a3a3a;
+  --text-link: #41aee0;
+
+  --text-light: rgb(218, 215, 215);
   --text-neutral: #b0b0b0;
 
   --bg-default: #1a1a1a;

@@ -39,9 +39,9 @@ const Footer = () => {
 
                 {item.items.map((subItem, subIndex) => (
                   <li key={subIndex}>
-                    <Link href={subItem.href}>
+                    <Link href={subItem.href} className="group">
                       <Typography
-                        className="text-text-light"
+                        className="text-text-light transition-all group-hover:text-white"
                         variant="menu-font"
                         tag="p"
                       >

@@ -87,9 +87,13 @@ const InfoRegions = () => {
           <div className="max-mobile:grid-cols-1 grid grid-cols-2 gap-x-10 gap-y-8">
             <Link
               href="#"
-              className="border-border-default flex flex-col gap-6 border-b pb-8"
+              className="border-border-default group flex flex-col gap-6 border-b pb-8"
             >
-              <Typography className="line-clamp-4" variant="serif-l" tag="p">
+              <Typography
+                className="group-hover:text-text-brand line-clamp-4 transition-all"
+                variant="serif-l"
+                tag="p"
+              >
                 Курс на социально-ориентированный национальный проект ни к чему
                 нас не обязывает
               </Typography>
@@ -104,9 +108,13 @@ const InfoRegions = () => {
 
             <Link
               href="#"
-              className="border-border-default flex flex-col gap-6 border-b pb-8"
+              className="border-border-default group flex flex-col gap-6 border-b pb-8"
             >
-              <Typography className="line-clamp-4" variant="serif-l" tag="p">
+              <Typography
+                className="group-hover:text-text-brand line-clamp-4 transition-all"
+                variant="serif-l"
+                tag="p"
+              >
                 18 июля 2018 года в Совете Федерации Федерального Собрания РФ
                 прошёл круглый стол на тему «Обеспечение безопасности
                 образовательного процесса».
@@ -121,9 +129,13 @@ const InfoRegions = () => {
             </Link>
             <Link
               href="#"
-              className="border-border-default flex flex-col gap-6 border-b pb-8"
+              className="border-border-default group flex flex-col gap-6 border-b pb-8"
             >
-              <Typography className="line-clamp-4" variant="serif-l" tag="p">
+              <Typography
+                className="group-hover:text-text-brand line-clamp-4 transition-all"
+                variant="serif-l"
+                tag="p"
+              >
                 Давайте разбираться: героям были возданы соответствующие почести
               </Typography>
               <Typography
@@ -136,9 +148,13 @@ const InfoRegions = () => {
             </Link>
             <Link
               href="#"
-              className="border-border-default flex flex-col gap-6 border-b pb-8"
+              className="border-border-default group flex flex-col gap-6 border-b pb-8"
             >
-              <Typography className="line-clamp-4" variant="serif-l" tag="p">
+              <Typography
+                className="group-hover:text-text-brand line-clamp-4 transition-all"
+                variant="serif-l"
+                tag="p"
+              >
                 Убеждённость некоторых оппонентов одухотворила всех причастных
               </Typography>
               <Typography
