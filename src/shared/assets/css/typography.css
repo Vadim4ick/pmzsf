@@ -31,7 +31,7 @@
   }
 
   .serif-s {
-    @apply font-trola text-[22px] leading-6 font-bold;
+    @apply font-trola text-[22px] leading-6;
   }
 
   .capton-strong {

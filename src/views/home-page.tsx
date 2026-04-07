@@ -1,4 +1,9 @@
-import { Chairman, GridNews, InfoRegions } from "@/modules/home-page";
+import {
+  Chairman,
+  GosServiceLinks,
+  GridNews,
+  InfoRegions,
+} from "@/modules/home-page";
 
 const HomePage = () => {
   return (
@@ -6,6 +11,7 @@ const HomePage = () => {
       <GridNews />
       <Chairman />
       <InfoRegions />
+      <GosServiceLinks />
     </>
   );
 };

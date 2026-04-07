@@ -78,8 +78,8 @@ const InfoRegions = () => {
         </Container>
       </section>
 
-      <section className="pb-24">
-        <Container className="desktop:gap-14 fap-8 flex flex-col">
+      <section className="desktop:pb-24 mobile:pb-16 pb-12">
+        <Container className="desktop:gap-14 flex flex-col gap-8">
           <Typography variant="header-l" tag="h2">
             Новости региона
           </Typography>
