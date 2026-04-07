@@ -18,14 +18,18 @@ export const RegionPicker = memo(() => {
   const selectedTitle = regions.find((r) => r.code === selectedCode)?.title;
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col items-end gap-4">
       <Select value={selectedCode} onValueChange={setSelectedCode}>
-        <SelectTrigger className="border-border-default bg-background-default h-12 rounded-[12px] text-sm font-medium">
+        <SelectTrigger className="bg-background-default h-16! w-full max-w-[400px] cursor-pointer border-0 px-4 text-base font-medium shadow-none">
           <SelectValue placeholder="Выберите регион" />
         </SelectTrigger>
-        <SelectContent>
+        <SelectContent className="rounded-[6px]">
           {regions.map((r) => (
-            <SelectItem key={r.code} value={r.code}>
+            <SelectItem
+              key={r.code}
+              value={r.code}
+              className="data-[state=checked]:bg-text-brand/10 cursor-pointer py-3 pl-4 text-sm font-medium"
+            >
               {r.title}
             </SelectItem>
           ))}
