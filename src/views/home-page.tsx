@@ -1,10 +1,11 @@
-import { Chairman, GridNews } from "@/modules/home-page";
+import { Chairman, GridNews, InfoRegions } from "@/modules/home-page";
 
 const HomePage = () => {
   return (
     <>
       <GridNews />
       <Chairman />
+      <InfoRegions />
     </>
   );
 };
