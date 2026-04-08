@@ -11,7 +11,7 @@
   }
 
   .header-xxl {
-    @apply font-montserrat text-[56px] leading-15.5 font-bold -tracking-[0.84px];
+    @apply font-montserrat text-[56px] leading-15.5 font-extrabold -tracking-[0.84px];
   }
 
   .header-l {

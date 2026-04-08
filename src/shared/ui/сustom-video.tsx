@@ -5,6 +5,7 @@ import { useState, useRef, useEffect } from "react";
 import { Typography } from "@/shared/ui/typography";
 import { cn } from "@/shared/lib/utils";
 import { createPortal } from "react-dom";
+import { GradientShadow } from "./gradient-shadow";
 
 interface CustomVideoProps {
   src: string;
@@ -83,14 +84,7 @@ const CustomVideo = ({ src, poster, title, className }: CustomVideoProps) => {
           className="h-full w-full object-cover"
         />
 
-        {/* Градиент */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(to top, #030816 0%, rgba(3,8,22,0) 51%)",
-          }}
-        />
+        <GradientShadow />
 
         {/* Кнопка play */}
         <div className="absolute inset-0 flex items-center justify-center">
@@ -113,7 +107,7 @@ const CustomVideo = ({ src, poster, title, className }: CustomVideoProps) => {
             <Typography
               variant="subtitle-serif-s"
               tag="p"
-              className="line-clamp-2 text-white"
+              className="text-text-primary-on-color line-clamp-2"
             >
               {title}
             </Typography>

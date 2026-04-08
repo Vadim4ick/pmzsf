@@ -1,5 +1,6 @@
 import { Button } from "@/shared/ui/button";
 import { Container } from "@/shared/ui/container";
+import { GradientShadow } from "@/shared/ui/gradient-shadow";
 import { Typography } from "@/shared/ui/typography";
 import { CustomVideo } from "@/shared/ui/сustom-video";
 import Image from "next/image";
@@ -95,25 +96,15 @@ const Chairman = () => {
           </div>
 
           {/* Правая колонка — большое фото */}
-          <article className="mobile:min-h-[360px] desktop:h-full desktop:min-h-0 relative min-h-[280px] w-full">
+          <article className="mobile:min-h-[360px] desktop:h-full desktop:min-h-0 relative min-h-[280px] w-full overflow-hidden rounded-[12px]">
             <Image
               src="/img/chairman/1.png"
               alt="chairman"
-              className="rounded-[12px] object-cover"
+              className="object-cover"
               fill
             />
 
-            {/* Тёмный оверлей — базовый слой */}
-            {/* <div className="absolute inset-0 rounded-[12px] bg-[#030816]/30" /> */}
-
-            {/* Градиент снизу вверх — до 51% непрозрачный, выше прозрачный */}
-            <div
-              className="absolute inset-0 rounded-[12px]"
-              style={{
-                background:
-                  "linear-gradient(to top, #030816 0%, rgba(3,8,22,0) 51%)",
-              }}
-            />
+            <GradientShadow />
 
             <div className="desktop:gap-6 desktop:p-6 absolute bottom-0 left-0 flex flex-col gap-4 p-4">
               <Typography
@@ -125,7 +116,10 @@ const Chairman = () => {
               </Typography>
 
               <div className="flex items-end justify-between gap-4 text-white">
-                <Button className="text-white">Читать далее</Button>
+                <Button className="hover:border-text-accent hover:text-text-accent text-text-primary-on-color border-white hover:bg-transparent">
+                  Читать далее
+                </Button>
+
                 <Typography
                   variant="body-s-strong"
                   tag="span"

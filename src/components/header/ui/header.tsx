@@ -85,7 +85,7 @@ const Header = memo(() => {
       </header>
 
       {/* Navbar */}
-      <div className="border-border-secondary desktop:block bg-background-main sticky top-0 z-50 hidden border-b py-6 backdrop-blur-sm">
+      <div className="border-border-secondary desktop:block bg-background-main sticky top-0 z-5 hidden border-b py-6 backdrop-blur-sm">
         <Container>
           <HeaderNav />
         </Container>

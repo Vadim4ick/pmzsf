@@ -35,7 +35,7 @@ export default function RootLayout({
 
           <Header />
 
-          <main className="max-desktop:pt-10 max-mobile:pb-12 max-mobile:pt-8 grow pt-14 pb-22">
+          <main className="max-desktop:pt-10 max-mobile:pb-12 max-mobile:pt-8 z-3 grow pt-14 pb-22">
             {children}
           </main>
 
