@@ -55,7 +55,7 @@ function FeaturedCard({ item }: { item: NewsItem }) {
         <Typography
           variant="header-serif-xl"
           tag="h3"
-          className="font-trola! mobile:text-[32px] desktop:text-[40px] line-clamp-5 text-[24px]"
+          className="line-clamp-5 text-[24px]"
         >
           {item.title}
         </Typography>

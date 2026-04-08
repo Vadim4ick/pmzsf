@@ -7,7 +7,7 @@
 
 @layer utilities {
   .header-serif-xl {
-    @apply font-montserrat max-mobile:text-[32px] max-mobile:leading-9 text-[40px] leading-[44px] font-semibold;
+    @apply font-trola max-mobile:text-[32px] max-mobile:leading-9 text-[40px] leading-[44px] font-semibold;
   }
 
   .header-xxl {
@@ -15,7 +15,7 @@
   }
 
   .header-l {
-    @apply font-montserrat text-[32px] leading-9 font-bold -tracking-[0.32px];
+    @apply font-montserrat text-[32px] leading-9 font-extrabold -tracking-[0.32px];
   }
 
   .header-m {

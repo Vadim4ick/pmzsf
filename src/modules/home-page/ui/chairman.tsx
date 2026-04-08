@@ -3,7 +3,6 @@ import { Container } from "@/shared/ui/container";
 import { Typography } from "@/shared/ui/typography";
 import { CustomVideo } from "@/shared/ui/сustom-video";
 import Image from "next/image";
-import Link from "next/link";
 
 const newsItems = [
   {
@@ -69,13 +68,12 @@ const Chairman = () => {
               {/* Список новостей */}
               <div className="desktop:gap-4 flex w-full flex-col gap-3">
                 {newsItems.map((item, i) => (
-                  <Link
+                  <div
                     key={i}
-                    href={item.href}
-                    className="group border-border-secondary desktop:gap-4 desktop:pb-4 flex items-center gap-3 border-b pb-3"
+                    className="border-border-secondary desktop:gap-4 desktop:pb-4 flex items-center gap-3 border-b pb-3"
                   >
                     <Typography
-                      className="group-hover:text-text-accent line-clamp-3 flex-1 transition-colors"
+                      className="text-text-subtle line-clamp-4 flex-1 transition-colors"
                       variant="body-s-strong"
                       tag="p"
                     >
@@ -90,7 +88,7 @@ const Chairman = () => {
                         height={100}
                       />
                     </div>
-                  </Link>
+                  </div>
                 ))}
               </div>
             </div>

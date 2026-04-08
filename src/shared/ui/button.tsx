@@ -5,13 +5,13 @@ import { Slot } from "radix-ui";
 import { cn } from "@/shared/lib/utils";
 
 const buttonVariants = cva(
-  "group/button inline-flex cursor-pointer shrink-0 items-center font-medium justify-center rounded-[6px] border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+  "group/button inline-flex cursor-pointer shrink-0 items-center font-medium justify-center rounded-[6px] border border-transparent bg-clip-padding font-medium whitespace-nowrap transition-all outline-none select-none disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
   {
     variants: {
       variant: {
         default: [
-          "border border-border-secondary text-text-primary",
-          "hover:bg-text-accent hover:border-text-accent hover:text-white",
+          "bg-background-secondary text-text-primary",
+          "hover:bg-text-accent-hover hover:text-text-primary-on-color",
           "active:scale-[0.98]",
         ],
         secondary: [
@@ -22,7 +22,7 @@ const buttonVariants = cva(
       },
       size: {
         default:
-          "h-10 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
+          "h-10 gap-2 px-3 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
       },
     },
     defaultVariants: {

@@ -72,7 +72,9 @@ const Header = memo(() => {
           </Link>
 
           <div className="flex flex-col items-end justify-between gap-4">
-            <Button icon={<User />}>Вход</Button>
+            <Button className="gap-1.5" icon={<User className="size-[20px]" />}>
+              Вход
+            </Button>
             <ThemeSwitcher />
           </div>
         </Container>
