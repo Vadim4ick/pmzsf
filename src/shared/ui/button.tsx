@@ -12,12 +12,12 @@ const buttonVariants = cva(
         default: [
           "bg-background-secondary text-text-primary",
           "hover:bg-text-accent-hover hover:text-text-primary-on-color",
-          "active:scale-[0.98]",
+          "active:scale-[0.98] active:bg-background-accent-active",
         ],
         secondary: [
-          "bg-text-accent text-white",
-          "hover:brightness-110",
-          "active:scale-[0.98]",
+          "bg-background-accent text-text-primary-on-color",
+          "hover:bg-text-accent-hover",
+          "active:scale-[0.98] active:bg-background-accent-active",
         ],
       },
       size: {

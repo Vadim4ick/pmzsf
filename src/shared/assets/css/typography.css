@@ -11,7 +11,7 @@
   }
 
   .header-xxl {
-    @apply font-montserrat text-[56px] leading-15.5 font-extrabold -tracking-[0.84px];
+    @apply font-montserrat max-mobile:text-[40px] max-mobile:leading-[44px] text-[56px] leading-15.5 font-extrabold -tracking-[0.84px];
   }
 
   .header-l {
@@ -23,7 +23,7 @@
   }
 
   .header-m-caps {
-    @apply font-montserrat text-[24px] leading-8 font-bold -tracking-[0.24px];
+    @apply font-montserrat text-[24px] leading-8 font-extrabold -tracking-[0.24px] uppercase;
   }
 
   .header-s {
