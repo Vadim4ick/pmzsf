@@ -1,7 +1,9 @@
+import { getRouteNews } from "@/shared/const/route.const";
+
 export const navbar = [
   {
     title: "Новости",
-    href: "#",
+    href: getRouteNews(),
   },
   {
     title: "Структура",

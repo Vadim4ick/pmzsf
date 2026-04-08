@@ -16,6 +16,7 @@ import { cn } from "@/shared/lib/utils";
 import Link from "next/link";
 import { Glasses } from "@/shared/icons/glasses";
 import { useVisionStore } from "@/store/vision.store";
+import { getRouteHome } from "@/shared/const/route.const";
 
 const Header = memo(() => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -67,7 +68,10 @@ const Header = memo(() => {
             </button>
           </div>
 
-          <Link href="/" className="flex items-center justify-center">
+          <Link
+            href={getRouteHome()}
+            className="flex items-center justify-center"
+          >
             <LogoHeader />
           </Link>
 
@@ -92,7 +96,7 @@ const Header = memo(() => {
         {/* Лого — обычный блок, не фиксированный */}
         <div className="border-border-secondary border-b py-4">
           <Container className="flex items-center justify-center">
-            <Link href="/">
+            <Link href={getRouteHome()}>
               <LogoHeader />
             </Link>
           </Container>

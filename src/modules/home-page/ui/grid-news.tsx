@@ -80,7 +80,7 @@ const GridNews = () => {
   const [left1, left2, featured, right1, right2] = mockNews;
 
   return (
-    <section className="mobile:pt-10 mobile:pb-16 desktop:pt-14 desktop:pb-24 pt-8 pb-12">
+    <section className="mobile:pb-16 desktop:pb-24 pb-12">
       <Container>
         {/* Мобайл и tablet: стек — featured сверху, под ним 2x2 сетка */}
         <div className="desktop:hidden flex flex-col gap-5">

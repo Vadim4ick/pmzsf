@@ -4,6 +4,7 @@ import Link from "next/link";
 import { footerNav } from "../model/nav.const";
 import { Typography } from "@/shared/ui/typography";
 import { Input } from "@/shared/ui/input";
+import { getRouteHome } from "@/shared/const/route.const";
 
 const Footer = () => {
   return (
@@ -13,7 +14,7 @@ const Footer = () => {
         <div className="tablet:flex-row tablet:justify-between tablet:gap-4 flex flex-col gap-8">
           {/* Лого */}
           <Link
-            href={"/"}
+            href={getRouteHome()}
             className="max-mobile:flex max-mobile:justify-center shrink-0"
           >
             <LogoFooter />

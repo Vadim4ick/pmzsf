@@ -23,7 +23,7 @@ const service = [
 
 const GosServiceLinks = () => {
   return (
-    <section className="max-mobile:pb-12 pb-22">
+    <section>
       <Container className="max-desktop:flex-col max-desktop:gap-4 flex items-center gap-10">
         {service.map((el) => (
           <div
