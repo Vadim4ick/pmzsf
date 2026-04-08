@@ -10,6 +10,11 @@ export const lato = localFont({
       style: "normal",
     },
     {
+      path: "./lato/Lato-Semibold.woff2",
+      weight: "600",
+      style: "normal",
+    },
+    {
       path: "./lato/Lato-Medium.woff2",
       weight: "500",
       style: "normal",
@@ -26,11 +31,6 @@ export const trola = localFont({
   display: "swap",
   variable: "--font-trola",
   src: [
-    {
-      path: "./trola-latCyr/Trola-LatCyr-Heavy.woff2",
-      weight: "900",
-      style: "normal",
-    },
     {
       path: "./trola-latCyr/Trola-LatCyr-Bold.woff2",
       weight: "700",

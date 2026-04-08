@@ -20,15 +20,15 @@ function SmallCard({ item }: { item: NewsItem }) {
 
       <div className="desktop:gap-4 desktop:pt-4 desktop:pb-5 flex flex-col gap-3 pt-3 pb-4">
         <Typography
-          variant="serif-l"
+          variant="subtitle-serif-l"
           tag="h3"
-          className="group-hover:text-text-brand line-clamp-4 transition-all"
+          className="group-hover:text-text-accent line-clamp-4 transition-all"
         >
           {item.title}
         </Typography>
 
         <Typography
-          variant="capton-strong"
+          variant="body-s-strong"
           tag="span"
           className="text-text-secondary"
         >
@@ -41,7 +41,7 @@ function SmallCard({ item }: { item: NewsItem }) {
 
 function FeaturedCard({ item }: { item: NewsItem }) {
   return (
-    <article className="bg-background-default group flex h-full cursor-pointer flex-col rounded-[12px]">
+    <article className="bg-background-primary group flex h-full cursor-pointer flex-col rounded-[12px]">
       <div className="mobile:min-h-72 desktop:min-h-85 relative min-h-52 w-full">
         <Image
           src={item.img}
@@ -53,7 +53,7 @@ function FeaturedCard({ item }: { item: NewsItem }) {
 
       <div className="mobile:px-6 mobile:pt-5 mobile:pb-6 desktop:px-10 desktop:pt-6 desktop:pb-10 flex flex-1 flex-col justify-between px-4 pt-4 pb-5">
         <Typography
-          variant="header-xl"
+          variant="header-serif-xl"
           tag="h3"
           className="font-trola! mobile:text-[32px] desktop:text-[40px] line-clamp-5 text-[24px]"
         >
@@ -64,7 +64,7 @@ function FeaturedCard({ item }: { item: NewsItem }) {
           <Button>Читать далее</Button>
 
           <Typography
-            variant="capton-strong"
+            variant="body-s-strong"
             tag="span"
             className="text-text-secondary"
           >

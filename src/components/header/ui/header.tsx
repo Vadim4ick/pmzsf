@@ -38,13 +38,13 @@ const Header = memo(() => {
             <div className="flex items-center gap-2.5">
               <a
                 href={TG_LINK}
-                className="border-border-neutral hover:border-text-brand flex size-8 items-center justify-center rounded-full border-2 transition-colors"
+                className="border-border-neutral hover:border-text-accent flex size-8 items-center justify-center rounded-full border-2 transition-colors"
               >
                 <Tg />
               </a>
               <a
                 href={VK_LINK}
-                className="border-border-neutral hover:border-text-brand flex size-8 items-center justify-center rounded-full border-2 transition-colors"
+                className="border-border-neutral hover:border-text-accent flex size-8 items-center justify-center rounded-full border-2 transition-colors"
               >
                 <Vk />
               </a>
@@ -55,10 +55,8 @@ const Header = memo(() => {
               className="group flex cursor-pointer items-center gap-2"
             >
               <div
-                className={cn(`rounded-full border p-2.5 transition-colors`, {
-                  "border-border-default group-hover:border-text-brand":
-                    !active,
-                  "border-text-brand bg-text-brand/10": active,
+                className={cn(`rounded-full p-2.5 transition-colors`, {
+                  "bg-text-accent/10": active,
                 })}
               >
                 <Glasses />
@@ -81,7 +79,7 @@ const Header = memo(() => {
       </header>
 
       {/* Navbar */}
-      <div className="border-border-default desktop:block bg-background-secondary sticky top-0 z-50 hidden border-b py-6 backdrop-blur-sm">
+      <div className="border-border-secondary desktop:block bg-background-main sticky top-0 z-50 hidden border-b py-6 backdrop-blur-sm">
         <Container>
           <HeaderNav />
         </Container>
@@ -90,7 +88,7 @@ const Header = memo(() => {
       {/* ─── Mobile / Tablet ─── */}
       <div className="desktop:hidden">
         {/* Лого — обычный блок, не фиксированный */}
-        <div className="border-border-default border-b py-4">
+        <div className="border-border-secondary border-b py-4">
           <Container className="flex items-center justify-center">
             <Link href="/">
               <LogoHeader />
@@ -102,7 +100,7 @@ const Header = memo(() => {
         <div className="fixed top-0 right-0 z-50 flex items-center gap-1 p-2">
           <button
             aria-label="Поиск"
-            className="text-text-default bg-background-default/80 hover:bg-background-secondary flex size-10 cursor-pointer items-center justify-center rounded-full backdrop-blur-sm transition-colors"
+            className="text-text-primary bg-background-default/80 hover:bg-background-secondary flex size-10 cursor-pointer items-center justify-center rounded-full backdrop-blur-sm transition-colors"
           >
             <Search className="size-6" />
           </button>

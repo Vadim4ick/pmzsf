@@ -58,24 +58,24 @@ export const RussianMap = memo(
     const getPathStyle = (code: string): React.CSSProperties => {
       if (code === selectedCode) {
         return {
-          fill: "#028de3",
+          fill: "var(--background-accent)",
           stroke: "#ffffff",
-          strokeWidth: "0.5",
+          strokeWidth: "2",
           cursor: "pointer",
           transition: "fill 0.15s",
         };
       }
       if (code === hoveredCode) {
         return {
-          fill: "#7fc6ef",
+          fill: "var(--background-accent)",
           stroke: "#ffffff",
-          strokeWidth: "0.5",
+          strokeWidth: "2",
           cursor: "pointer",
           transition: "fill 0.15s",
         };
       }
       return {
-        fill: "#B3B3B3",
+        fill: "var(--background-default-tertiary-hover)",
         stroke: "#ffffff",
         strokeWidth: "0.5",
         cursor: "pointer",
@@ -635,13 +635,13 @@ export const RussianMap = memo(
         {/* Тултип */}
         {tooltip && (
           <div
-            className="bg-background-default border-border-default pointer-events-none absolute z-50 -translate-x-1/2 -translate-y-full rounded-[8px] border px-3 py-1.5 shadow-md"
+            className="bg-background-default-default text-text-primary border-border-secondary pointer-events-none absolute z-50 -translate-x-1/2 -translate-y-full rounded-[8px] border px-3 py-1.5 shadow-md"
             style={{
               left: tooltip.x,
               top: tooltip.y - 8, // 8px выше курсора
             }}
           >
-            <p className="text-text-default text-sm leading-tight font-medium whitespace-nowrap">
+            <p className="text-text-primary text-sm leading-tight font-medium whitespace-nowrap">
               {tooltip.title}
             </p>
           </div>

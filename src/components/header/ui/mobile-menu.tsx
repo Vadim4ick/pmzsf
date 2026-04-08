@@ -35,7 +35,7 @@ const MobileMenu = ({ open, onClose, offsetTop }: MobileMenuProps) => {
       {/* Drawer — полная ширина снизу от хедера */}
       <div
         className={cn(
-          "bg-background-default desktop:hidden fixed right-0 left-0 z-40 flex h-fit flex-col overflow-y-auto transition-transform duration-300 ease-in-out",
+          "bg-background-main desktop:hidden fixed right-0 left-0 z-40 flex h-fit flex-col overflow-y-auto transition-transform duration-300 ease-in-out",
           open
             ? "translate-y-0"
             : "pointer-events-none -translate-y-2 opacity-0",
@@ -49,7 +49,7 @@ const MobileMenu = ({ open, onClose, offsetTop }: MobileMenuProps) => {
         >
           {/* Навигация */}
           <nav className="mb-4">
-            <ul className="divide-border-default flex flex-col divide-y">
+            <ul className="divide-border-secondary flex flex-col divide-y">
               {navbar.map((item, index) => (
                 <li key={index}>
                   <Link
@@ -58,14 +58,14 @@ const MobileMenu = ({ open, onClose, offsetTop }: MobileMenuProps) => {
                     className="group flex items-center justify-between py-3.5"
                   >
                     <Typography
-                      className="text-text-default group-hover:text-text-brand transition-colors"
-                      variant="menu-font"
+                      className="text-text-primary group-hover:text-text-accent transition-colors"
+                      variant="button-link"
                       tag="span"
                     >
                       {item.title}
                     </Typography>
                     <svg
-                      className="text-text-tertiary group-hover:text-text-brand transition-all group-hover:translate-x-0.5"
+                      className="group-hover:text-text-accent text-[#5a5a5a] transition-all group-hover:translate-x-0.5"
                       width="16"
                       height="16"
                       viewBox="0 0 24 24"
@@ -91,19 +91,19 @@ const MobileMenu = ({ open, onClose, offsetTop }: MobileMenuProps) => {
           </Button>
 
           {/* Нижняя панель */}
-          <div className="border-border-default flex items-center justify-between gap-4 border-t pt-4 pb-2">
+          <div className="border-border-secondary flex items-center justify-between gap-4 border-t pt-4 pb-2">
             <ThemeSwitcher />
 
             <div className="flex items-center gap-2">
               <Link
                 href={TG_LINK}
-                className="border-border-neutral hover:border-text-brand flex size-8 items-center justify-center rounded-full border-2 transition-colors"
+                className="border-border-neutral hover:border-text-accent flex size-8 items-center justify-center rounded-full border-2 transition-colors"
               >
                 <Tg />
               </Link>
               <Link
                 href={VK_LINK}
-                className="border-border-neutral hover:border-text-brand flex size-8 items-center justify-center rounded-full border-2 transition-colors"
+                className="border-border-neutral hover:border-text-accent flex size-8 items-center justify-center rounded-full border-2 transition-colors"
               >
                 <Vk />
               </Link>

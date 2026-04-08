@@ -1,13 +1,49 @@
 @reference "tailwindcss";
 @reference "./globals.css";
 
+/* Montserrat - semibold, bold */
+/* trola - regular, semibold */
+/* lato - regular, semibold, bold, medium */
+
 @layer utilities {
-  .body-small-strong {
-    @apply text-[14px] leading-[100%];
+  .header-serif-xl {
+    @apply font-montserrat max-mobile:text-[32px] max-mobile:leading-9 text-[40px] leading-[44px] font-semibold;
   }
 
-  .body-strong {
-    @apply text-[16px] leading-[100%];
+  .header-xxl {
+    @apply font-montserrat text-[56px] leading-15.5 font-bold -tracking-[0.84px];
+  }
+
+  .header-l {
+    @apply font-montserrat text-[32px] leading-9 font-bold -tracking-[0.32px];
+  }
+
+  .header-m {
+    @apply font-montserrat text-[24px] leading-7 font-bold -tracking-[0.24px];
+  }
+
+  .header-m-caps {
+    @apply font-montserrat text-[24px] leading-8 font-bold -tracking-[0.24px];
+  }
+
+  .header-s {
+    @apply font-montserrat text-[20px] leading-6 font-bold -tracking-[0.3px];
+  }
+
+  .subtitle-l {
+    @apply text-[24px] leading-7;
+  }
+
+  .subtitle-serif-s {
+    @apply font-trola text-[18px] leading-6;
+  }
+
+  .subtitle-serif-l {
+    @apply font-trola text-[24px] leading-7 font-semibold;
+  }
+
+  .body-l {
+    @apply text-[18px] leading-[22px] font-semibold;
   }
 
   .body-m {
@@ -15,50 +51,34 @@
   }
 
   .body-m-strong {
-    @apply text-[16px] leading-[130%] font-bold;
+    @apply text-[16px] leading-5 font-bold;
   }
 
-  .menu-font {
-    @apply text-[18px] leading-[100%] font-medium;
+  .body-s {
+    @apply text-[14px] leading-[18px];
   }
 
-  .serif-l {
-    @apply font-trola text-[24px] leading-7 font-bold;
+  .body-s-strong {
+    @apply text-[14px] leading-[18px] font-bold;
   }
 
-  .serif-m {
-    @apply font-trola text-[18px] leading-6;
+  .body-serif {
+    @apply font-trola text-[20px] leading-[30px];
   }
 
-  .serif-s {
-    @apply font-trola text-[22px] leading-6;
+  .button-link {
+    @apply text-[18px] leading-[100%] font-semibold;
   }
 
-  .capton-strong {
-    @apply text-[14px] leading-4.5 font-bold;
+  .button-l {
+    @apply text-[16px] leading-[24px] font-bold;
   }
 
-  .capton {
-    @apply text-[14px] leading-4.5;
+  .button-m {
+    @apply text-[16px] leading-[100%] font-medium;
   }
 
-  .header-xxl {
-    @apply font-montserrat text-[56px] leading-15.5 font-bold -tracking-[0.84px];
-  }
-
-  .header-xl {
-    @apply font-montserrat max-mobile:text-[32px] max-mobile:leading-9 text-[40px] leading-11 font-bold -tracking-[0.4px];
-  }
-
-  .header-l {
-    @apply font-montserrat text-[32px] leading-9 font-bold -tracking-[0.32px];
-  }
-
-  .header-caps {
-    @apply font-montserrat text-[24px] leading-8 font-bold -tracking-[0.24px];
-  }
-
-  .header-m {
-    @apply font-montserrat text-[20px] leading-6 font-bold -tracking-[0.3px];
+  .button-s {
+    @apply text-[14px] leading-[16px] font-medium;
   }
 }

@@ -1,21 +1,25 @@
 import { cn } from "../lib/utils";
 
 export type TypographyVariant =
-  | "body-small-strong"
-  | "body-strong"
+  | "header-serif-xl"
+  | "header-xxl"
+  | "header-l"
+  | "header-m"
+  | "header-m-caps"
+  | "header-s"
+  | "subtitle-l"
+  | "subtitle-serif-s"
+  | "subtitle-serif-l"
+  | "body-l"
   | "body-m"
   | "body-m-strong"
-  | "menu-font"
-  | "serif-l"
-  | "serif-m"
-  | "serif-s"
-  | "capton-strong"
-  | "capton"
-  | "header-xxl"
-  | "header-xl"
-  | "header-l"
-  | "header-caps"
-  | "header-m";
+  | "body-s"
+  | "body-s-strong"
+  | "body-serif"
+  | "button-link"
+  | "button-l"
+  | "button-m"
+  | "button-s";
 
 export type TypographyTag = "h1" | "h2" | "h3" | "h4" | "span" | "div" | "p";
 export type TypographyProps<Tag extends TypographyTag> = ReactTagProps<

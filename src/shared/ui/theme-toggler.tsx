@@ -54,14 +54,9 @@ function ThemeToggle({
     onChange?.(next);
   };
 
-  // track: 40×24, thumb: 20×20, offset: top 2px, left 2px, translated: 40-20-2*2 = 16px
   return (
     <div className="flex items-center gap-2">
-      <Typography
-        className="text-text-secondary"
-        variant="body-small-strong"
-        tag="p"
-      >
+      <Typography className="text-text-secondary" variant="button-m" tag="p">
         {active ? "Ночной режим" : "Дневной режим"}
       </Typography>
 

@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { useState, useRef, useEffect } from "react";
@@ -26,7 +27,7 @@ function VideoModal({ src, onClose }: { src: string; onClose: () => void }) {
 
   return createPortal(
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm"
+      className="fixed inset-0 z-100 flex items-center justify-center bg-black/80 backdrop-blur-sm"
       onClick={onClose}
     >
       <div
@@ -110,7 +111,7 @@ const CustomVideo = ({ src, poster, title, className }: CustomVideoProps) => {
         {title && (
           <div className="absolute right-0 bottom-0 left-0 p-4">
             <Typography
-              variant="serif-m"
+              variant="subtitle-serif-s"
               tag="p"
               className="line-clamp-2 text-white"
             >

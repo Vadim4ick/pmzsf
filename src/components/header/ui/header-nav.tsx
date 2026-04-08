@@ -12,8 +12,8 @@ const HeaderNav = () => {
             <li key={index}>
               <Link href={item.href} className="group">
                 <Typography
-                  className="text-text-neutral group-hover:text-text-default transition-colors"
-                  variant="menu-font"
+                  className="text-text-secondary group-hover:text-text-primary transition-colors"
+                  variant="button-link"
                   tag="span"
                 >
                   {item.title}
@@ -24,7 +24,7 @@ const HeaderNav = () => {
         </ul>
       </nav>
 
-      <button className="text-text-neutral hover:text-text-default cursor-pointer transition-colors">
+      <button className="text-icon-primary hover:text-text-primary cursor-pointer transition-colors">
         <Search />
       </button>
     </div>

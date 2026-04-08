@@ -20,7 +20,7 @@ export const RegionPicker = memo(() => {
   return (
     <div className="flex flex-col items-end gap-4">
       <Select value={selectedCode} onValueChange={setSelectedCode}>
-        <SelectTrigger className="bg-background-default h-16! w-full max-w-[400px] cursor-pointer border-0 px-4 text-base font-medium shadow-none">
+        <SelectTrigger className="bg-background-default border-border-secondary h-16! w-full max-w-[400px] cursor-pointer border bg-white px-4 text-base font-medium shadow-none">
           <SelectValue placeholder="Выберите регион" />
         </SelectTrigger>
         <SelectContent className="rounded-[6px]">
@@ -28,7 +28,7 @@ export const RegionPicker = memo(() => {
             <SelectItem
               key={r.code}
               value={r.code}
-              className="data-[state=checked]:bg-text-brand/10 cursor-pointer py-3 pl-4 text-sm font-medium"
+              className="data-[state=checked]:bg-text-accent/10 cursor-pointer py-3 pl-4 text-sm font-medium"
             >
               {r.title}
             </SelectItem>
@@ -42,12 +42,12 @@ export const RegionPicker = memo(() => {
       />
 
       {selectedTitle && (
-        <Typography variant="capton-strong" className="text-text-secondary">
+        <Typography variant="body-s-strong" className="text-text-secondary">
           Выбран регион:{" "}
           <Typography
-            variant="capton-strong"
+            variant="body-s-strong"
             tag="span"
-            className="text-text-default"
+            className="text-text-primary"
           >
             {selectedTitle}
           </Typography>

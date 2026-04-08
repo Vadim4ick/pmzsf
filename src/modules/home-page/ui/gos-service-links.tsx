@@ -28,7 +28,7 @@ const GosServiceLinks = () => {
         {service.map((el) => (
           <div
             key={el.name}
-            className="bg-background-default border-border-default flex w-full items-center justify-center gap-4 rounded-[12px] border p-4"
+            className="bg-background-default border-border-primary flex w-full items-center justify-center gap-4 rounded-[12px] border p-4"
           >
             <div className="relative size-[56px]">
               <Image
@@ -39,7 +39,7 @@ const GosServiceLinks = () => {
             </div>
 
             <div className="flex flex-col">
-              <Typography variant="serif-s" tag="p">
+              <Typography variant="header-s" tag="p">
                 {el.name}
               </Typography>
 
@@ -50,7 +50,7 @@ const GosServiceLinks = () => {
               >
                 <Typography
                   className="text-text-secondary"
-                  variant="capton"
+                  variant="body-s"
                   tag="span"
                 >
                   {el.link}

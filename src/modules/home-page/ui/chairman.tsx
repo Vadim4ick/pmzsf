@@ -34,7 +34,7 @@ const Chairman = () => {
           {/* Левая колонка */}
           <div className="desktop:gap-10 flex flex-col gap-6">
             {/* Карточка председателя */}
-            <div className="bg-background-default border-border-default desktop:p-6 flex items-center gap-4 rounded-[12px] border p-4">
+            <div className="bg-background-default desktop:p-6 flex items-center gap-4 rounded-[12px] p-4">
               <div className="desktop:size-[72px] size-14 shrink-0">
                 <Image
                   src="/img/chairman.png"
@@ -48,7 +48,7 @@ const Chairman = () => {
                 <Typography variant="header-m" tag="h3">
                   Соболев Михаил Владимирович
                 </Typography>
-                <Typography variant="serif-m" tag="p">
+                <Typography variant="subtitle-serif-s" tag="p">
                   Председатель Палаты молодых законодателей при Совете Федерации
                 </Typography>
               </div>
@@ -72,11 +72,11 @@ const Chairman = () => {
                   <Link
                     key={i}
                     href={item.href}
-                    className="group border-border-default desktop:gap-4 desktop:pb-4 flex items-center gap-3 border-b pb-3"
+                    className="group border-border-secondary desktop:gap-4 desktop:pb-4 flex items-center gap-3 border-b pb-3"
                   >
                     <Typography
-                      className="group-hover:text-text-brand line-clamp-3 flex-1 transition-colors"
-                      variant="capton-strong"
+                      className="group-hover:text-text-accent line-clamp-3 flex-1 transition-colors"
+                      variant="body-s-strong"
                       tag="p"
                     >
                       {item.title}
@@ -118,14 +118,18 @@ const Chairman = () => {
             />
 
             <div className="desktop:gap-6 desktop:p-6 absolute bottom-0 left-0 flex flex-col gap-4 p-4">
-              <Typography variant="serif-l" tag="p" className="text-white">
+              <Typography
+                variant="subtitle-serif-l"
+                tag="p"
+                className="text-white"
+              >
                 Рабочие встречи молодых законодателей в Ереване продолжаются
               </Typography>
 
               <div className="flex items-end justify-between gap-4 text-white">
                 <Button className="text-white">Читать далее</Button>
                 <Typography
-                  variant="capton-strong"
+                  variant="body-s-strong"
                   tag="span"
                   className="text-white/80"
                 >
