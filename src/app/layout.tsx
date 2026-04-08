@@ -6,6 +6,7 @@ import "@/shared/assets/css/typography.css";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { Providers } from "@/shared/providers/providers";
+import { VisionPanel } from "@/components/vision-panel";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -30,6 +31,8 @@ export default function RootLayout({
     >
       <body className="flex min-h-full flex-col">
         <Providers>
+          <VisionPanel />
+
           <Header />
 
           <main className="grow">{children}</main>

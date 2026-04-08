@@ -1,6 +1,5 @@
 "use client";
 
-import { Glasses } from "@/shared/icons/glasses";
 import { LogoHeader } from "@/shared/icons/logo-header";
 import { Tg } from "@/shared/icons/seti/tg";
 import { Vk } from "@/shared/icons/seti/vk";
@@ -12,12 +11,16 @@ import { ThemeSwitcher } from "./theme-switcher";
 import { HeaderNav } from "./header-nav";
 import { MobileMenu } from "./mobile-menu";
 import { TG_LINK, VK_LINK } from "@/shared/const/company.const";
-import { useState, useEffect } from "react";
+import { useState, useEffect, memo } from "react";
 import { cn } from "@/shared/lib/utils";
 import Link from "next/link";
+import { Glasses } from "@/shared/icons/glasses";
+import { useVisionStore } from "@/store/vision.store";
 
-const Header = () => {
+const Header = memo(() => {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const { active, toggle } = useVisionStore();
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
@@ -46,12 +49,22 @@ const Header = () => {
                 <Vk />
               </a>
             </div>
-            <button className="group flex cursor-pointer items-center gap-2">
-              <div className="border-border-default group-hover:border-text-brand rounded-full border p-2.5 transition-colors">
+
+            <button
+              onClick={toggle}
+              className="group flex cursor-pointer items-center gap-2"
+            >
+              <div
+                className={cn(`rounded-full border p-2.5 transition-colors`, {
+                  "border-border-default group-hover:border-text-brand":
+                    !active,
+                  "border-text-brand bg-text-brand/10": active,
+                })}
+              >
                 <Glasses />
               </div>
               <span className="text-sm font-medium">
-                Версия для слабовидящих
+                {active ? "Обычная версия" : "Версия для слабовидящих"}
               </span>
             </button>
           </div>
@@ -130,6 +143,8 @@ const Header = () => {
       />
     </>
   );
-};
+});
 
 export { Header };
+
+Header.displayName = "Header";
