@@ -53,7 +53,10 @@ const Footer = () => {
           </nav>
 
           <div className="max-mobile:max-w-full w-full max-w-[300px]">
-            <Input placeholder="Поиск" className="h-[55px]" />
+            <Input
+              placeholder="Поиск"
+              className="placeholder:text-text-primary-on-color border-text-primary-on-color! h-[55px]"
+            />
           </div>
         </div>
 

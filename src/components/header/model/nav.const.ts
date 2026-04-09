@@ -1,4 +1,4 @@
-import { getRouteNews } from "@/shared/const/route.const";
+import { getRouteAbout, getRouteNews } from "@/shared/const/route.const";
 
 export const navbar = [
   {
@@ -11,7 +11,7 @@ export const navbar = [
   },
   {
     title: "О палате",
-    href: "#",
+    href: getRouteAbout(),
   },
   {
     title: "Галерея Победы",
