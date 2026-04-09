@@ -18,6 +18,11 @@ const buttonVariants = cva(
           "hover:bg-text-accent-hover",
           "active:scale-[0.98] active:bg-background-accent-active",
         ],
+        tertiary: [
+          "bg-transparent border-border-primary border-2",
+          "hover:text-text-accent-hover hover:border-border-accent-hover",
+          "active:scale-[0.98] active:text-text-accent-active active:border-border-accent-active",
+        ],
       },
       size: {
         default:
