@@ -1,3 +1,5 @@
+import { getRouteStructure } from "@/shared/const/route.const";
+
 export const footerNav = [
   {
     title: "О палате",
@@ -9,7 +11,7 @@ export const footerNav = [
       },
       {
         title: "Структура",
-        href: "#",
+        href: getRouteStructure(),
       },
       {
         title: "Члены палаты",
@@ -38,7 +40,7 @@ export const footerNav = [
         href: "#",
       },
       {
-        title: "Фото и видео",
+        title: "Фото и видео",
         href: "#",
       },
     ],
