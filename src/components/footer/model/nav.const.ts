@@ -1,5 +1,6 @@
 import {
   getRouteDocuments,
+  getRouteMedia,
   getRouteStructure,
 } from "@/shared/const/route.const";
 
@@ -44,7 +45,7 @@ export const footerNav = [
       },
       {
         title: "Фото и видео",
-        href: "#",
+        href: getRouteMedia(),
       },
     ],
   },

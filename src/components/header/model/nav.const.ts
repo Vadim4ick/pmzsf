@@ -2,6 +2,7 @@ import {
   getRouteAbout,
   getRouteContacts,
   getRouteDocuments,
+  getRouteMedia,
   getRouteNews,
   getRouteStructure,
 } from "@/shared/const/route.const";
@@ -33,7 +34,7 @@ export const navbar = [
   },
   {
     title: "Фото и видео",
-    href: "#",
+    href: getRouteMedia(),
   },
   {
     title: "Экспертный совет",
