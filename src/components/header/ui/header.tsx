@@ -3,9 +3,7 @@
 import { LogoHeader } from "@/shared/icons/logo-header";
 import { Tg } from "@/shared/icons/seti/tg";
 import { Vk } from "@/shared/icons/seti/vk";
-import { User } from "@/shared/icons/user";
 import { Search } from "@/shared/icons/search";
-import { Button } from "@/shared/ui/button";
 import { Container } from "@/shared/ui/container";
 import { ThemeSwitcher } from "./theme-switcher";
 import { HeaderNav } from "./header-nav";
@@ -17,6 +15,7 @@ import Link from "next/link";
 import { Glasses } from "@/shared/icons/glasses";
 import { useVisionStore } from "@/store/vision.store";
 import { getRouteHome } from "@/shared/const/route.const";
+import { SignInBtn } from "./sign-in-btn";
 
 const Header = memo(() => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -76,9 +75,8 @@ const Header = memo(() => {
           </Link>
 
           <div className="flex flex-col items-end justify-between gap-4">
-            <Button className="gap-1.5" icon={<User className="size-[20px]" />}>
-              Вход
-            </Button>
+            <SignInBtn classNameIcon="size-[20px]" />
+
             <ThemeSwitcher />
           </div>
         </Container>

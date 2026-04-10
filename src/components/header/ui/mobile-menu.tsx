@@ -3,14 +3,14 @@
 import { cn } from "@/shared/lib/utils";
 import { navbar } from "../model/nav.const";
 import { Typography } from "@/shared/ui/typography";
-import { Button } from "@/shared/ui/button";
-import { User } from "@/shared/icons/user";
 import { Tg } from "@/shared/icons/seti/tg";
 import { Vk } from "@/shared/icons/seti/vk";
 import { ThemeSwitcher } from "./theme-switcher";
 import Link from "next/link";
 import { TG_LINK, VK_LINK } from "@/shared/const/company.const";
 import { Container } from "@/shared/ui/container";
+import { SignInBtn } from "./sign-in-btn";
+import { Overlay } from "@/shared/ui/overlay";
 
 interface MobileMenuProps {
   open: boolean;
@@ -21,11 +21,8 @@ interface MobileMenuProps {
 const MobileMenu = ({ open, onClose, offsetTop }: MobileMenuProps) => {
   return (
     <>
-      {/* Backdrop */}
-      <div
-        onClick={onClose}
+      <Overlay
         className={cn(
-          "desktop:hidden fixed inset-0 z-40 bg-black/50 transition-opacity duration-300",
           open
             ? "pointer-events-auto opacity-100"
             : "pointer-events-none opacity-0",
@@ -85,10 +82,7 @@ const MobileMenu = ({ open, onClose, offsetTop }: MobileMenuProps) => {
             </ul>
           </nav>
 
-          {/* Вход */}
-          <Button icon={<User />} className="mb-5 w-full justify-center">
-            Вход
-          </Button>
+          <SignInBtn onClick={onClose} className="mb-5 w-full justify-center" />
 
           {/* Нижняя панель */}
           <div className="border-border-secondary flex items-center justify-between gap-4 border-t pt-4 pb-2">

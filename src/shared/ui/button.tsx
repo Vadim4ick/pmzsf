@@ -11,17 +11,17 @@ const buttonVariants = cva(
         default: [
           "bg-background-secondary text-text-primary",
           "hover:bg-text-accent-hover hover:text-text-primary-on-color",
-          "active:scale-[0.98] active:bg-background-accent-active",
+          "active:bg-background-accent-active",
         ],
         secondary: [
           "bg-background-accent text-text-primary-on-color",
           "hover:bg-text-accent-hover",
-          "active:scale-[0.98] active:bg-background-accent-active",
+          "active:bg-background-accent-active",
         ],
         tertiary: [
           "bg-transparent border-border-primary border-2",
           "hover:text-text-accent-hover hover:border-border-accent-hover",
-          "active:scale-[0.98] active:text-text-accent-active active:border-border-accent-active",
+          "active:text-text-accent-active active:border-border-accent-active",
         ],
       },
       size: {
