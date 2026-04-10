@@ -1,17 +1,6 @@
-export type Committee = {
-  title: string;
-  person: string;
-};
+import { DeputatCard } from "@/shared/types/deputat.types";
 
-export type Member = {
-  name: string;
-  role: string;
-  photo: string;
-  since: string;
-  committees?: Committee[];
-};
-
-export const STRUCTURE: { section: string; members: Member[] }[] = [
+export const STRUCTURE: DeputatCard[] = [
   {
     section: "Председатель",
     members: [

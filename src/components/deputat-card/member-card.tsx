@@ -2,12 +2,12 @@
 
 import { Pluce } from "@/shared/icons/pluce";
 import { cn } from "@/shared/lib/utils";
+import { Member } from "@/shared/types/deputat.types";
 import { Button } from "@/shared/ui/button";
 import { Typography } from "@/shared/ui/typography";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { memo, useState } from "react";
-import type { Member } from "../model/structure.const";
 
 const MemberCard = memo(({ name, role, photo, since, committees }: Member) => {
   const [isOpen, setIsOpen] = useState(false);

@@ -2,6 +2,7 @@ import {
   getRouteAbout,
   getRouteContacts,
   getRouteDocuments,
+  getRouteExpertAdvice,
   getRouteMedia,
   getRouteNews,
   getRouteStructure,
@@ -38,6 +39,6 @@ export const navbar = [
   },
   {
     title: "Экспертный совет",
-    href: "#",
+    href: getRouteExpertAdvice(),
   },
 ];
