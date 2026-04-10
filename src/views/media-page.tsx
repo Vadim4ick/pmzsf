@@ -1,50 +1,26 @@
 "use client";
 
+import { MediaTab, MediaTabHeader, MediaTabPhoto } from "@/modules/media-page";
+import { MediaTabVideo } from "@/modules/media-page/ui/media-tab-video";
 import { Container } from "@/shared/ui/container";
-import { Typography } from "@/shared/ui/typography";
-import { useState } from "react";
+import { memo, useState } from "react";
 
-type Tab = "photo" | "video";
-
-const TABS: { id: Tab; label: string }[] = [
-  { id: "photo", label: "Фото" },
-  { id: "video", label: "Видео" },
-];
-
-const MediaPage = () => {
-  const [activeTab, setActiveTab] = useState<Tab>("photo");
+const MediaPage = memo(() => {
+  const [activeTab, setActiveTab] = useState<MediaTab>("photo");
 
   return (
     <section>
       <Container className="flex flex-col gap-10">
-        <div className="flex items-center gap-4">
-          {TABS.map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className="cursor-pointer"
-            >
-              <Typography
-                className={
-                  activeTab === tab.id
-                    ? "text-text-accent-hover"
-                    : "text-text-secondary"
-                }
-                variant="header-l"
-                tag="h3"
-              >
-                {tab.label}
-              </Typography>
-            </button>
-          ))}
-        </div>
+        <MediaTabHeader activeTab={activeTab} setActiveTab={setActiveTab} />
 
-        {activeTab === "photo" && <div>Фото контент</div>}
+        {activeTab === "photo" && <MediaTabPhoto />}
 
-        {activeTab === "video" && <div>Видео контент</div>}
+        {activeTab === "video" && <MediaTabVideo />}
       </Container>
     </section>
   );
-};
+});
 
 export { MediaPage };
+
+MediaPage.displayName = "MediaPage";
