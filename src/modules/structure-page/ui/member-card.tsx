@@ -6,10 +6,10 @@ import { Button } from "@/shared/ui/button";
 import { Typography } from "@/shared/ui/typography";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
-import { useState } from "react";
+import { memo, useState } from "react";
 import type { Member } from "../model/structure.const";
 
-const MemberCard = ({ name, role, photo, since, committees }: Member) => {
+const MemberCard = memo(({ name, role, photo, since, committees }: Member) => {
   const [isOpen, setIsOpen] = useState(false);
   const hasCommittees = committees && committees.length > 0;
 
@@ -111,6 +111,8 @@ const MemberCard = ({ name, role, photo, since, committees }: Member) => {
       </AnimatePresence>
     </div>
   );
-};
+});
 
 export { MemberCard };
+
+MemberCard.displayName = "MemberCard";

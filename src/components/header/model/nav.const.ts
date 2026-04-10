@@ -1,5 +1,7 @@
 import {
   getRouteAbout,
+  getRouteContacts,
+  getRouteDocuments,
   getRouteNews,
   getRouteStructure,
 } from "@/shared/const/route.const";
@@ -23,11 +25,11 @@ export const navbar = [
   },
   {
     title: "Документы",
-    href: "#",
+    href: getRouteDocuments(),
   },
   {
     title: "Контакты",
-    href: "#",
+    href: getRouteContacts(),
   },
   {
     title: "Фото и видео",

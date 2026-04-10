@@ -1,4 +1,7 @@
-import { getRouteStructure } from "@/shared/const/route.const";
+import {
+  getRouteDocuments,
+  getRouteStructure,
+} from "@/shared/const/route.const";
 
 export const footerNav = [
   {
@@ -23,7 +26,7 @@ export const footerNav = [
       },
       {
         title: "Документы",
-        href: "#",
+        href: getRouteDocuments(),
       },
     ],
   },
