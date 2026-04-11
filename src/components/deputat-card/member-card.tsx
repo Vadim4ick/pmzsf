@@ -101,7 +101,7 @@ const MemberCard = memo(({ name, role, photo, since, committees }: Member) => {
                     variant="body-m"
                     tag="span"
                   >
-                    {committee.person}
+                    {committee.chairman}
                   </Typography>
                 </div>
               ))}

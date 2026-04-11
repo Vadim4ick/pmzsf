@@ -6,3 +6,6 @@ export const getRouteDocuments = () => "/documents";
 export const getRouteContacts = () => "/contacts";
 export const getRouteMedia = () => "/media";
 export const getRouteExpertAdvice = () => "/expert-advice";
+export const getRouteCommittees = () => "/committees";
+export const getRouteCommitteesById = (id: string = ":id") =>
+  `${getRouteCommittees()}/${id}`;

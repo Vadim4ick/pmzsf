@@ -1,7 +1,4 @@
-export type Committee = {
-  title: string;
-  person: string;
-};
+import { Committee } from "./committee.type";
 
 export type Member = {
   name: string;

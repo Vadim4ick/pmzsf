@@ -1,4 +1,5 @@
 import {
+  getRouteCommittees,
   getRouteDocuments,
   getRouteMedia,
   getRouteStructure,
@@ -23,7 +24,7 @@ export const footerNav = [
       },
       {
         title: "Комитеты",
-        href: "#",
+        href: getRouteCommittees(),
       },
       {
         title: "Документы",
