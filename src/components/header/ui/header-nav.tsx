@@ -15,8 +15,7 @@ const HeaderNav = memo(() => {
       <nav>
         <ul className="flex items-center gap-10">
           {navbar.map((item, index) => {
-            const isActive =
-              pathname === item.href || pathname.startsWith(item.href + "/");
+            const isActive = pathname === item.href;
 
             return (
               <li key={index}>

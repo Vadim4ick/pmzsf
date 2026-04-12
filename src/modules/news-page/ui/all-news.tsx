@@ -3,6 +3,7 @@ import { Typography } from "@/shared/ui/typography";
 import Image from "next/image";
 import Link from "next/link";
 import { HERO_NEWS, MAIN_NEWS } from "../model/news.mock";
+import { getRouteNewsById } from "@/shared/const/route.const";
 
 const AllNews = () => {
   return (
@@ -17,7 +18,7 @@ const AllNews = () => {
 
       {/* Hero card */}
       <Link
-        href={HERO_NEWS.href}
+        href={getRouteNewsById(String(1))}
         className="relative h-[300px] w-full overflow-hidden rounded-[12px] sm:h-[400px] md:h-[510px]"
       >
         <Image
@@ -46,7 +47,7 @@ const AllNews = () => {
       {MAIN_NEWS.map((item, idx) => (
         <Link
           key={idx + item.title}
-          href={item.href}
+          href={getRouteNewsById(String(1))}
           className="border-border-secondary hover:border-border-accent-hover grid w-full grid-cols-1 gap-6 overflow-hidden border-b pb-10 transition-all sm:grid-cols-2"
         >
           <div className="relative h-[200px] w-full sm:h-[250px]">

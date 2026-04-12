@@ -3,6 +3,7 @@ import { SIDEBAR_FEATURED, SIDEBAR_NEWS } from "../model/news.mock";
 import Link from "next/link";
 import Image from "next/image";
 import { GradientShadow } from "@/shared/ui/gradient-shadow";
+import { getRouteNewsById } from "@/shared/const/route.const";
 
 const NewsSidebar = () => {
   return (
@@ -12,7 +13,7 @@ const NewsSidebar = () => {
         {SIDEBAR_NEWS.map((item, idx) => (
           <Link
             key={idx + item.title}
-            href={item.href}
+            href={getRouteNewsById(String(1))}
             className="border-border-secondary hover:border-border-accent-hover max-mobile:justify-between flex gap-4 border-b pb-4 transition-all"
           >
             <Typography
@@ -35,7 +36,7 @@ const NewsSidebar = () => {
 
       {/* Sidebar featured card */}
       <Link
-        href={SIDEBAR_FEATURED.href}
+        href={getRouteNewsById(String(1))}
         className="relative h-[280px] overflow-hidden rounded-[16px] sm:h-[360px]"
       >
         <Image

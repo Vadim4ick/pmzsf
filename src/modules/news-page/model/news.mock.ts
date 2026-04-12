@@ -1,5 +1,4 @@
 const HERO_NEWS = {
-  href: "#",
   src: "/img/news/1.png",
   alt: "news-hero",
   title: "Свободу слова не задушить, пусть даже солнечных дней всё меньше",
@@ -10,7 +9,6 @@ const HERO_NEWS = {
 
 const MAIN_NEWS = [
   {
-    href: "#",
     src: "/img/news/1.png",
     alt: "news-1",
     title: "Глубокий уровень погружения развеял последние сомнения",
@@ -19,7 +17,6 @@ const MAIN_NEWS = [
     date: "04.10.2026 05:05",
   },
   {
-    href: "#",
     src: "/img/news/1.png",
     alt: "news-2",
     title: "Глубокий уровень погружения развеял последние сомнения",
@@ -31,19 +28,16 @@ const MAIN_NEWS = [
 
 const SIDEBAR_NEWS = [
   {
-    href: "#",
     src: "/img/news/1.png",
     alt: "sidebar-news-1",
     title: "Новый закон накладывает вето на далёкий барабанный бой",
   },
   {
-    href: "#",
     src: "/img/news/1.png",
     alt: "sidebar-news-2",
     title: "Новый закон накладывает вето на далёкий барабанный бой",
   },
   {
-    href: "#",
     src: "/img/news/1.png",
     alt: "sidebar-news-3",
     title: "Новый закон накладывает вето на далёкий барабанный бой",
@@ -51,7 +45,6 @@ const SIDEBAR_NEWS = [
 ];
 
 const SIDEBAR_FEATURED = {
-  href: "#",
   src: "/img/news/1.png",
   alt: "sidebar-featured",
   title:
