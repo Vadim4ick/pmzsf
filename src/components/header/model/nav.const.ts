@@ -3,6 +3,7 @@ import {
   getRouteContacts,
   getRouteDocuments,
   getRouteExpertAdvice,
+  getRouteGallery,
   getRouteMedia,
   getRouteNews,
   getRouteStructure,
@@ -23,7 +24,7 @@ export const navbar = [
   },
   {
     title: "Галерея Победы",
-    href: "#",
+    href: getRouteGallery(),
   },
   {
     title: "Документы",

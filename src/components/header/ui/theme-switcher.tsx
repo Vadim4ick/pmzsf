@@ -1,23 +1,19 @@
 "use client";
 
+import { useThemeStore } from "@/store/theme.store";
 import { ThemeToggle } from "@/shared/ui/theme-toggler";
-import { memo, useEffect, useState } from "react";
+import { memo, useEffect } from "react";
 
 const ThemeSwitcher = memo(() => {
-  const [isDark, setIsDark] = useState(false);
+  const { isDark, setDark } = useThemeStore();
 
   useEffect(() => {
-    const html = document.documentElement;
-    if (isDark) {
-      html.classList.add("dark");
-    } else {
-      html.classList.remove("dark");
-    }
+    document.documentElement.classList.toggle("dark", isDark);
   }, [isDark]);
 
-  return <ThemeToggle checked={isDark} onChange={setIsDark} />;
+  return <ThemeToggle checked={isDark} onChange={setDark} />;
 });
 
-export { ThemeSwitcher };
-
 ThemeSwitcher.displayName = "ThemeSwitcher";
+
+export { ThemeSwitcher };

@@ -1,7 +1,9 @@
 "use client";
 
+import { AuthProvider } from "./auth-provider";
+
 const Providers = ({ children }: { children: React.ReactNode }) => {
-  return children;
+  return <AuthProvider>{children}</AuthProvider>;
 };
 
 export { Providers };

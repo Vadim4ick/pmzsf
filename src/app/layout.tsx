@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import { lato, trola } from "@/shared/assets/fonts";
-import "@/shared/assets/css/globals.css";
-import "@/shared/assets/css/typography.css";
-import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { Providers } from "@/shared/providers/providers";
-import { VisionPanel } from "@/components/vision-panel";
+
+import "@/shared/assets/css/globals.css";
+import "@/shared/assets/css/typography.css";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -26,18 +25,28 @@ export default function RootLayout({
 }>) {
   return (
     <html
+      suppressHydrationWarning
       lang="en"
       className={`${montserrat.variable} ${lato.variable} ${trola.variable} h-full antialiased`}
     >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                const theme = JSON.parse(localStorage.getItem('theme') || '{}');
+                if (theme.state?.isDark) {
+                  document.documentElement.classList.add('dark');
+                }
+              } catch {}
+            `,
+          }}
+        />
+      </head>
+
       <body className="flex min-h-full flex-col">
         <Providers>
-          <VisionPanel />
-
-          <Header />
-
-          <main className="max-desktop:pt-10 max-mobile:pb-12 max-mobile:pt-8 z-3 grow pt-14 pb-22">
-            {children}
-          </main>
+          {children}
 
           <Footer />
         </Providers>
