@@ -3,10 +3,14 @@
 import { Header } from "@/components/header";
 import { VisionPanel } from "@/components/vision-panel";
 import { PADDING_PUBLIC_ROUTES } from "@/shared/const/constants.const";
+import {
+  getRouteChamberMembers,
+  getRouteGallery,
+} from "@/shared/const/route.const";
 import { cn } from "@/shared/lib/utils";
 import { usePathname } from "next/navigation";
 
-const NO_PADDING_ROUTES = ["/gallery"];
+const NO_PADDING_ROUTES = [getRouteGallery(), getRouteChamberMembers()];
 
 export default function PublicLayout({
   children,

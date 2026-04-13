@@ -1,4 +1,5 @@
 import {
+  getRouteChamberMembers,
   getRouteCommittees,
   getRouteDocuments,
   getRouteMedia,
@@ -20,7 +21,7 @@ export const footerNav = [
       },
       {
         title: "Члены палаты",
-        href: "#",
+        href: getRouteChamberMembers(),
       },
       {
         title: "Комитеты",
