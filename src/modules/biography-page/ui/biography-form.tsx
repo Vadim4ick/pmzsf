@@ -2,10 +2,11 @@ import { Tg } from "@/shared/icons/seti/tg";
 import { Vk } from "@/shared/icons/seti/vk";
 import { Typography } from "@/shared/ui/typography";
 import Image from "next/image";
+import { BiographyTabs } from "./biography-tabs";
 
 const BiographyForm = () => {
   return (
-    <div className="bg-background-primary max-desktop1250:px-8 max-mobile:p-8 rounded-[16px] p-16">
+    <div className="bg-background-primary max-desktop1250:px-8 max-mobile:p-8 flex flex-col gap-10 rounded-[16px] p-16">
       <div className="max-desktop:gap-5 max-desktop1250:grid-cols-[350px_1fr] max-mobile:gap-8 max-tablet:grid-cols-1 grid grid-cols-[500px_1fr] gap-10">
         <div className="desktop1250:min-h-[450px] desktop1250:max-h-[550px] max-desktop1250:h-[400px] max-tablet:h-[500px] max-mobile:h-[400px] relative h-full overflow-hidden rounded-[12px]">
           <Image
@@ -111,6 +112,8 @@ const BiographyForm = () => {
           </div>
         </div>
       </div>
+
+      <BiographyTabs />
     </div>
   );
 };
