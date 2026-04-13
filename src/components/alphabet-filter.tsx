@@ -59,7 +59,7 @@ const AlphabetFilter = ({
 
   return (
     <div className={cn("bg-background-primary", className)}>
-      <Container className="flex flex-wrap gap-x-1 gap-y-1 py-3">
+      <Container className="desktop:justify-between flex flex-wrap gap-x-1 gap-y-1 py-3">
         {LETTERS.map((letter) => (
           <button
             key={letter}

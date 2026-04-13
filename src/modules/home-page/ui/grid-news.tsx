@@ -18,7 +18,7 @@ function SmallCard({ item }: { item: NewsItem }) {
         />
       </div>
 
-      <div className="desktop:gap-4 desktop:pt-4 desktop:pb-5 flex flex-col gap-3 pt-3 pb-4">
+      <div className="desktop:gap-4 desktop:pt-4 border-border-secondary desktop:pb-5 flex flex-col gap-3 border-b pt-3 pb-4">
         <Typography
           variant="subtitle-serif-l"
           tag="h3"
@@ -41,7 +41,7 @@ function SmallCard({ item }: { item: NewsItem }) {
 
 function FeaturedCard({ item }: { item: NewsItem }) {
   return (
-    <article className="bg-background-primary group flex h-full cursor-pointer flex-col rounded-[12px]">
+    <article className="group flex h-full cursor-pointer flex-col">
       <div className="mobile:min-h-72 desktop:min-h-85 relative min-h-52 w-full">
         <Image
           src={item.img}
@@ -51,7 +51,7 @@ function FeaturedCard({ item }: { item: NewsItem }) {
         />
       </div>
 
-      <div className="mobile:px-6 mobile:pt-5 mobile:pb-6 desktop:px-10 desktop:pt-6 desktop:pb-10 flex flex-1 flex-col justify-between px-4 pt-4 pb-5">
+      <div className="mobile:px-6 mobile:pt-5 border-border-secondary mobile:pb-6 desktop:px-10 desktop:pt-6 desktop:pb-10 flex flex-1 flex-col justify-between rounded-b-[12px] border px-4 pt-4 pb-5">
         <Typography
           variant="header-serif-xl"
           tag="h3"
