@@ -1,6 +1,8 @@
 import { Committee } from "./committee.type";
 
 export type Member = {
+  id: number;
+  slug: string;
   name: string;
   role: string;
   photo: string;

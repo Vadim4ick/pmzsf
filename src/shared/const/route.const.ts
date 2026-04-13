@@ -5,6 +5,8 @@ export const getRouteNewsById = (id: string = ":id") =>
 export const getRouteAbout = () => "/about";
 export const getRouteGallery = () => "/gallery";
 export const getRouteStructure = () => "/structure";
+export const getRouteBiography = (slug: string = ":slug") =>
+  `${getRouteStructure()}/${slug}`;
 export const getRouteDocuments = () => "/documents";
 export const getRouteContacts = () => "/contacts";
 export const getRouteMedia = () => "/media";
