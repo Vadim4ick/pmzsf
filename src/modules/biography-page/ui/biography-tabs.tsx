@@ -1,7 +1,9 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/shared/ui/tabs";
 
-import { ActivitySection } from "./tab-item/activity-section";
-import { ACTIVITY_DATA, EVENTS_DATA, PREDECESSORS_DATA } from "../model/const";
+import { ACTIVITY_DATA } from "../model/const";
+import { ActivitySectionTab } from "./tab-item/activity-section-tab";
+import { EventsTab } from "./tab-item/events-tab";
+import { PredecessorsTab } from "./tab-item/predecessors-tab";
 
 const BiographyTabs = () => {
   return (
@@ -28,19 +30,15 @@ const BiographyTabs = () => {
       </TabsList>
 
       <TabsContent value="activity">
-        <ActivitySection groups={ACTIVITY_DATA} />
+        <ActivitySectionTab groups={ACTIVITY_DATA} />
       </TabsContent>
 
       <TabsContent value="events">
-        <ActivitySection
-          groups={[{ heading: "События", items: EVENTS_DATA }]}
-        />
+        <EventsTab />
       </TabsContent>
 
       <TabsContent value="predecessors">
-        <ActivitySection
-          groups={[{ heading: "Предшественники", items: PREDECESSORS_DATA }]}
-        />
+        <PredecessorsTab />
       </TabsContent>
     </Tabs>
   );

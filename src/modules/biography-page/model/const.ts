@@ -1,4 +1,4 @@
-import { ActivityGroup, ActivityItem } from "./types";
+import { ActivityGroup } from "./types";
 
 export const ACTIVITY_DATA: ActivityGroup[] = [
   {
@@ -41,6 +41,3 @@ export const ACTIVITY_DATA: ActivityGroup[] = [
     ],
   },
 ];
-
-export const EVENTS_DATA: ActivityItem[] = [];
-export const PREDECESSORS_DATA: ActivityItem[] = [];

@@ -1,3 +1,4 @@
+import { MemberItem } from "@/components/member-item";
 import {
   CHAMBER_MEMBERS,
   ChamberMembersFilter,
@@ -7,7 +8,6 @@ import { PADDING_PUBLIC_ROUTES } from "@/shared/const/constants.const";
 import { cn } from "@/shared/lib/utils";
 import { Container } from "@/shared/ui/container";
 import { Typography } from "@/shared/ui/typography";
-import Image from "next/image";
 
 const ChamberMembersPage = () => {
   return (
@@ -45,18 +45,11 @@ const ChamberMembersPage = () => {
 
               <div className="max-tablet:grid-cols-2 max-mobile:grid-cols-1 grid grid-cols-3 gap-8">
                 {group.members.map((member) => (
-                  <div key={member.id} className="flex items-center gap-8 pr-8">
-                    <Image
-                      src={member.image}
-                      width={112}
-                      height={112}
-                      alt={member.name}
-                      className="rounded-[4px] object-cover"
-                    />
-                    <Typography variant="header-s" tag="p">
-                      {member.name}
-                    </Typography>
-                  </div>
+                  <MemberItem
+                    key={member.id}
+                    image={member.image}
+                    name={member.name}
+                  />
                 ))}
               </div>
             </div>

@@ -1,7 +1,7 @@
 import { Typography } from "@/shared/ui/typography";
 import { ActivityGroup } from "../../model/types";
 
-export const ActivitySection = ({ groups }: { groups: ActivityGroup[] }) => (
+export const ActivitySectionTab = ({ groups }: { groups: ActivityGroup[] }) => (
   <div className="flex flex-col gap-10">
     {groups.map((group) => (
       <div key={group.heading} className="flex flex-col gap-2">

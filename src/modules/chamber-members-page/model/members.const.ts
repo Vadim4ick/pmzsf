@@ -5,6 +5,7 @@ export const CHAMBER_MEMBERS = [
       id: i + 1,
       name: "Васильев Сергей Дмитриевич",
       image: "/img/chairman.png",
+      desc: "Депутат Законодательного Собрания Новосибирской области",
     })),
   },
   {
@@ -13,6 +14,7 @@ export const CHAMBER_MEMBERS = [
       id: i + 1,
       name: "Васильев Сергей Дмитриевич",
       image: "/img/chairman.png",
+      desc: "Депутат Законодательного Собрания Новосибирской области",
     })),
   },
   {
@@ -21,6 +23,7 @@ export const CHAMBER_MEMBERS = [
       id: i + 1,
       name: "Васильев Сергей Дмитриевич",
       image: "/img/chairman.png",
+      desc: "Депутат Законодательного Собрания Новосибирской области",
     })),
   },
 ];
