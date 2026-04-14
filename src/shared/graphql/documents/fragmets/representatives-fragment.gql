@@ -2,7 +2,7 @@ fragment RepresentativesFragment on representatives {
   id
 
   photo {
-    ...MediaFragment
+    id
   }
   fullName
   position

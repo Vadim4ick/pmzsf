@@ -3,3 +3,9 @@ query GetAllRepresentatives {
     ...RepresentativesFragment
   }
 }
+
+query GetRepresentativesByRegion($regionCode: String!) {
+  representatives(filter: { region: { code: { _eq: $regionCode } } }) {
+    ...RepresentativesFragment
+  }
+}

@@ -750,12 +750,19 @@ export type NewsFragmentFragment = { readonly __typename?: 'news', readonly id: 
 
 export type RegionFragmentFragment = { readonly __typename?: 'regions', readonly id: string, readonly title: string, readonly code: string };
 
-export type RepresentativesFragmentFragment = { readonly __typename?: 'representatives', readonly id: string, readonly fullName: string, readonly position: string, readonly photo: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string }, readonly region: { readonly __typename?: 'regions', readonly id: string, readonly title: string, readonly code: string } };
+export type RepresentativesFragmentFragment = { readonly __typename?: 'representatives', readonly id: string, readonly fullName: string, readonly position: string, readonly photo: { readonly __typename?: 'directus_files', readonly id: string }, readonly region: { readonly __typename?: 'regions', readonly id: string, readonly title: string, readonly code: string } };
 
 export type GetAllNewsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetAllNewsQuery = { readonly __typename?: 'Query', readonly news: ReadonlyArray<{ readonly __typename?: 'news', readonly id: string, readonly title: string, readonly description: string, readonly date_created: any, readonly date_updated: any, readonly region: { readonly __typename?: 'regions', readonly title: string, readonly id: string } }> };
+
+export type GetNewsByRegionQueryVariables = Exact<{
+  regionCode: Scalars['String']['input'];
+}>;
+
+
+export type GetNewsByRegionQuery = { readonly __typename?: 'Query', readonly news: ReadonlyArray<{ readonly __typename?: 'news', readonly id: string, readonly title: string, readonly description: string, readonly date_created: any, readonly date_updated: any, readonly region: { readonly __typename?: 'regions', readonly title: string, readonly id: string } }> };
 
 export type GetAllRegionsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -765,8 +772,23 @@ export type GetAllRegionsQuery = { readonly __typename?: 'Query', readonly regio
 export type GetAllRepresentativesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetAllRepresentativesQuery = { readonly __typename?: 'Query', readonly representatives: ReadonlyArray<{ readonly __typename?: 'representatives', readonly id: string, readonly fullName: string, readonly position: string, readonly photo: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string }, readonly region: { readonly __typename?: 'regions', readonly id: string, readonly title: string, readonly code: string } }> };
+export type GetAllRepresentativesQuery = { readonly __typename?: 'Query', readonly representatives: ReadonlyArray<{ readonly __typename?: 'representatives', readonly id: string, readonly fullName: string, readonly position: string, readonly photo: { readonly __typename?: 'directus_files', readonly id: string }, readonly region: { readonly __typename?: 'regions', readonly id: string, readonly title: string, readonly code: string } }> };
 
+export type GetRepresentativesByRegionQueryVariables = Exact<{
+  regionCode: Scalars['String']['input'];
+}>;
+
+
+export type GetRepresentativesByRegionQuery = { readonly __typename?: 'Query', readonly representatives: ReadonlyArray<{ readonly __typename?: 'representatives', readonly id: string, readonly fullName: string, readonly position: string, readonly photo: { readonly __typename?: 'directus_files', readonly id: string }, readonly region: { readonly __typename?: 'regions', readonly id: string, readonly title: string, readonly code: string } }> };
+
+export const MediaFragmentFragmentDoc = gql`
+    fragment MediaFragment on directus_files {
+  id
+  width
+  height
+  type
+}
+    `;
 export const NewsFragmentFragmentDoc = gql`
     fragment NewsFragment on news {
   id
@@ -780,14 +802,6 @@ export const NewsFragmentFragmentDoc = gql`
   date_updated
 }
     `;
-export const MediaFragmentFragmentDoc = gql`
-    fragment MediaFragment on directus_files {
-  id
-  width
-  height
-  type
-}
-    `;
 export const RegionFragmentFragmentDoc = gql`
     fragment RegionFragment on regions {
   id
@@ -799,7 +813,7 @@ export const RepresentativesFragmentFragmentDoc = gql`
     fragment RepresentativesFragment on representatives {
   id
   photo {
-    ...MediaFragment
+    id
   }
   fullName
   position
@@ -807,11 +821,17 @@ export const RepresentativesFragmentFragmentDoc = gql`
     ...RegionFragment
   }
 }
-    ${MediaFragmentFragmentDoc}
-${RegionFragmentFragmentDoc}`;
+    ${RegionFragmentFragmentDoc}`;
 export const GetAllNewsDocument = gql`
     query GetAllNews {
   news {
+    ...NewsFragment
+  }
+}
+    ${NewsFragmentFragmentDoc}`;
+export const GetNewsByRegionDocument = gql`
+    query GetNewsByRegion($regionCode: String!) {
+  news(filter: {region: {code: {_eq: $regionCode}}}, limit: 6) {
     ...NewsFragment
   }
 }
@@ -830,6 +850,13 @@ export const GetAllRepresentativesDocument = gql`
   }
 }
     ${RepresentativesFragmentFragmentDoc}`;
+export const GetRepresentativesByRegionDocument = gql`
+    query GetRepresentativesByRegion($regionCode: String!) {
+  representatives(filter: {region: {code: {_eq: $regionCode}}}) {
+    ...RepresentativesFragment
+  }
+}
+    ${RepresentativesFragmentFragmentDoc}`;
 
 export type SdkFunctionWrapper = <T>(action: (requestHeaders?:Record<string, string>) => Promise<T>, operationName: string, operationType?: string, variables?: any) => Promise<T>;
 
@@ -841,11 +868,17 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     GetAllNews(variables?: GetAllNewsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<GetAllNewsQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetAllNewsQuery>({ document: GetAllNewsDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'GetAllNews', 'query', variables);
     },
+    GetNewsByRegion(variables: GetNewsByRegionQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<GetNewsByRegionQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<GetNewsByRegionQuery>({ document: GetNewsByRegionDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'GetNewsByRegion', 'query', variables);
+    },
     GetAllRegions(variables?: GetAllRegionsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<GetAllRegionsQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetAllRegionsQuery>({ document: GetAllRegionsDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'GetAllRegions', 'query', variables);
     },
     GetAllRepresentatives(variables?: GetAllRepresentativesQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<GetAllRepresentativesQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetAllRepresentativesQuery>({ document: GetAllRepresentativesDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'GetAllRepresentatives', 'query', variables);
+    },
+    GetRepresentativesByRegion(variables: GetRepresentativesByRegionQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<GetRepresentativesByRegionQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<GetRepresentativesByRegionQuery>({ document: GetRepresentativesByRegionDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'GetRepresentativesByRegion', 'query', variables);
     }
   };
 }
