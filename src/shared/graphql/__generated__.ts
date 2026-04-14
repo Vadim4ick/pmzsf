@@ -30,6 +30,12 @@ export enum EventEnum {
 
 export type Query = {
   readonly __typename?: 'Query';
+  readonly home_page: Maybe<Home_Page>;
+  readonly home_page_by_version: Maybe<Version_Home_Page>;
+  readonly home_page_news: ReadonlyArray<Home_Page_News>;
+  readonly home_page_news_aggregated: ReadonlyArray<Home_Page_News_Aggregated>;
+  readonly home_page_news_by_id: Maybe<Home_Page_News>;
+  readonly home_page_news_by_version: Maybe<Version_Home_Page_News>;
   readonly news: ReadonlyArray<News>;
   readonly news_aggregated: ReadonlyArray<News_Aggregated>;
   readonly news_by_id: Maybe<News>;
@@ -42,6 +48,49 @@ export type Query = {
   readonly representatives_aggregated: ReadonlyArray<Representatives_Aggregated>;
   readonly representatives_by_id: Maybe<Representatives>;
   readonly representatives_by_version: Maybe<Version_Representatives>;
+};
+
+
+export type QueryHome_PageArgs = {
+  version: InputMaybe<Scalars['String']['input']>;
+};
+
+
+export type QueryHome_Page_By_VersionArgs = {
+  version: Scalars['String']['input'];
+};
+
+
+export type QueryHome_Page_NewsArgs = {
+  filter: InputMaybe<Home_Page_News_Filter>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  page: InputMaybe<Scalars['Int']['input']>;
+  search: InputMaybe<Scalars['String']['input']>;
+  sort: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type QueryHome_Page_News_AggregatedArgs = {
+  filter: InputMaybe<Home_Page_News_Filter>;
+  groupBy: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  page: InputMaybe<Scalars['Int']['input']>;
+  search: InputMaybe<Scalars['String']['input']>;
+  sort: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type QueryHome_Page_News_By_IdArgs = {
+  id: Scalars['ID']['input'];
+  version: InputMaybe<Scalars['String']['input']>;
+};
+
+
+export type QueryHome_Page_News_By_VersionArgs = {
+  id: Scalars['ID']['input'];
+  version: Scalars['String']['input'];
 };
 
 
@@ -147,6 +196,8 @@ export type Subscription = {
   readonly __typename?: 'Subscription';
   readonly directus_files_mutated: Maybe<Directus_Files_Mutated>;
   readonly directus_users_mutated: Maybe<Directus_Users_Mutated>;
+  readonly home_page_mutated: Maybe<Home_Page_Mutated>;
+  readonly home_page_news_mutated: Maybe<Home_Page_News_Mutated>;
   readonly news_mutated: Maybe<News_Mutated>;
   readonly regions_mutated: Maybe<Regions_Mutated>;
   readonly representatives_mutated: Maybe<Representatives_Mutated>;
@@ -159,6 +210,16 @@ export type SubscriptionDirectus_Files_MutatedArgs = {
 
 
 export type SubscriptionDirectus_Users_MutatedArgs = {
+  event: InputMaybe<EventEnum>;
+};
+
+
+export type SubscriptionHome_Page_MutatedArgs = {
+  event: InputMaybe<EventEnum>;
+};
+
+
+export type SubscriptionHome_Page_News_MutatedArgs = {
   event: InputMaybe<EventEnum>;
 };
 
@@ -447,6 +508,118 @@ export type Hash_Filter_Operators = {
   readonly _null: InputMaybe<Scalars['Boolean']['input']>;
 };
 
+export type Home_Page = {
+  readonly __typename?: 'home_page';
+  readonly id: Scalars['ID']['output'];
+  readonly popular_news: Maybe<ReadonlyArray<Maybe<Home_Page_News>>>;
+  readonly popular_news_func: Maybe<Count_Functions>;
+};
+
+
+export type Home_PagePopular_NewsArgs = {
+  filter: InputMaybe<Home_Page_News_Filter>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  page: InputMaybe<Scalars['Int']['input']>;
+  search: InputMaybe<Scalars['String']['input']>;
+  sort: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type Home_Page_Filter = {
+  readonly _and: InputMaybe<ReadonlyArray<InputMaybe<Home_Page_Filter>>>;
+  readonly _or: InputMaybe<ReadonlyArray<InputMaybe<Home_Page_Filter>>>;
+  readonly id: InputMaybe<Number_Filter_Operators>;
+  readonly popular_news: InputMaybe<Home_Page_News_Quantifier_Filter>;
+  readonly popular_news_func: InputMaybe<Count_Function_Filter_Operators>;
+};
+
+export type Home_Page_Mutated = {
+  readonly __typename?: 'home_page_mutated';
+  readonly data: Maybe<Home_Page>;
+  readonly event: Maybe<EventEnum>;
+  readonly key: Scalars['ID']['output'];
+};
+
+export type Home_Page_News = {
+  readonly __typename?: 'home_page_news';
+  readonly home_page_id: Maybe<Home_Page>;
+  readonly id: Scalars['ID']['output'];
+  readonly news_id: Maybe<News>;
+};
+
+
+export type Home_Page_NewsHome_Page_IdArgs = {
+  filter: InputMaybe<Home_Page_Filter>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  page: InputMaybe<Scalars['Int']['input']>;
+  search: InputMaybe<Scalars['String']['input']>;
+  sort: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type Home_Page_NewsNews_IdArgs = {
+  filter: InputMaybe<News_Filter>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  page: InputMaybe<Scalars['Int']['input']>;
+  search: InputMaybe<Scalars['String']['input']>;
+  sort: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type Home_Page_News_Aggregated = {
+  readonly __typename?: 'home_page_news_aggregated';
+  readonly avg: Maybe<Home_Page_News_Aggregated_Fields>;
+  readonly avgDistinct: Maybe<Home_Page_News_Aggregated_Fields>;
+  readonly count: Maybe<Home_Page_News_Aggregated_Count>;
+  readonly countAll: Maybe<Scalars['Int']['output']>;
+  readonly countDistinct: Maybe<Home_Page_News_Aggregated_Count>;
+  readonly group: Maybe<Scalars['JSON']['output']>;
+  readonly max: Maybe<Home_Page_News_Aggregated_Fields>;
+  readonly min: Maybe<Home_Page_News_Aggregated_Fields>;
+  readonly sum: Maybe<Home_Page_News_Aggregated_Fields>;
+  readonly sumDistinct: Maybe<Home_Page_News_Aggregated_Fields>;
+};
+
+export type Home_Page_News_Aggregated_Count = {
+  readonly __typename?: 'home_page_news_aggregated_count';
+  readonly home_page_id: Maybe<Scalars['Int']['output']>;
+  readonly id: Maybe<Scalars['Int']['output']>;
+  readonly news_id: Maybe<Scalars['Int']['output']>;
+};
+
+export type Home_Page_News_Aggregated_Fields = {
+  readonly __typename?: 'home_page_news_aggregated_fields';
+  readonly home_page_id: Maybe<Scalars['Float']['output']>;
+  readonly id: Maybe<Scalars['Float']['output']>;
+  readonly news_id: Maybe<Scalars['Float']['output']>;
+};
+
+export type Home_Page_News_Filter = {
+  readonly _and: InputMaybe<ReadonlyArray<InputMaybe<Home_Page_News_Filter>>>;
+  readonly _or: InputMaybe<ReadonlyArray<InputMaybe<Home_Page_News_Filter>>>;
+  readonly home_page_id: InputMaybe<Home_Page_Filter>;
+  readonly id: InputMaybe<Number_Filter_Operators>;
+  readonly news_id: InputMaybe<News_Filter>;
+};
+
+export type Home_Page_News_Mutated = {
+  readonly __typename?: 'home_page_news_mutated';
+  readonly data: Maybe<Home_Page_News>;
+  readonly event: Maybe<EventEnum>;
+  readonly key: Scalars['ID']['output'];
+};
+
+export type Home_Page_News_Quantifier_Filter = {
+  readonly _and: InputMaybe<ReadonlyArray<InputMaybe<Home_Page_News_Filter>>>;
+  readonly _none: InputMaybe<Home_Page_News_Filter>;
+  readonly _or: InputMaybe<ReadonlyArray<InputMaybe<Home_Page_News_Filter>>>;
+  readonly _some: InputMaybe<Home_Page_News_Filter>;
+  readonly home_page_id: InputMaybe<Home_Page_Filter>;
+  readonly id: InputMaybe<Number_Filter_Operators>;
+  readonly news_id: InputMaybe<News_Filter>;
+};
+
 export type Id_Filter_Operators = {
   readonly _contains: InputMaybe<Scalars['ID']['input']>;
   readonly _empty: InputMaybe<Scalars['Boolean']['input']>;
@@ -477,9 +650,20 @@ export type News = {
   readonly date_updated_func: Maybe<Datetime_Functions>;
   readonly description: Maybe<Scalars['String']['output']>;
   readonly id: Scalars['ID']['output'];
+  readonly preview: Maybe<Directus_Files>;
   readonly region: Maybe<Regions>;
   readonly sort: Maybe<Scalars['Int']['output']>;
   readonly title: Maybe<Scalars['String']['output']>;
+};
+
+
+export type NewsPreviewArgs = {
+  filter: InputMaybe<Directus_Files_Filter>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  page: InputMaybe<Scalars['Int']['input']>;
+  search: InputMaybe<Scalars['String']['input']>;
+  sort: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
@@ -512,6 +696,7 @@ export type News_Aggregated_Count = {
   readonly date_updated: Maybe<Scalars['Int']['output']>;
   readonly description: Maybe<Scalars['Int']['output']>;
   readonly id: Maybe<Scalars['Int']['output']>;
+  readonly preview: Maybe<Scalars['Int']['output']>;
   readonly region: Maybe<Scalars['Int']['output']>;
   readonly sort: Maybe<Scalars['Int']['output']>;
   readonly title: Maybe<Scalars['Int']['output']>;
@@ -533,6 +718,7 @@ export type News_Filter = {
   readonly date_updated_func: InputMaybe<Datetime_Function_Filter_Operators>;
   readonly description: InputMaybe<String_Filter_Operators>;
   readonly id: InputMaybe<Number_Filter_Operators>;
+  readonly preview: InputMaybe<Directus_Files_Filter>;
   readonly region: InputMaybe<Regions_Filter>;
   readonly sort: InputMaybe<Number_Filter_Operators>;
   readonly title: InputMaybe<String_Filter_Operators>;
@@ -713,6 +899,20 @@ export type String_Filter_Operators = {
   readonly _starts_with: InputMaybe<Scalars['String']['input']>;
 };
 
+export type Version_Home_Page = {
+  readonly __typename?: 'version_home_page';
+  readonly id: Scalars['ID']['output'];
+  readonly popular_news: Maybe<Scalars['JSON']['output']>;
+  readonly popular_news_func: Maybe<Count_Functions>;
+};
+
+export type Version_Home_Page_News = {
+  readonly __typename?: 'version_home_page_news';
+  readonly home_page_id: Maybe<Scalars['JSON']['output']>;
+  readonly id: Scalars['ID']['output'];
+  readonly news_id: Maybe<Scalars['JSON']['output']>;
+};
+
 export type Version_News = {
   readonly __typename?: 'version_news';
   readonly date_created: Maybe<Scalars['Date']['output']>;
@@ -721,6 +921,7 @@ export type Version_News = {
   readonly date_updated_func: Maybe<Datetime_Functions>;
   readonly description: Maybe<Scalars['String']['output']>;
   readonly id: Scalars['ID']['output'];
+  readonly preview: Maybe<Scalars['JSON']['output']>;
   readonly region: Maybe<Scalars['JSON']['output']>;
   readonly sort: Maybe<Scalars['Int']['output']>;
   readonly title: Maybe<Scalars['String']['output']>;
@@ -746,7 +947,7 @@ export type Version_Representatives = {
 
 export type MediaFragmentFragment = { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string };
 
-export type NewsFragmentFragment = { readonly __typename?: 'news', readonly id: string, readonly title: string, readonly description: string, readonly date_created: any, readonly date_updated: any, readonly region: { readonly __typename?: 'regions', readonly title: string, readonly id: string } };
+export type NewsFragmentFragment = { readonly __typename?: 'news', readonly id: string, readonly title: string, readonly description: string, readonly date_created: any, readonly date_updated: any, readonly region: { readonly __typename?: 'regions', readonly title: string, readonly id: string }, readonly preview: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } };
 
 export type RegionFragmentFragment = { readonly __typename?: 'regions', readonly id: string, readonly title: string, readonly code: string };
 
@@ -755,14 +956,19 @@ export type RepresentativesFragmentFragment = { readonly __typename?: 'represent
 export type GetAllNewsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetAllNewsQuery = { readonly __typename?: 'Query', readonly news: ReadonlyArray<{ readonly __typename?: 'news', readonly id: string, readonly title: string, readonly description: string, readonly date_created: any, readonly date_updated: any, readonly region: { readonly __typename?: 'regions', readonly title: string, readonly id: string } }> };
+export type GetAllNewsQuery = { readonly __typename?: 'Query', readonly news: ReadonlyArray<{ readonly __typename?: 'news', readonly id: string, readonly title: string, readonly description: string, readonly date_created: any, readonly date_updated: any, readonly region: { readonly __typename?: 'regions', readonly title: string, readonly id: string }, readonly preview: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } }> };
 
 export type GetNewsByRegionQueryVariables = Exact<{
   regionCode: Scalars['String']['input'];
 }>;
 
 
-export type GetNewsByRegionQuery = { readonly __typename?: 'Query', readonly news: ReadonlyArray<{ readonly __typename?: 'news', readonly id: string, readonly title: string, readonly description: string, readonly date_created: any, readonly date_updated: any, readonly region: { readonly __typename?: 'regions', readonly title: string, readonly id: string } }> };
+export type GetNewsByRegionQuery = { readonly __typename?: 'Query', readonly news: ReadonlyArray<{ readonly __typename?: 'news', readonly id: string, readonly title: string, readonly date_created: any }> };
+
+export type GetHomePageQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetHomePageQuery = { readonly __typename?: 'Query', readonly home_page: { readonly __typename?: 'home_page', readonly popular_news: ReadonlyArray<{ readonly __typename?: 'home_page_news', readonly id: string, readonly news_id: { readonly __typename?: 'news', readonly id: string, readonly title: string, readonly description: string, readonly date_created: any, readonly date_updated: any, readonly region: { readonly __typename?: 'regions', readonly title: string, readonly id: string }, readonly preview: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } } }> } };
 
 export type GetAllRegionsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -798,10 +1004,13 @@ export const NewsFragmentFragmentDoc = gql`
     title
     id
   }
+  preview {
+    ...MediaFragment
+  }
   date_created
   date_updated
 }
-    `;
+    ${MediaFragmentFragmentDoc}`;
 export const RegionFragmentFragmentDoc = gql`
     fragment RegionFragment on regions {
   id
@@ -832,7 +1041,21 @@ export const GetAllNewsDocument = gql`
 export const GetNewsByRegionDocument = gql`
     query GetNewsByRegion($regionCode: String!) {
   news(filter: {region: {code: {_eq: $regionCode}}}, limit: 6) {
-    ...NewsFragment
+    id
+    title
+    date_created
+  }
+}
+    `;
+export const GetHomePageDocument = gql`
+    query GetHomePage {
+  home_page {
+    popular_news {
+      id
+      news_id {
+        ...NewsFragment
+      }
+    }
   }
 }
     ${NewsFragmentFragmentDoc}`;
@@ -870,6 +1093,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     GetNewsByRegion(variables: GetNewsByRegionQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<GetNewsByRegionQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetNewsByRegionQuery>({ document: GetNewsByRegionDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'GetNewsByRegion', 'query', variables);
+    },
+    GetHomePage(variables?: GetHomePageQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<GetHomePageQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<GetHomePageQuery>({ document: GetHomePageDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'GetHomePage', 'query', variables);
     },
     GetAllRegions(variables?: GetAllRegionsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<GetAllRegionsQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetAllRegionsQuery>({ document: GetAllRegionsDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'GetAllRegions', 'query', variables);

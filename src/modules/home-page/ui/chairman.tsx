@@ -34,7 +34,7 @@ const Chairman = () => {
           {/* Левая колонка */}
           <div className="desktop:gap-10 flex flex-col gap-6">
             {/* Карточка председателя */}
-            <div className="bg-background-default desktop:p-6 flex items-center gap-4 rounded-[12px] p-4">
+            <div className="bg-background-primary desktop:p-6 flex items-center gap-4 rounded-[12px] p-4">
               <div className="desktop:size-[72px] size-14 shrink-0">
                 <Image
                   src="/img/chairman.png"

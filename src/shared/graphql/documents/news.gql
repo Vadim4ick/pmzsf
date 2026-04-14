@@ -6,6 +6,8 @@ query GetAllNews {
 
 query GetNewsByRegion($regionCode: String!) {
   news(filter: { region: { code: { _eq: $regionCode } } }, limit: 6) {
-    ...NewsFragment
+    id
+    title
+    date_created
   }
 }

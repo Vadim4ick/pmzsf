@@ -1,0 +1,10 @@
+query GetHomePage {
+  home_page {
+    popular_news {
+      id
+      news_id {
+        ...NewsFragment
+      }
+    }
+  }
+}

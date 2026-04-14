@@ -10,19 +10,18 @@ import {
 } from "@/shared/ui/select";
 import { RussianMap } from "@/shared/ui/russian-map";
 import { Typography } from "@/shared/ui/typography";
-import { useGetAllRegions } from "@/shared/services/regions.service";
+import { GetAllRegionsQuery } from "@/shared/graphql/__generated__";
 
 export const RegionPicker = memo(
   ({
     selectedCode,
     setSelectedCode,
+    regions,
   }: {
     selectedCode: string;
     setSelectedCode: (code: string) => void;
+    regions: GetAllRegionsQuery["regions"];
   }) => {
-    const { data, isLoading } = useGetAllRegions();
-
-    const regions = data?.regions ?? [];
     const selectedTitle = regions.find((r) => r.code === selectedCode)?.title;
 
     return (
@@ -41,11 +40,6 @@ export const RegionPicker = memo(
                 {r.title}
               </SelectItem>
             ))}
-            {isLoading && (
-              <SelectItem value="loading" disabled>
-                Загрузка...
-              </SelectItem>
-            )}
           </SelectContent>
         </Select>
 

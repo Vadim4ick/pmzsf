@@ -4,13 +4,25 @@ import {
   GridNews,
   InfoRegions,
 } from "@/modules/home-page";
+import { gql } from "@/shared/graphql/client";
+import { getSettledValue } from "@/shared/lib/utils";
 
-const HomePage = () => {
+const HomePage = async () => {
+  const [regions, homePage] = await Promise.allSettled([
+    gql.GetAllRegions(),
+    gql.GetHomePage(),
+  ]);
+
+  const regionsVal = getSettledValue(regions);
+  const homePageVal = getSettledValue(homePage);
+
+  const news = homePageVal?.home_page.popular_news;
+
   return (
     <>
-      <GridNews />
+      {news && <GridNews news={news} />}
       <Chairman />
-      <InfoRegions />
+      <InfoRegions regions={regionsVal?.regions || []} />
       <GosServiceLinks />
     </>
   );
