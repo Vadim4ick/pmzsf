@@ -1,0 +1,12 @@
+fragment RepresentativesFragment on representatives {
+  id
+
+  photo {
+    ...MediaFragment
+  }
+  fullName
+  position
+  region {
+    ...RegionFragment
+  }
+}

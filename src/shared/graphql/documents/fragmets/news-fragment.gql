@@ -1,0 +1,11 @@
+fragment NewsFragment on news {
+  id
+  title
+  description
+  region {
+    title
+    id
+  }
+  date_created
+  date_updated
+}

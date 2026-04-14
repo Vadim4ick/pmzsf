@@ -1,0 +1,5 @@
+query GetAllRepresentatives {
+  representatives {
+    ...RepresentativesFragment
+  }
+}
