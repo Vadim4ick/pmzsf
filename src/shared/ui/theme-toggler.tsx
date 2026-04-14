@@ -1,6 +1,5 @@
 import * as React from "react";
 import { cn } from "@/shared/lib/utils";
-import { Typography } from "./typography";
 
 interface ThemeToggleProps {
   checked?: boolean;
@@ -56,10 +55,6 @@ function ThemeToggle({
 
   return (
     <div className="flex items-center gap-2">
-      <Typography className="text-text-secondary" variant="button-m" tag="p">
-        {active ? "Ночной режим" : "Дневной режим"}
-      </Typography>
-
       <button
         type="button"
         role="switch"

@@ -16,6 +16,7 @@ import { Glasses } from "@/shared/icons/glasses";
 import { useVisionStore } from "@/store/vision.store";
 import { getRouteHome } from "@/shared/const/route.const";
 import { SignInBtn } from "./sign-in-btn";
+import { Typography } from "@/shared/ui/typography";
 
 const Header = memo(() => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -50,21 +51,33 @@ const Header = memo(() => {
               </a>
             </div>
 
-            <button
-              onClick={toggle}
-              className="group flex cursor-pointer items-center gap-2"
-            >
-              <div
-                className={cn(`rounded-full p-2.5 transition-colors`, {
-                  "bg-text-accent/10": active,
-                })}
+            <div className="flex items-center gap-4">
+              <ThemeSwitcher />
+
+              <button
+                onClick={toggle}
+                className="group flex cursor-pointer items-center gap-2"
               >
-                <Glasses />
-              </div>
-              <span className="text-sm font-medium">
-                {active ? "Обычная версия" : "Версия для слабовидящих"}
-              </span>
-            </button>
+                <div
+                  className={cn(
+                    `border-border-secondary shrink-0 rounded-full border p-2 transition-colors`,
+                    {
+                      "bg-text-accent/10": active,
+                    },
+                  )}
+                >
+                  <Glasses />
+                </div>
+
+                <Typography
+                  className="text-text-secondary text-start"
+                  variant="body-s-strong"
+                  tag="span"
+                >
+                  {active ? "Обычная версия" : "Версия для слабовидящих"}
+                </Typography>
+              </button>
+            </div>
           </div>
 
           <Link
@@ -77,7 +90,11 @@ const Header = memo(() => {
           <div className="flex flex-col items-end justify-between gap-4">
             <SignInBtn classNameIcon="size-[20px]" />
 
-            <ThemeSwitcher />
+            {/* <ThemeSwitcher /> */}
+
+            <button className="text-icon-primary hover:text-text-primary cursor-pointer transition-colors">
+              <Search />
+            </button>
           </div>
         </Container>
       </header>
