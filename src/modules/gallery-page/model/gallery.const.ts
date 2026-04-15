@@ -1,3 +1,4 @@
+import { VeteransFragmentFragment } from "@/shared/graphql/__generated__";
 import { Gallery } from "@/shared/types/gallery.type";
 
 export const GALLERY_ITEMS: Gallery[] = [
@@ -29,3 +30,8 @@ export const GALLERY_ITEMS: Gallery[] = [
     image: "/img/gallery/1.png",
   },
 ];
+
+export const getFullNameVeteran = (veteran: VeteransFragmentFragment) =>
+  [veteran.last_name, veteran.first_name, veteran.middle_name]
+    .filter(Boolean)
+    .join(" ");

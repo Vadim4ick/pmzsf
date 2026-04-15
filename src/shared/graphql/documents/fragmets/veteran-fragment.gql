@@ -1,0 +1,12 @@
+fragment VeteransFragment on veterans {
+  id
+  last_name
+  first_name
+  middle_name
+  birth_date
+  birth_place
+  description
+  photo {
+    ...MediaFragment
+  }
+}

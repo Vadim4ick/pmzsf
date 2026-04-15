@@ -1,13 +1,15 @@
 import { NewsContent, NewsSlider } from "@/modules/news-item-page";
 import { mockNews } from "@/shared/const/mockNews.const";
 import { getRouteNews, getRouteNewsById } from "@/shared/const/route.const";
+import { GetNewsByIdQuery } from "@/shared/graphql/__generated__";
 import { ArrowBack } from "@/shared/icons/arrow-back";
+import { dateFormatter } from "@/shared/lib/utils";
 import { Button } from "@/shared/ui/button";
 import { Typography } from "@/shared/ui/typography";
 import Image from "next/image";
 import Link from "next/link";
 
-const NewsItemPage = () => {
+const NewsItemPage = ({ news }: { news: GetNewsByIdQuery["news_by_id"] }) => {
   return (
     <section>
       <div className="flex flex-col gap-10">
@@ -17,8 +19,7 @@ const NewsItemPage = () => {
             variant="header-serif-xl"
             tag="h1"
           >
-            Состоялось заседание организационного комитета по подготовке
-            мероприятий, приуроченных к 120-летию Государственной Думы
+            {news.title}
           </Typography>
 
           <Typography
@@ -26,14 +27,16 @@ const NewsItemPage = () => {
             variant="body-s-strong"
             tag="span"
           >
-            13.02.2026 13:11
+            {dateFormatter(news.date_created)}
           </Typography>
         </div>
 
-        <NewsSlider />
+        {news.images && news.images.length > 0 && (
+          <NewsSlider slider={news.images} />
+        )}
 
         <div className="max-mobile:gap-12 mx-auto flex max-w-[850px] flex-col gap-16 px-4">
-          <NewsContent />
+          <NewsContent content={news.content} />
 
           <div className="flex flex-wrap gap-2">
             <Typography

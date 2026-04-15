@@ -1,9 +1,8 @@
 import { Typography } from "@/shared/ui/typography";
 import Image from "next/image";
 import ReactMarkdown from "react-markdown";
-import { ARTICLE_CONTENT } from "../model/article-content.const";
 
-const NewsContent = () => {
+const NewsContent = ({ content }: { content: string }) => {
   return (
     <div className="flex flex-col gap-6">
       <ReactMarkdown
@@ -55,7 +54,7 @@ const NewsContent = () => {
           ),
         }}
       >
-        {ARTICLE_CONTENT}
+        {content}
       </ReactMarkdown>
     </div>
   );

@@ -7,10 +7,15 @@ import {
   NewsFragmentFragment,
 } from "@/shared/graphql/__generated__";
 import { dateFormatter, pathImage } from "@/shared/lib/utils";
+import Link from "next/link";
+import { getRouteNewsById } from "@/shared/const/route.const";
 
 function SmallCard({ item }: { item: NewsFragmentFragment }) {
   return (
-    <article className="group group flex flex-1 cursor-pointer flex-col">
+    <Link
+      href={getRouteNewsById(`${item.id}`)}
+      className="group group flex flex-1 cursor-pointer flex-col"
+    >
       <div className="relative min-h-48 w-full flex-1">
         <Image
           src={pathImage(item.preview.id)}
@@ -37,7 +42,7 @@ function SmallCard({ item }: { item: NewsFragmentFragment }) {
           {dateFormatter(item.date_created)}
         </Typography>
       </div>
-    </article>
+    </Link>
   );
 }
 
@@ -59,7 +64,9 @@ function FeaturedCard({ item }: { item: NewsFragmentFragment }) {
         </Typography>
 
         <div className="mt-4 flex items-end justify-between">
-          <Button>Читать далее</Button>
+          <Link href={getRouteNewsById(`${item.id}`)}>
+            <Button>Читать далее</Button>
+          </Link>
 
           <Typography
             variant="body-s-strong"

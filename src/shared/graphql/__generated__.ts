@@ -30,6 +30,26 @@ export enum EventEnum {
 
 export type Query = {
   readonly __typename?: 'Query';
+  readonly about: Maybe<About>;
+  readonly about_by_version: Maybe<Version_About>;
+  readonly document: ReadonlyArray<Document>;
+  readonly document_aggregated: ReadonlyArray<Document_Aggregated>;
+  readonly document_by_id: Maybe<Document>;
+  readonly document_by_version: Maybe<Version_Document>;
+  readonly document_document: ReadonlyArray<Document_Document>;
+  readonly document_document_aggregated: ReadonlyArray<Document_Document_Aggregated>;
+  readonly document_document_by_id: Maybe<Document_Document>;
+  readonly document_document_by_version: Maybe<Version_Document_Document>;
+  readonly documents: Maybe<Documents>;
+  readonly documents_by_version: Maybe<Version_Documents>;
+  readonly documents_document: ReadonlyArray<Documents_Document>;
+  readonly documents_document_aggregated: ReadonlyArray<Documents_Document_Aggregated>;
+  readonly documents_document_by_id: Maybe<Documents_Document>;
+  readonly documents_document_by_version: Maybe<Version_Documents_Document>;
+  readonly documents_files: ReadonlyArray<Documents_Files>;
+  readonly documents_files_aggregated: ReadonlyArray<Documents_Files_Aggregated>;
+  readonly documents_files_by_id: Maybe<Documents_Files>;
+  readonly documents_files_by_version: Maybe<Version_Documents_Files>;
   readonly home_page: Maybe<Home_Page>;
   readonly home_page_by_version: Maybe<Version_Home_Page>;
   readonly home_page_news: ReadonlyArray<Home_Page_News>;
@@ -40,6 +60,10 @@ export type Query = {
   readonly news_aggregated: ReadonlyArray<News_Aggregated>;
   readonly news_by_id: Maybe<News>;
   readonly news_by_version: Maybe<Version_News>;
+  readonly news_files: ReadonlyArray<News_Files>;
+  readonly news_files_aggregated: ReadonlyArray<News_Files_Aggregated>;
+  readonly news_files_by_id: Maybe<News_Files>;
+  readonly news_files_by_version: Maybe<Version_News_Files>;
   readonly regions: ReadonlyArray<Regions>;
   readonly regions_aggregated: ReadonlyArray<Regions_Aggregated>;
   readonly regions_by_id: Maybe<Regions>;
@@ -48,6 +72,162 @@ export type Query = {
   readonly representatives_aggregated: ReadonlyArray<Representatives_Aggregated>;
   readonly representatives_by_id: Maybe<Representatives>;
   readonly representatives_by_version: Maybe<Version_Representatives>;
+  readonly veterans: ReadonlyArray<Veterans>;
+  readonly veterans_aggregated: ReadonlyArray<Veterans_Aggregated>;
+  readonly veterans_by_id: Maybe<Veterans>;
+  readonly veterans_by_version: Maybe<Version_Veterans>;
+};
+
+
+export type QueryAboutArgs = {
+  version: InputMaybe<Scalars['String']['input']>;
+};
+
+
+export type QueryAbout_By_VersionArgs = {
+  version: Scalars['String']['input'];
+};
+
+
+export type QueryDocumentArgs = {
+  filter: InputMaybe<Document_Filter>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  page: InputMaybe<Scalars['Int']['input']>;
+  search: InputMaybe<Scalars['String']['input']>;
+  sort: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type QueryDocument_AggregatedArgs = {
+  filter: InputMaybe<Document_Filter>;
+  groupBy: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  page: InputMaybe<Scalars['Int']['input']>;
+  search: InputMaybe<Scalars['String']['input']>;
+  sort: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type QueryDocument_By_IdArgs = {
+  id: Scalars['ID']['input'];
+  version: InputMaybe<Scalars['String']['input']>;
+};
+
+
+export type QueryDocument_By_VersionArgs = {
+  id: Scalars['ID']['input'];
+  version: Scalars['String']['input'];
+};
+
+
+export type QueryDocument_DocumentArgs = {
+  filter: InputMaybe<Document_Document_Filter>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  page: InputMaybe<Scalars['Int']['input']>;
+  search: InputMaybe<Scalars['String']['input']>;
+  sort: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type QueryDocument_Document_AggregatedArgs = {
+  filter: InputMaybe<Document_Document_Filter>;
+  groupBy: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  page: InputMaybe<Scalars['Int']['input']>;
+  search: InputMaybe<Scalars['String']['input']>;
+  sort: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type QueryDocument_Document_By_IdArgs = {
+  id: Scalars['ID']['input'];
+  version: InputMaybe<Scalars['String']['input']>;
+};
+
+
+export type QueryDocument_Document_By_VersionArgs = {
+  id: Scalars['ID']['input'];
+  version: Scalars['String']['input'];
+};
+
+
+export type QueryDocumentsArgs = {
+  version: InputMaybe<Scalars['String']['input']>;
+};
+
+
+export type QueryDocuments_By_VersionArgs = {
+  version: Scalars['String']['input'];
+};
+
+
+export type QueryDocuments_DocumentArgs = {
+  filter: InputMaybe<Documents_Document_Filter>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  page: InputMaybe<Scalars['Int']['input']>;
+  search: InputMaybe<Scalars['String']['input']>;
+  sort: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type QueryDocuments_Document_AggregatedArgs = {
+  filter: InputMaybe<Documents_Document_Filter>;
+  groupBy: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  page: InputMaybe<Scalars['Int']['input']>;
+  search: InputMaybe<Scalars['String']['input']>;
+  sort: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type QueryDocuments_Document_By_IdArgs = {
+  id: Scalars['ID']['input'];
+  version: InputMaybe<Scalars['String']['input']>;
+};
+
+
+export type QueryDocuments_Document_By_VersionArgs = {
+  id: Scalars['ID']['input'];
+  version: Scalars['String']['input'];
+};
+
+
+export type QueryDocuments_FilesArgs = {
+  filter: InputMaybe<Documents_Files_Filter>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  page: InputMaybe<Scalars['Int']['input']>;
+  search: InputMaybe<Scalars['String']['input']>;
+  sort: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type QueryDocuments_Files_AggregatedArgs = {
+  filter: InputMaybe<Documents_Files_Filter>;
+  groupBy: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  page: InputMaybe<Scalars['Int']['input']>;
+  search: InputMaybe<Scalars['String']['input']>;
+  sort: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type QueryDocuments_Files_By_IdArgs = {
+  id: Scalars['ID']['input'];
+  version: InputMaybe<Scalars['String']['input']>;
+};
+
+
+export type QueryDocuments_Files_By_VersionArgs = {
+  id: Scalars['ID']['input'];
+  version: Scalars['String']['input'];
 };
 
 
@@ -127,6 +307,39 @@ export type QueryNews_By_VersionArgs = {
 };
 
 
+export type QueryNews_FilesArgs = {
+  filter: InputMaybe<News_Files_Filter>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  page: InputMaybe<Scalars['Int']['input']>;
+  search: InputMaybe<Scalars['String']['input']>;
+  sort: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type QueryNews_Files_AggregatedArgs = {
+  filter: InputMaybe<News_Files_Filter>;
+  groupBy: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  page: InputMaybe<Scalars['Int']['input']>;
+  search: InputMaybe<Scalars['String']['input']>;
+  sort: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type QueryNews_Files_By_IdArgs = {
+  id: Scalars['ID']['input'];
+  version: InputMaybe<Scalars['String']['input']>;
+};
+
+
+export type QueryNews_Files_By_VersionArgs = {
+  id: Scalars['ID']['input'];
+  version: Scalars['String']['input'];
+};
+
+
 export type QueryRegionsArgs = {
   filter: InputMaybe<Regions_Filter>;
   limit: InputMaybe<Scalars['Int']['input']>;
@@ -192,15 +405,61 @@ export type QueryRepresentatives_By_VersionArgs = {
   version: Scalars['String']['input'];
 };
 
+
+export type QueryVeteransArgs = {
+  filter: InputMaybe<Veterans_Filter>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  page: InputMaybe<Scalars['Int']['input']>;
+  search: InputMaybe<Scalars['String']['input']>;
+  sort: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type QueryVeterans_AggregatedArgs = {
+  filter: InputMaybe<Veterans_Filter>;
+  groupBy: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  page: InputMaybe<Scalars['Int']['input']>;
+  search: InputMaybe<Scalars['String']['input']>;
+  sort: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type QueryVeterans_By_IdArgs = {
+  id: Scalars['ID']['input'];
+  version: InputMaybe<Scalars['String']['input']>;
+};
+
+
+export type QueryVeterans_By_VersionArgs = {
+  id: Scalars['ID']['input'];
+  version: Scalars['String']['input'];
+};
+
 export type Subscription = {
   readonly __typename?: 'Subscription';
+  readonly about_mutated: Maybe<About_Mutated>;
   readonly directus_files_mutated: Maybe<Directus_Files_Mutated>;
   readonly directus_users_mutated: Maybe<Directus_Users_Mutated>;
+  readonly document_document_mutated: Maybe<Document_Document_Mutated>;
+  readonly document_mutated: Maybe<Document_Mutated>;
+  readonly documents_document_mutated: Maybe<Documents_Document_Mutated>;
+  readonly documents_files_mutated: Maybe<Documents_Files_Mutated>;
+  readonly documents_mutated: Maybe<Documents_Mutated>;
   readonly home_page_mutated: Maybe<Home_Page_Mutated>;
   readonly home_page_news_mutated: Maybe<Home_Page_News_Mutated>;
+  readonly news_files_mutated: Maybe<News_Files_Mutated>;
   readonly news_mutated: Maybe<News_Mutated>;
   readonly regions_mutated: Maybe<Regions_Mutated>;
   readonly representatives_mutated: Maybe<Representatives_Mutated>;
+  readonly veterans_mutated: Maybe<Veterans_Mutated>;
+};
+
+
+export type SubscriptionAbout_MutatedArgs = {
+  event: InputMaybe<EventEnum>;
 };
 
 
@@ -214,12 +473,42 @@ export type SubscriptionDirectus_Users_MutatedArgs = {
 };
 
 
+export type SubscriptionDocument_Document_MutatedArgs = {
+  event: InputMaybe<EventEnum>;
+};
+
+
+export type SubscriptionDocument_MutatedArgs = {
+  event: InputMaybe<EventEnum>;
+};
+
+
+export type SubscriptionDocuments_Document_MutatedArgs = {
+  event: InputMaybe<EventEnum>;
+};
+
+
+export type SubscriptionDocuments_Files_MutatedArgs = {
+  event: InputMaybe<EventEnum>;
+};
+
+
+export type SubscriptionDocuments_MutatedArgs = {
+  event: InputMaybe<EventEnum>;
+};
+
+
 export type SubscriptionHome_Page_MutatedArgs = {
   event: InputMaybe<EventEnum>;
 };
 
 
 export type SubscriptionHome_Page_News_MutatedArgs = {
+  event: InputMaybe<EventEnum>;
+};
+
+
+export type SubscriptionNews_Files_MutatedArgs = {
   event: InputMaybe<EventEnum>;
 };
 
@@ -236,6 +525,35 @@ export type SubscriptionRegions_MutatedArgs = {
 
 export type SubscriptionRepresentatives_MutatedArgs = {
   event: InputMaybe<EventEnum>;
+};
+
+
+export type SubscriptionVeterans_MutatedArgs = {
+  event: InputMaybe<EventEnum>;
+};
+
+export type About = {
+  readonly __typename?: 'about';
+  readonly about: Maybe<Scalars['String']['output']>;
+  readonly id: Scalars['ID']['output'];
+  readonly img: Maybe<Directus_Files>;
+};
+
+
+export type AboutImgArgs = {
+  filter: InputMaybe<Directus_Files_Filter>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  page: InputMaybe<Scalars['Int']['input']>;
+  search: InputMaybe<Scalars['String']['input']>;
+  sort: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type About_Mutated = {
+  readonly __typename?: 'about_mutated';
+  readonly data: Maybe<About>;
+  readonly event: Maybe<EventEnum>;
+  readonly key: Scalars['ID']['output'];
 };
 
 export type Big_Int_Filter_Operators = {
@@ -501,6 +819,336 @@ export type Directus_Users_Mutated = {
   readonly key: Scalars['ID']['output'];
 };
 
+export type Document = {
+  readonly __typename?: 'document';
+  readonly date_created: Maybe<Scalars['Date']['output']>;
+  readonly date_created_func: Maybe<Datetime_Functions>;
+  readonly date_updated: Maybe<Scalars['Date']['output']>;
+  readonly date_updated_func: Maybe<Datetime_Functions>;
+  readonly file: Maybe<Directus_Files>;
+  readonly id: Scalars['ID']['output'];
+  readonly status: Maybe<Scalars['String']['output']>;
+  readonly title: Maybe<Scalars['String']['output']>;
+};
+
+
+export type DocumentFileArgs = {
+  filter: InputMaybe<Directus_Files_Filter>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  page: InputMaybe<Scalars['Int']['input']>;
+  search: InputMaybe<Scalars['String']['input']>;
+  sort: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type Document_Aggregated = {
+  readonly __typename?: 'document_aggregated';
+  readonly avg: Maybe<Document_Aggregated_Fields>;
+  readonly avgDistinct: Maybe<Document_Aggregated_Fields>;
+  readonly count: Maybe<Document_Aggregated_Count>;
+  readonly countAll: Maybe<Scalars['Int']['output']>;
+  readonly countDistinct: Maybe<Document_Aggregated_Count>;
+  readonly group: Maybe<Scalars['JSON']['output']>;
+  readonly max: Maybe<Document_Aggregated_Fields>;
+  readonly min: Maybe<Document_Aggregated_Fields>;
+  readonly sum: Maybe<Document_Aggregated_Fields>;
+  readonly sumDistinct: Maybe<Document_Aggregated_Fields>;
+};
+
+export type Document_Aggregated_Count = {
+  readonly __typename?: 'document_aggregated_count';
+  readonly date_created: Maybe<Scalars['Int']['output']>;
+  readonly date_updated: Maybe<Scalars['Int']['output']>;
+  readonly file: Maybe<Scalars['Int']['output']>;
+  readonly id: Maybe<Scalars['Int']['output']>;
+  readonly status: Maybe<Scalars['Int']['output']>;
+  readonly title: Maybe<Scalars['Int']['output']>;
+};
+
+export type Document_Aggregated_Fields = {
+  readonly __typename?: 'document_aggregated_fields';
+  readonly id: Maybe<Scalars['Float']['output']>;
+};
+
+export type Document_Document = {
+  readonly __typename?: 'document_document';
+  readonly document_id: Maybe<Document>;
+  readonly id: Scalars['ID']['output'];
+  readonly related_document_id: Maybe<Document>;
+};
+
+
+export type Document_DocumentDocument_IdArgs = {
+  filter: InputMaybe<Document_Filter>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  page: InputMaybe<Scalars['Int']['input']>;
+  search: InputMaybe<Scalars['String']['input']>;
+  sort: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type Document_DocumentRelated_Document_IdArgs = {
+  filter: InputMaybe<Document_Filter>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  page: InputMaybe<Scalars['Int']['input']>;
+  search: InputMaybe<Scalars['String']['input']>;
+  sort: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type Document_Document_Aggregated = {
+  readonly __typename?: 'document_document_aggregated';
+  readonly avg: Maybe<Document_Document_Aggregated_Fields>;
+  readonly avgDistinct: Maybe<Document_Document_Aggregated_Fields>;
+  readonly count: Maybe<Document_Document_Aggregated_Count>;
+  readonly countAll: Maybe<Scalars['Int']['output']>;
+  readonly countDistinct: Maybe<Document_Document_Aggregated_Count>;
+  readonly group: Maybe<Scalars['JSON']['output']>;
+  readonly max: Maybe<Document_Document_Aggregated_Fields>;
+  readonly min: Maybe<Document_Document_Aggregated_Fields>;
+  readonly sum: Maybe<Document_Document_Aggregated_Fields>;
+  readonly sumDistinct: Maybe<Document_Document_Aggregated_Fields>;
+};
+
+export type Document_Document_Aggregated_Count = {
+  readonly __typename?: 'document_document_aggregated_count';
+  readonly document_id: Maybe<Scalars['Int']['output']>;
+  readonly id: Maybe<Scalars['Int']['output']>;
+  readonly related_document_id: Maybe<Scalars['Int']['output']>;
+};
+
+export type Document_Document_Aggregated_Fields = {
+  readonly __typename?: 'document_document_aggregated_fields';
+  readonly document_id: Maybe<Scalars['Float']['output']>;
+  readonly id: Maybe<Scalars['Float']['output']>;
+  readonly related_document_id: Maybe<Scalars['Float']['output']>;
+};
+
+export type Document_Document_Filter = {
+  readonly _and: InputMaybe<ReadonlyArray<InputMaybe<Document_Document_Filter>>>;
+  readonly _or: InputMaybe<ReadonlyArray<InputMaybe<Document_Document_Filter>>>;
+  readonly document_id: InputMaybe<Document_Filter>;
+  readonly id: InputMaybe<Number_Filter_Operators>;
+  readonly related_document_id: InputMaybe<Document_Filter>;
+};
+
+export type Document_Document_Mutated = {
+  readonly __typename?: 'document_document_mutated';
+  readonly data: Maybe<Document_Document>;
+  readonly event: Maybe<EventEnum>;
+  readonly key: Scalars['ID']['output'];
+};
+
+export type Document_Filter = {
+  readonly _and: InputMaybe<ReadonlyArray<InputMaybe<Document_Filter>>>;
+  readonly _or: InputMaybe<ReadonlyArray<InputMaybe<Document_Filter>>>;
+  readonly date_created: InputMaybe<Date_Filter_Operators>;
+  readonly date_created_func: InputMaybe<Datetime_Function_Filter_Operators>;
+  readonly date_updated: InputMaybe<Date_Filter_Operators>;
+  readonly date_updated_func: InputMaybe<Datetime_Function_Filter_Operators>;
+  readonly file: InputMaybe<Directus_Files_Filter>;
+  readonly id: InputMaybe<Number_Filter_Operators>;
+  readonly status: InputMaybe<String_Filter_Operators>;
+  readonly title: InputMaybe<String_Filter_Operators>;
+};
+
+export type Document_Mutated = {
+  readonly __typename?: 'document_mutated';
+  readonly data: Maybe<Document>;
+  readonly event: Maybe<EventEnum>;
+  readonly key: Scalars['ID']['output'];
+};
+
+export type Documents = {
+  readonly __typename?: 'documents';
+  readonly date_created: Maybe<Scalars['Date']['output']>;
+  readonly date_created_func: Maybe<Datetime_Functions>;
+  readonly date_updated: Maybe<Scalars['Date']['output']>;
+  readonly date_updated_func: Maybe<Datetime_Functions>;
+  readonly id: Scalars['ID']['output'];
+  readonly items: Maybe<ReadonlyArray<Maybe<Documents_Document>>>;
+  readonly items_func: Maybe<Count_Functions>;
+};
+
+
+export type DocumentsItemsArgs = {
+  filter: InputMaybe<Documents_Document_Filter>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  page: InputMaybe<Scalars['Int']['input']>;
+  search: InputMaybe<Scalars['String']['input']>;
+  sort: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type Documents_Document = {
+  readonly __typename?: 'documents_document';
+  readonly document_id: Maybe<Document>;
+  readonly documents_id: Maybe<Documents>;
+  readonly id: Scalars['ID']['output'];
+};
+
+
+export type Documents_DocumentDocument_IdArgs = {
+  filter: InputMaybe<Document_Filter>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  page: InputMaybe<Scalars['Int']['input']>;
+  search: InputMaybe<Scalars['String']['input']>;
+  sort: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type Documents_DocumentDocuments_IdArgs = {
+  filter: InputMaybe<Documents_Filter>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  page: InputMaybe<Scalars['Int']['input']>;
+  search: InputMaybe<Scalars['String']['input']>;
+  sort: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type Documents_Document_Aggregated = {
+  readonly __typename?: 'documents_document_aggregated';
+  readonly avg: Maybe<Documents_Document_Aggregated_Fields>;
+  readonly avgDistinct: Maybe<Documents_Document_Aggregated_Fields>;
+  readonly count: Maybe<Documents_Document_Aggregated_Count>;
+  readonly countAll: Maybe<Scalars['Int']['output']>;
+  readonly countDistinct: Maybe<Documents_Document_Aggregated_Count>;
+  readonly group: Maybe<Scalars['JSON']['output']>;
+  readonly max: Maybe<Documents_Document_Aggregated_Fields>;
+  readonly min: Maybe<Documents_Document_Aggregated_Fields>;
+  readonly sum: Maybe<Documents_Document_Aggregated_Fields>;
+  readonly sumDistinct: Maybe<Documents_Document_Aggregated_Fields>;
+};
+
+export type Documents_Document_Aggregated_Count = {
+  readonly __typename?: 'documents_document_aggregated_count';
+  readonly document_id: Maybe<Scalars['Int']['output']>;
+  readonly documents_id: Maybe<Scalars['Int']['output']>;
+  readonly id: Maybe<Scalars['Int']['output']>;
+};
+
+export type Documents_Document_Aggregated_Fields = {
+  readonly __typename?: 'documents_document_aggregated_fields';
+  readonly document_id: Maybe<Scalars['Float']['output']>;
+  readonly documents_id: Maybe<Scalars['Float']['output']>;
+  readonly id: Maybe<Scalars['Float']['output']>;
+};
+
+export type Documents_Document_Filter = {
+  readonly _and: InputMaybe<ReadonlyArray<InputMaybe<Documents_Document_Filter>>>;
+  readonly _or: InputMaybe<ReadonlyArray<InputMaybe<Documents_Document_Filter>>>;
+  readonly document_id: InputMaybe<Document_Filter>;
+  readonly documents_id: InputMaybe<Documents_Filter>;
+  readonly id: InputMaybe<Number_Filter_Operators>;
+};
+
+export type Documents_Document_Mutated = {
+  readonly __typename?: 'documents_document_mutated';
+  readonly data: Maybe<Documents_Document>;
+  readonly event: Maybe<EventEnum>;
+  readonly key: Scalars['ID']['output'];
+};
+
+export type Documents_Document_Quantifier_Filter = {
+  readonly _and: InputMaybe<ReadonlyArray<InputMaybe<Documents_Document_Filter>>>;
+  readonly _none: InputMaybe<Documents_Document_Filter>;
+  readonly _or: InputMaybe<ReadonlyArray<InputMaybe<Documents_Document_Filter>>>;
+  readonly _some: InputMaybe<Documents_Document_Filter>;
+  readonly document_id: InputMaybe<Document_Filter>;
+  readonly documents_id: InputMaybe<Documents_Filter>;
+  readonly id: InputMaybe<Number_Filter_Operators>;
+};
+
+export type Documents_Files = {
+  readonly __typename?: 'documents_files';
+  readonly directus_files_id: Maybe<Directus_Files>;
+  readonly documents_id: Maybe<Documents>;
+  readonly id: Scalars['ID']['output'];
+};
+
+
+export type Documents_FilesDirectus_Files_IdArgs = {
+  filter: InputMaybe<Directus_Files_Filter>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  page: InputMaybe<Scalars['Int']['input']>;
+  search: InputMaybe<Scalars['String']['input']>;
+  sort: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type Documents_FilesDocuments_IdArgs = {
+  filter: InputMaybe<Documents_Filter>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  page: InputMaybe<Scalars['Int']['input']>;
+  search: InputMaybe<Scalars['String']['input']>;
+  sort: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type Documents_Files_Aggregated = {
+  readonly __typename?: 'documents_files_aggregated';
+  readonly avg: Maybe<Documents_Files_Aggregated_Fields>;
+  readonly avgDistinct: Maybe<Documents_Files_Aggregated_Fields>;
+  readonly count: Maybe<Documents_Files_Aggregated_Count>;
+  readonly countAll: Maybe<Scalars['Int']['output']>;
+  readonly countDistinct: Maybe<Documents_Files_Aggregated_Count>;
+  readonly group: Maybe<Scalars['JSON']['output']>;
+  readonly max: Maybe<Documents_Files_Aggregated_Fields>;
+  readonly min: Maybe<Documents_Files_Aggregated_Fields>;
+  readonly sum: Maybe<Documents_Files_Aggregated_Fields>;
+  readonly sumDistinct: Maybe<Documents_Files_Aggregated_Fields>;
+};
+
+export type Documents_Files_Aggregated_Count = {
+  readonly __typename?: 'documents_files_aggregated_count';
+  readonly directus_files_id: Maybe<Scalars['Int']['output']>;
+  readonly documents_id: Maybe<Scalars['Int']['output']>;
+  readonly id: Maybe<Scalars['Int']['output']>;
+};
+
+export type Documents_Files_Aggregated_Fields = {
+  readonly __typename?: 'documents_files_aggregated_fields';
+  readonly documents_id: Maybe<Scalars['Float']['output']>;
+  readonly id: Maybe<Scalars['Float']['output']>;
+};
+
+export type Documents_Files_Filter = {
+  readonly _and: InputMaybe<ReadonlyArray<InputMaybe<Documents_Files_Filter>>>;
+  readonly _or: InputMaybe<ReadonlyArray<InputMaybe<Documents_Files_Filter>>>;
+  readonly directus_files_id: InputMaybe<Directus_Files_Filter>;
+  readonly documents_id: InputMaybe<Documents_Filter>;
+  readonly id: InputMaybe<Number_Filter_Operators>;
+};
+
+export type Documents_Files_Mutated = {
+  readonly __typename?: 'documents_files_mutated';
+  readonly data: Maybe<Documents_Files>;
+  readonly event: Maybe<EventEnum>;
+  readonly key: Scalars['ID']['output'];
+};
+
+export type Documents_Filter = {
+  readonly _and: InputMaybe<ReadonlyArray<InputMaybe<Documents_Filter>>>;
+  readonly _or: InputMaybe<ReadonlyArray<InputMaybe<Documents_Filter>>>;
+  readonly date_created: InputMaybe<Date_Filter_Operators>;
+  readonly date_created_func: InputMaybe<Datetime_Function_Filter_Operators>;
+  readonly date_updated: InputMaybe<Date_Filter_Operators>;
+  readonly date_updated_func: InputMaybe<Datetime_Function_Filter_Operators>;
+  readonly id: InputMaybe<Number_Filter_Operators>;
+  readonly items: InputMaybe<Documents_Document_Quantifier_Filter>;
+  readonly items_func: InputMaybe<Count_Function_Filter_Operators>;
+};
+
+export type Documents_Mutated = {
+  readonly __typename?: 'documents_mutated';
+  readonly data: Maybe<Documents>;
+  readonly event: Maybe<EventEnum>;
+  readonly key: Scalars['ID']['output'];
+};
+
 export type Hash_Filter_Operators = {
   readonly _empty: InputMaybe<Scalars['Boolean']['input']>;
   readonly _nempty: InputMaybe<Scalars['Boolean']['input']>;
@@ -644,16 +1292,29 @@ export type Id_Filter_Operators = {
 
 export type News = {
   readonly __typename?: 'news';
+  readonly content: Maybe<Scalars['String']['output']>;
   readonly date_created: Maybe<Scalars['Date']['output']>;
   readonly date_created_func: Maybe<Datetime_Functions>;
   readonly date_updated: Maybe<Scalars['Date']['output']>;
   readonly date_updated_func: Maybe<Datetime_Functions>;
   readonly description: Maybe<Scalars['String']['output']>;
   readonly id: Scalars['ID']['output'];
+  readonly images: Maybe<ReadonlyArray<Maybe<News_Files>>>;
+  readonly images_func: Maybe<Count_Functions>;
   readonly preview: Maybe<Directus_Files>;
   readonly region: Maybe<Regions>;
   readonly sort: Maybe<Scalars['Int']['output']>;
   readonly title: Maybe<Scalars['String']['output']>;
+};
+
+
+export type NewsImagesArgs = {
+  filter: InputMaybe<News_Files_Filter>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  page: InputMaybe<Scalars['Int']['input']>;
+  search: InputMaybe<Scalars['String']['input']>;
+  sort: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
@@ -692,10 +1353,12 @@ export type News_Aggregated = {
 
 export type News_Aggregated_Count = {
   readonly __typename?: 'news_aggregated_count';
+  readonly content: Maybe<Scalars['Int']['output']>;
   readonly date_created: Maybe<Scalars['Int']['output']>;
   readonly date_updated: Maybe<Scalars['Int']['output']>;
   readonly description: Maybe<Scalars['Int']['output']>;
   readonly id: Maybe<Scalars['Int']['output']>;
+  readonly images: Maybe<Scalars['Int']['output']>;
   readonly preview: Maybe<Scalars['Int']['output']>;
   readonly region: Maybe<Scalars['Int']['output']>;
   readonly sort: Maybe<Scalars['Int']['output']>;
@@ -709,15 +1372,97 @@ export type News_Aggregated_Fields = {
   readonly sort: Maybe<Scalars['Float']['output']>;
 };
 
+export type News_Files = {
+  readonly __typename?: 'news_files';
+  readonly directus_files_id: Maybe<Directus_Files>;
+  readonly id: Scalars['ID']['output'];
+  readonly news_id: Maybe<News>;
+};
+
+
+export type News_FilesDirectus_Files_IdArgs = {
+  filter: InputMaybe<Directus_Files_Filter>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  page: InputMaybe<Scalars['Int']['input']>;
+  search: InputMaybe<Scalars['String']['input']>;
+  sort: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type News_FilesNews_IdArgs = {
+  filter: InputMaybe<News_Filter>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  page: InputMaybe<Scalars['Int']['input']>;
+  search: InputMaybe<Scalars['String']['input']>;
+  sort: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type News_Files_Aggregated = {
+  readonly __typename?: 'news_files_aggregated';
+  readonly avg: Maybe<News_Files_Aggregated_Fields>;
+  readonly avgDistinct: Maybe<News_Files_Aggregated_Fields>;
+  readonly count: Maybe<News_Files_Aggregated_Count>;
+  readonly countAll: Maybe<Scalars['Int']['output']>;
+  readonly countDistinct: Maybe<News_Files_Aggregated_Count>;
+  readonly group: Maybe<Scalars['JSON']['output']>;
+  readonly max: Maybe<News_Files_Aggregated_Fields>;
+  readonly min: Maybe<News_Files_Aggregated_Fields>;
+  readonly sum: Maybe<News_Files_Aggregated_Fields>;
+  readonly sumDistinct: Maybe<News_Files_Aggregated_Fields>;
+};
+
+export type News_Files_Aggregated_Count = {
+  readonly __typename?: 'news_files_aggregated_count';
+  readonly directus_files_id: Maybe<Scalars['Int']['output']>;
+  readonly id: Maybe<Scalars['Int']['output']>;
+  readonly news_id: Maybe<Scalars['Int']['output']>;
+};
+
+export type News_Files_Aggregated_Fields = {
+  readonly __typename?: 'news_files_aggregated_fields';
+  readonly id: Maybe<Scalars['Float']['output']>;
+  readonly news_id: Maybe<Scalars['Float']['output']>;
+};
+
+export type News_Files_Filter = {
+  readonly _and: InputMaybe<ReadonlyArray<InputMaybe<News_Files_Filter>>>;
+  readonly _or: InputMaybe<ReadonlyArray<InputMaybe<News_Files_Filter>>>;
+  readonly directus_files_id: InputMaybe<Directus_Files_Filter>;
+  readonly id: InputMaybe<Number_Filter_Operators>;
+  readonly news_id: InputMaybe<News_Filter>;
+};
+
+export type News_Files_Mutated = {
+  readonly __typename?: 'news_files_mutated';
+  readonly data: Maybe<News_Files>;
+  readonly event: Maybe<EventEnum>;
+  readonly key: Scalars['ID']['output'];
+};
+
+export type News_Files_Quantifier_Filter = {
+  readonly _and: InputMaybe<ReadonlyArray<InputMaybe<News_Files_Filter>>>;
+  readonly _none: InputMaybe<News_Files_Filter>;
+  readonly _or: InputMaybe<ReadonlyArray<InputMaybe<News_Files_Filter>>>;
+  readonly _some: InputMaybe<News_Files_Filter>;
+  readonly directus_files_id: InputMaybe<Directus_Files_Filter>;
+  readonly id: InputMaybe<Number_Filter_Operators>;
+  readonly news_id: InputMaybe<News_Filter>;
+};
+
 export type News_Filter = {
   readonly _and: InputMaybe<ReadonlyArray<InputMaybe<News_Filter>>>;
   readonly _or: InputMaybe<ReadonlyArray<InputMaybe<News_Filter>>>;
+  readonly content: InputMaybe<String_Filter_Operators>;
   readonly date_created: InputMaybe<Date_Filter_Operators>;
   readonly date_created_func: InputMaybe<Datetime_Function_Filter_Operators>;
   readonly date_updated: InputMaybe<Date_Filter_Operators>;
   readonly date_updated_func: InputMaybe<Datetime_Function_Filter_Operators>;
   readonly description: InputMaybe<String_Filter_Operators>;
   readonly id: InputMaybe<Number_Filter_Operators>;
+  readonly images: InputMaybe<News_Files_Quantifier_Filter>;
+  readonly images_func: InputMaybe<Count_Function_Filter_Operators>;
   readonly preview: InputMaybe<Directus_Files_Filter>;
   readonly region: InputMaybe<Regions_Filter>;
   readonly sort: InputMaybe<Number_Filter_Operators>;
@@ -899,6 +1644,57 @@ export type String_Filter_Operators = {
   readonly _starts_with: InputMaybe<Scalars['String']['input']>;
 };
 
+export type Version_About = {
+  readonly __typename?: 'version_about';
+  readonly about: Maybe<Scalars['String']['output']>;
+  readonly id: Scalars['ID']['output'];
+  readonly img: Maybe<Scalars['JSON']['output']>;
+};
+
+export type Version_Document = {
+  readonly __typename?: 'version_document';
+  readonly date_created: Maybe<Scalars['Date']['output']>;
+  readonly date_created_func: Maybe<Datetime_Functions>;
+  readonly date_updated: Maybe<Scalars['Date']['output']>;
+  readonly date_updated_func: Maybe<Datetime_Functions>;
+  readonly file: Maybe<Scalars['JSON']['output']>;
+  readonly id: Scalars['ID']['output'];
+  readonly status: Maybe<Scalars['String']['output']>;
+  readonly title: Maybe<Scalars['String']['output']>;
+};
+
+export type Version_Document_Document = {
+  readonly __typename?: 'version_document_document';
+  readonly document_id: Maybe<Scalars['JSON']['output']>;
+  readonly id: Scalars['ID']['output'];
+  readonly related_document_id: Maybe<Scalars['JSON']['output']>;
+};
+
+export type Version_Documents = {
+  readonly __typename?: 'version_documents';
+  readonly date_created: Maybe<Scalars['Date']['output']>;
+  readonly date_created_func: Maybe<Datetime_Functions>;
+  readonly date_updated: Maybe<Scalars['Date']['output']>;
+  readonly date_updated_func: Maybe<Datetime_Functions>;
+  readonly id: Scalars['ID']['output'];
+  readonly items: Maybe<Scalars['JSON']['output']>;
+  readonly items_func: Maybe<Count_Functions>;
+};
+
+export type Version_Documents_Document = {
+  readonly __typename?: 'version_documents_document';
+  readonly document_id: Maybe<Scalars['JSON']['output']>;
+  readonly documents_id: Maybe<Scalars['JSON']['output']>;
+  readonly id: Scalars['ID']['output'];
+};
+
+export type Version_Documents_Files = {
+  readonly __typename?: 'version_documents_files';
+  readonly directus_files_id: Maybe<Scalars['JSON']['output']>;
+  readonly documents_id: Maybe<Scalars['JSON']['output']>;
+  readonly id: Scalars['ID']['output'];
+};
+
 export type Version_Home_Page = {
   readonly __typename?: 'version_home_page';
   readonly id: Scalars['ID']['output'];
@@ -915,16 +1711,26 @@ export type Version_Home_Page_News = {
 
 export type Version_News = {
   readonly __typename?: 'version_news';
+  readonly content: Maybe<Scalars['String']['output']>;
   readonly date_created: Maybe<Scalars['Date']['output']>;
   readonly date_created_func: Maybe<Datetime_Functions>;
   readonly date_updated: Maybe<Scalars['Date']['output']>;
   readonly date_updated_func: Maybe<Datetime_Functions>;
   readonly description: Maybe<Scalars['String']['output']>;
   readonly id: Scalars['ID']['output'];
+  readonly images: Maybe<Scalars['JSON']['output']>;
+  readonly images_func: Maybe<Count_Functions>;
   readonly preview: Maybe<Scalars['JSON']['output']>;
   readonly region: Maybe<Scalars['JSON']['output']>;
   readonly sort: Maybe<Scalars['Int']['output']>;
   readonly title: Maybe<Scalars['String']['output']>;
+};
+
+export type Version_News_Files = {
+  readonly __typename?: 'version_news_files';
+  readonly directus_files_id: Maybe<Scalars['JSON']['output']>;
+  readonly id: Scalars['ID']['output'];
+  readonly news_id: Maybe<Scalars['JSON']['output']>;
 };
 
 export type Version_Regions = {
@@ -945,6 +1751,114 @@ export type Version_Representatives = {
   readonly sort: Maybe<Scalars['Int']['output']>;
 };
 
+export type Version_Veterans = {
+  readonly __typename?: 'version_veterans';
+  readonly birth_date: Maybe<Scalars['String']['output']>;
+  readonly birth_place: Maybe<Scalars['String']['output']>;
+  readonly date_created: Maybe<Scalars['Date']['output']>;
+  readonly date_created_func: Maybe<Datetime_Functions>;
+  readonly date_updated: Maybe<Scalars['Date']['output']>;
+  readonly date_updated_func: Maybe<Datetime_Functions>;
+  readonly description: Maybe<Scalars['String']['output']>;
+  readonly first_name: Maybe<Scalars['String']['output']>;
+  readonly id: Scalars['ID']['output'];
+  readonly last_name: Maybe<Scalars['String']['output']>;
+  readonly middle_name: Maybe<Scalars['String']['output']>;
+  readonly photo: Maybe<Scalars['JSON']['output']>;
+  readonly sort: Maybe<Scalars['Int']['output']>;
+  readonly status: Maybe<Scalars['String']['output']>;
+};
+
+export type Veterans = {
+  readonly __typename?: 'veterans';
+  readonly birth_date: Maybe<Scalars['String']['output']>;
+  readonly birth_place: Maybe<Scalars['String']['output']>;
+  readonly date_created: Maybe<Scalars['Date']['output']>;
+  readonly date_created_func: Maybe<Datetime_Functions>;
+  readonly date_updated: Maybe<Scalars['Date']['output']>;
+  readonly date_updated_func: Maybe<Datetime_Functions>;
+  readonly description: Maybe<Scalars['String']['output']>;
+  readonly first_name: Maybe<Scalars['String']['output']>;
+  readonly id: Scalars['ID']['output'];
+  readonly last_name: Maybe<Scalars['String']['output']>;
+  readonly middle_name: Maybe<Scalars['String']['output']>;
+  readonly photo: Maybe<Directus_Files>;
+  readonly sort: Maybe<Scalars['Int']['output']>;
+  readonly status: Maybe<Scalars['String']['output']>;
+};
+
+
+export type VeteransPhotoArgs = {
+  filter: InputMaybe<Directus_Files_Filter>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  page: InputMaybe<Scalars['Int']['input']>;
+  search: InputMaybe<Scalars['String']['input']>;
+  sort: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type Veterans_Aggregated = {
+  readonly __typename?: 'veterans_aggregated';
+  readonly avg: Maybe<Veterans_Aggregated_Fields>;
+  readonly avgDistinct: Maybe<Veterans_Aggregated_Fields>;
+  readonly count: Maybe<Veterans_Aggregated_Count>;
+  readonly countAll: Maybe<Scalars['Int']['output']>;
+  readonly countDistinct: Maybe<Veterans_Aggregated_Count>;
+  readonly group: Maybe<Scalars['JSON']['output']>;
+  readonly max: Maybe<Veterans_Aggregated_Fields>;
+  readonly min: Maybe<Veterans_Aggregated_Fields>;
+  readonly sum: Maybe<Veterans_Aggregated_Fields>;
+  readonly sumDistinct: Maybe<Veterans_Aggregated_Fields>;
+};
+
+export type Veterans_Aggregated_Count = {
+  readonly __typename?: 'veterans_aggregated_count';
+  readonly birth_date: Maybe<Scalars['Int']['output']>;
+  readonly birth_place: Maybe<Scalars['Int']['output']>;
+  readonly date_created: Maybe<Scalars['Int']['output']>;
+  readonly date_updated: Maybe<Scalars['Int']['output']>;
+  readonly description: Maybe<Scalars['Int']['output']>;
+  readonly first_name: Maybe<Scalars['Int']['output']>;
+  readonly id: Maybe<Scalars['Int']['output']>;
+  readonly last_name: Maybe<Scalars['Int']['output']>;
+  readonly middle_name: Maybe<Scalars['Int']['output']>;
+  readonly photo: Maybe<Scalars['Int']['output']>;
+  readonly sort: Maybe<Scalars['Int']['output']>;
+  readonly status: Maybe<Scalars['Int']['output']>;
+};
+
+export type Veterans_Aggregated_Fields = {
+  readonly __typename?: 'veterans_aggregated_fields';
+  readonly id: Maybe<Scalars['Float']['output']>;
+  readonly sort: Maybe<Scalars['Float']['output']>;
+};
+
+export type Veterans_Filter = {
+  readonly _and: InputMaybe<ReadonlyArray<InputMaybe<Veterans_Filter>>>;
+  readonly _or: InputMaybe<ReadonlyArray<InputMaybe<Veterans_Filter>>>;
+  readonly birth_date: InputMaybe<String_Filter_Operators>;
+  readonly birth_place: InputMaybe<String_Filter_Operators>;
+  readonly date_created: InputMaybe<Date_Filter_Operators>;
+  readonly date_created_func: InputMaybe<Datetime_Function_Filter_Operators>;
+  readonly date_updated: InputMaybe<Date_Filter_Operators>;
+  readonly date_updated_func: InputMaybe<Datetime_Function_Filter_Operators>;
+  readonly description: InputMaybe<String_Filter_Operators>;
+  readonly first_name: InputMaybe<String_Filter_Operators>;
+  readonly id: InputMaybe<Number_Filter_Operators>;
+  readonly last_name: InputMaybe<String_Filter_Operators>;
+  readonly middle_name: InputMaybe<String_Filter_Operators>;
+  readonly photo: InputMaybe<Directus_Files_Filter>;
+  readonly sort: InputMaybe<Number_Filter_Operators>;
+  readonly status: InputMaybe<String_Filter_Operators>;
+};
+
+export type Veterans_Mutated = {
+  readonly __typename?: 'veterans_mutated';
+  readonly data: Maybe<Veterans>;
+  readonly event: Maybe<EventEnum>;
+  readonly key: Scalars['ID']['output'];
+};
+
 export type MediaFragmentFragment = { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string };
 
 export type NewsFragmentFragment = { readonly __typename?: 'news', readonly id: string, readonly title: string, readonly description: string, readonly date_created: any, readonly date_updated: any, readonly region: { readonly __typename?: 'regions', readonly title: string, readonly id: string }, readonly preview: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } };
@@ -953,10 +1867,15 @@ export type RegionFragmentFragment = { readonly __typename?: 'regions', readonly
 
 export type RepresentativesFragmentFragment = { readonly __typename?: 'representatives', readonly id: string, readonly fullName: string, readonly position: string, readonly photo: { readonly __typename?: 'directus_files', readonly id: string }, readonly region: { readonly __typename?: 'regions', readonly id: string, readonly title: string, readonly code: string } };
 
-export type GetAllNewsQueryVariables = Exact<{ [key: string]: never; }>;
+export type VeteransFragmentFragment = { readonly __typename?: 'veterans', readonly id: string, readonly last_name: string, readonly first_name: string, readonly middle_name: string, readonly birth_date: string, readonly birth_place: string, readonly description: string, readonly photo: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } };
+
+export type GetAllNewsQueryVariables = Exact<{
+  page: InputMaybe<Scalars['Int']['input']>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+}>;
 
 
-export type GetAllNewsQuery = { readonly __typename?: 'Query', readonly news: ReadonlyArray<{ readonly __typename?: 'news', readonly id: string, readonly title: string, readonly description: string, readonly date_created: any, readonly date_updated: any, readonly region: { readonly __typename?: 'regions', readonly title: string, readonly id: string }, readonly preview: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } }> };
+export type GetAllNewsQuery = { readonly __typename?: 'Query', readonly news: ReadonlyArray<{ readonly __typename?: 'news', readonly id: string, readonly title: string, readonly description: string, readonly date_created: any, readonly date_updated: any, readonly region: { readonly __typename?: 'regions', readonly title: string, readonly id: string }, readonly preview: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } }>, readonly news_aggregated: ReadonlyArray<{ readonly __typename?: 'news_aggregated', readonly count: { readonly __typename?: 'news_aggregated_count', readonly id: number } }> };
 
 export type GetNewsByRegionQueryVariables = Exact<{
   regionCode: Scalars['String']['input'];
@@ -965,10 +1884,44 @@ export type GetNewsByRegionQueryVariables = Exact<{
 
 export type GetNewsByRegionQuery = { readonly __typename?: 'Query', readonly news: ReadonlyArray<{ readonly __typename?: 'news', readonly id: string, readonly title: string, readonly date_created: any }> };
 
+export type GetNewsByIdQueryVariables = Exact<{
+  id: Scalars['ID']['input'];
+}>;
+
+
+export type GetNewsByIdQuery = { readonly __typename?: 'Query', readonly news_by_id: { readonly __typename?: 'news', readonly content: string, readonly id: string, readonly title: string, readonly description: string, readonly date_created: any, readonly date_updated: any, readonly images: ReadonlyArray<{ readonly __typename?: 'news_files', readonly directus_files_id: { readonly __typename?: 'directus_files', readonly type: string, readonly title: string, readonly id: string } }>, readonly region: { readonly __typename?: 'regions', readonly title: string, readonly id: string }, readonly preview: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } } };
+
+export type GetAboutPageQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetAboutPageQuery = { readonly __typename?: 'Query', readonly about: { readonly __typename?: 'about', readonly about: string, readonly img: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } } };
+
+export type GetDocumentsPageQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetDocumentsPageQuery = { readonly __typename?: 'Query', readonly documents: { readonly __typename?: 'documents', readonly items: ReadonlyArray<{ readonly __typename?: 'documents_document', readonly document_id: { readonly __typename?: 'document', readonly title: string, readonly date_created: any, readonly file: { readonly __typename?: 'directus_files', readonly type: string, readonly title: string, readonly id: string } } }> } };
+
 export type GetHomePageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetHomePageQuery = { readonly __typename?: 'Query', readonly home_page: { readonly __typename?: 'home_page', readonly popular_news: ReadonlyArray<{ readonly __typename?: 'home_page_news', readonly id: string, readonly news_id: { readonly __typename?: 'news', readonly id: string, readonly title: string, readonly description: string, readonly date_created: any, readonly date_updated: any, readonly region: { readonly __typename?: 'regions', readonly title: string, readonly id: string }, readonly preview: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } } }> } };
+
+export type GetVeteransPageQueryVariables = Exact<{
+  page: InputMaybe<Scalars['Int']['input']>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+}>;
+
+
+export type GetVeteransPageQuery = { readonly __typename?: 'Query', readonly veterans: ReadonlyArray<{ readonly __typename?: 'veterans', readonly id: string, readonly last_name: string, readonly first_name: string, readonly middle_name: string, readonly birth_date: string, readonly birth_place: string, readonly description: string, readonly photo: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } }>, readonly veterans_aggregated: ReadonlyArray<{ readonly __typename?: 'veterans_aggregated', readonly count: { readonly __typename?: 'veterans_aggregated_count', readonly id: number } }> };
+
+export type GetVeteransByLetterQueryVariables = Exact<{
+  letter: Scalars['String']['input'];
+  page: InputMaybe<Scalars['Int']['input']>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+}>;
+
+
+export type GetVeteransByLetterQuery = { readonly __typename?: 'Query', readonly veterans: ReadonlyArray<{ readonly __typename?: 'veterans', readonly id: string, readonly last_name: string, readonly first_name: string, readonly middle_name: string, readonly birth_date: string, readonly birth_place: string, readonly description: string, readonly photo: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } }>, readonly veterans_aggregated: ReadonlyArray<{ readonly __typename?: 'veterans_aggregated', readonly count: { readonly __typename?: 'veterans_aggregated_count', readonly id: number } }> };
 
 export type GetAllRegionsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -1031,10 +1984,29 @@ export const RepresentativesFragmentFragmentDoc = gql`
   }
 }
     ${RegionFragmentFragmentDoc}`;
+export const VeteransFragmentFragmentDoc = gql`
+    fragment VeteransFragment on veterans {
+  id
+  last_name
+  first_name
+  middle_name
+  birth_date
+  birth_place
+  description
+  photo {
+    ...MediaFragment
+  }
+}
+    ${MediaFragmentFragmentDoc}`;
 export const GetAllNewsDocument = gql`
-    query GetAllNews {
-  news {
+    query GetAllNews($page: Int, $limit: Int) {
+  news(page: $page, limit: $limit, sort: ["-date_created"]) {
     ...NewsFragment
+  }
+  news_aggregated {
+    count {
+      id
+    }
   }
 }
     ${NewsFragmentFragmentDoc}`;
@@ -1044,6 +2016,48 @@ export const GetNewsByRegionDocument = gql`
     id
     title
     date_created
+  }
+}
+    `;
+export const GetNewsByIdDocument = gql`
+    query GetNewsById($id: ID!) {
+  news_by_id(id: $id) {
+    ...NewsFragment
+    content
+    images {
+      directus_files_id {
+        type
+        title
+        id
+      }
+    }
+  }
+}
+    ${NewsFragmentFragmentDoc}`;
+export const GetAboutPageDocument = gql`
+    query GetAboutPage {
+  about {
+    about
+    img {
+      ...MediaFragment
+    }
+  }
+}
+    ${MediaFragmentFragmentDoc}`;
+export const GetDocumentsPageDocument = gql`
+    query GetDocumentsPage {
+  documents {
+    items(filter: {document_id: {status: {_eq: "published"}}}) {
+      document_id {
+        title
+        date_created
+        file {
+          type
+          title
+          id
+        }
+      }
+    }
   }
 }
     `;
@@ -1059,6 +2073,42 @@ export const GetHomePageDocument = gql`
   }
 }
     ${NewsFragmentFragmentDoc}`;
+export const GetVeteransPageDocument = gql`
+    query GetVeteransPage($page: Int, $limit: Int) {
+  veterans(
+    filter: {status: {_eq: "published"}}
+    sort: ["last_name", "first_name"]
+    page: $page
+    limit: $limit
+  ) {
+    ...VeteransFragment
+  }
+  veterans_aggregated(filter: {status: {_eq: "published"}}) {
+    count {
+      id
+    }
+  }
+}
+    ${VeteransFragmentFragmentDoc}`;
+export const GetVeteransByLetterDocument = gql`
+    query GetVeteransByLetter($letter: String!, $page: Int, $limit: Int) {
+  veterans(
+    filter: {status: {_eq: "published"}, last_name: {_starts_with: $letter}}
+    sort: ["last_name", "first_name"]
+    page: $page
+    limit: $limit
+  ) {
+    ...VeteransFragment
+  }
+  veterans_aggregated(
+    filter: {status: {_eq: "published"}, last_name: {_starts_with: $letter}}
+  ) {
+    count {
+      id
+    }
+  }
+}
+    ${VeteransFragmentFragmentDoc}`;
 export const GetAllRegionsDocument = gql`
     query GetAllRegions {
   regions {
@@ -1094,8 +2144,23 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     GetNewsByRegion(variables: GetNewsByRegionQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<GetNewsByRegionQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetNewsByRegionQuery>({ document: GetNewsByRegionDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'GetNewsByRegion', 'query', variables);
     },
+    GetNewsById(variables: GetNewsByIdQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<GetNewsByIdQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<GetNewsByIdQuery>({ document: GetNewsByIdDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'GetNewsById', 'query', variables);
+    },
+    GetAboutPage(variables?: GetAboutPageQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<GetAboutPageQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<GetAboutPageQuery>({ document: GetAboutPageDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'GetAboutPage', 'query', variables);
+    },
+    GetDocumentsPage(variables?: GetDocumentsPageQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<GetDocumentsPageQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<GetDocumentsPageQuery>({ document: GetDocumentsPageDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'GetDocumentsPage', 'query', variables);
+    },
     GetHomePage(variables?: GetHomePageQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<GetHomePageQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetHomePageQuery>({ document: GetHomePageDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'GetHomePage', 'query', variables);
+    },
+    GetVeteransPage(variables?: GetVeteransPageQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<GetVeteransPageQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<GetVeteransPageQuery>({ document: GetVeteransPageDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'GetVeteransPage', 'query', variables);
+    },
+    GetVeteransByLetter(variables: GetVeteransByLetterQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<GetVeteransByLetterQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<GetVeteransByLetterQuery>({ document: GetVeteransByLetterDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'GetVeteransByLetter', 'query', variables);
     },
     GetAllRegions(variables?: GetAllRegionsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<GetAllRegionsQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetAllRegionsQuery>({ document: GetAllRegionsDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'GetAllRegions', 'query', variables);

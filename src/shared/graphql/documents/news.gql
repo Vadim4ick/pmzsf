@@ -1,6 +1,11 @@
-query GetAllNews {
-  news {
+query GetAllNews($page: Int, $limit: Int) {
+  news(page: $page, limit: $limit, sort: ["-date_created"]) {
     ...NewsFragment
+  }
+  news_aggregated {
+    count {
+      id
+    }
   }
 }
 
@@ -9,5 +14,19 @@ query GetNewsByRegion($regionCode: String!) {
     id
     title
     date_created
+  }
+}
+
+query GetNewsById($id: ID!) {
+  news_by_id(id: $id) {
+    ...NewsFragment
+    content
+    images {
+      directus_files_id {
+        type
+        title
+        id
+      }
+    }
   }
 }

@@ -1,9 +1,8 @@
 import { Typography } from "@/shared/ui/typography";
 import Image from "next/image";
 import ReactMarkdown from "react-markdown";
-import { ABOUT_CONTENT } from "../model/about.const";
 
-const AboutContent = () => {
+const AboutContent = ({ content }: { content: string }) => {
   return (
     <ReactMarkdown
       components={{
@@ -54,7 +53,7 @@ const AboutContent = () => {
         ),
       }}
     >
-      {ABOUT_CONTENT}
+      {content}
     </ReactMarkdown>
   );
 };

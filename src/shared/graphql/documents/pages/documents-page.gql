@@ -1,0 +1,15 @@
+query GetDocumentsPage {
+  documents {
+    items(filter: { document_id: { status: { _eq: "published" } } }) {
+      document_id {
+        title
+        date_created
+        file {
+          type
+          title
+          id
+        }
+      }
+    }
+  }
+}

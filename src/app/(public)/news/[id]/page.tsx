@@ -1,6 +1,7 @@
-import { mockNews } from "@/shared/const/mockNews.const";
+import { getNewsById } from "@/shared/actions/news";
 import { NewsItemPage } from "@/views/news-item-page";
 import { Metadata } from "next";
+import { notFound } from "next/navigation";
 
 export async function generateMetadata({
   params,
@@ -9,7 +10,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { id } = await params;
 
-  const news = mockNews.find((item) => item.id === Number(id));
+  const news = await getNewsById(id);
 
   if (!news) {
     return {
@@ -18,12 +19,22 @@ export async function generateMetadata({
   }
 
   return {
-    title: news.title,
+    title: news.news_by_id.title,
   };
 }
 
-const NewsItem = () => {
-  return <NewsItemPage />;
+export const revalidate = 60;
+
+const NewsItem = async ({ params }: { params: { id: string } }) => {
+  const { id } = await params;
+
+  const news = await getNewsById(id);
+
+  if (!news) {
+    return notFound();
+  }
+
+  return <NewsItemPage news={news.news_by_id} />;
 };
 
 export default NewsItem;

@@ -1,0 +1,39 @@
+query GetVeteransPage($page: Int, $limit: Int) {
+  veterans(
+    filter: { status: { _eq: "published" } }
+    sort: ["last_name", "first_name"]
+    page: $page
+    limit: $limit
+  ) {
+    ...VeteransFragment
+  }
+  veterans_aggregated(filter: { status: { _eq: "published" } }) {
+    count {
+      id
+    }
+  }
+}
+
+query GetVeteransByLetter($letter: String!, $page: Int, $limit: Int) {
+  veterans(
+    filter: {
+      status: { _eq: "published" }
+      last_name: { _starts_with: $letter }
+    }
+    sort: ["last_name", "first_name"]
+    page: $page
+    limit: $limit
+  ) {
+    ...VeteransFragment
+  }
+  veterans_aggregated(
+    filter: {
+      status: { _eq: "published" }
+      last_name: { _starts_with: $letter }
+    }
+  ) {
+    count {
+      id
+    }
+  }
+}

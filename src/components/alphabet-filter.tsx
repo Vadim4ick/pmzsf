@@ -3,8 +3,8 @@
 import { cn } from "@/shared/lib/utils";
 import { Container } from "@/shared/ui/container";
 import { Typography } from "@/shared/ui/typography";
-import { useAlphabetStore } from "@/store/alphabet.store";
-import { useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { memo } from "react";
 
 const LETTERS = [
   "А",
@@ -41,21 +41,29 @@ const LETTERS = [
 ];
 
 type AlphabetFilterProps = {
-  active?: string;
-  onChange?: (letter: string) => void;
   className?: string;
 };
 
-const AlphabetFilter = ({
-  active,
-  onChange,
-  className,
-}: AlphabetFilterProps) => {
-  const { reset } = useAlphabetStore();
+const AlphabetFilter = memo(({ className }: AlphabetFilterProps) => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const active = searchParams.get("letter");
 
-  useEffect(() => {
-    return () => reset();
-  }, []);
+  const handleClick = (letter: string) => {
+    const params = new URLSearchParams(searchParams.toString());
+
+    if (active === letter) {
+      // повторный клик — сбрасываем фильтр
+      params.delete("letter");
+    } else {
+      params.set("letter", letter);
+    }
+
+    // сбрасываем страницу при смене буквы
+    params.delete("page");
+
+    router.push(`?${params.toString()}`);
+  };
 
   return (
     <div className={cn("bg-background-primary", className)}>
@@ -64,7 +72,7 @@ const AlphabetFilter = ({
           <button
             key={letter}
             type="button"
-            onClick={() => onChange?.(letter)}
+            onClick={() => handleClick(letter)}
             className={cn(
               "flex size-8 cursor-pointer items-center justify-center rounded-[6px] transition-colors",
               {
@@ -86,6 +94,8 @@ const AlphabetFilter = ({
       </Container>
     </div>
   );
-};
+});
 
 export { AlphabetFilter };
+
+AlphabetFilter.displayName = "AlphabetFilter";

@@ -1,0 +1,8 @@
+query GetAboutPage {
+  about {
+    about
+    img {
+      ...MediaFragment
+    }
+  }
+}
