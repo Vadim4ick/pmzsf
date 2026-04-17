@@ -12,7 +12,7 @@ export async function generateMetadata({
 
   const news = await getNewsById(id);
 
-  if (!news) {
+  if (!news?.news_by_id) {
     return {
       title: "Новость не найдена",
     };
@@ -30,7 +30,7 @@ const NewsItem = async ({ params }: { params: { id: string } }) => {
 
   const news = await getNewsById(id);
 
-  if (!news) {
+  if (!news?.news_by_id) {
     return notFound();
   }
 

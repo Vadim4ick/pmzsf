@@ -1,0 +1,30 @@
+fragment HierarchyMembersFragment on hierarchy_members {
+  id
+  role
+  user {
+    ...UserFragment
+  }
+}
+
+fragment HierarchyMembersByIdFragment on hierarchy_members {
+  id
+  role
+  user {
+    ...UserFragment
+    hierarchy_memberships(filter: { committee: { id: { _nnull: true } } }) {
+      id
+      role
+      committee {
+        id
+        title
+        members(filter: { role: { _eq: "chairman" } }, limit: 1) {
+          id
+          user {
+            first_name
+            last_name
+          }
+        }
+      }
+    }
+  }
+}

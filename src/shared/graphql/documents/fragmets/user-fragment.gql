@@ -1,0 +1,9 @@
+fragment UserFragment on directus_users {
+  id
+  last_name
+  email
+  avatar {
+    ...MediaFragment
+  }
+  first_name
+}

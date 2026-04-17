@@ -6,7 +6,9 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export const pathImage = (id: string) => {
-  return `${process.env.NEXT_PUBLIC_SERVER_URL}/assets/${id}`;
+  return id === "" || !id
+    ? "/img/noimage.png"
+    : `${process.env.NEXT_PUBLIC_SERVER_URL}/assets/${id}`;
 };
 
 export const dateFormatter = (date: string) => {

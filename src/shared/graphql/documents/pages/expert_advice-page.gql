@@ -1,0 +1,7 @@
+query GetExpertAdvicePage {
+  expert_advice {
+    members(sort: ["sort"]) {
+      ...HierarchyMembersByIdFragment
+    }
+  }
+}

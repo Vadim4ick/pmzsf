@@ -1,11 +1,18 @@
 "use client";
 
 import { DeputatCard } from "@/components/deputat-card/deputat-card";
-import { STRUCTURE } from "@/modules/structure-page";
+import { GetStructurePageQuery } from "@/shared/graphql/__generated__";
+import { groupHierarchyMembers } from "@/shared/lib/hierarchy";
 import { Container } from "@/shared/ui/container";
 import { Typography } from "@/shared/ui/typography";
 
-const StructurePage = () => {
+const StructurePage = ({
+  structure,
+}: {
+  structure: GetStructurePageQuery["structure"];
+}) => {
+  const grouped = groupHierarchyMembers(structure.members);
+
   return (
     <section>
       <Container className="flex flex-col gap-10 md:gap-14">
@@ -24,8 +31,12 @@ const StructurePage = () => {
         </div>
 
         <div className="flex flex-col gap-16">
-          {STRUCTURE.map((group, idx) => (
-            <DeputatCard key={idx} card={group} />
+          {grouped.map((group) => (
+            <DeputatCard
+              key={group.roleKey}
+              role={group.role}
+              users={group.users}
+            />
           ))}
         </div>
       </Container>

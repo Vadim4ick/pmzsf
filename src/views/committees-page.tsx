@@ -1,8 +1,13 @@
-import { COMMITTEES, CommitteesCard } from "@/modules/committees-page";
+import { CommitteesCard } from "@/modules/committees-page";
+import { GetAllCommitteesQuery } from "@/shared/graphql/__generated__";
 import { Container } from "@/shared/ui/container";
 import { Typography } from "@/shared/ui/typography";
 
-const CommitteesPage = () => {
+const CommitteesPage = ({
+  committees,
+}: {
+  committees: GetAllCommitteesQuery["committees"];
+}) => {
   return (
     <section>
       <Container className="max-mobile:gap-8 flex flex-col gap-14">
@@ -11,7 +16,7 @@ const CommitteesPage = () => {
         </Typography>
 
         <div className="max-mobile:grid-cols-1 max-mobile:gap-8 grid grid-cols-2 gap-10">
-          {COMMITTEES.map((committee) => (
+          {committees.map((committee) => (
             <CommitteesCard key={committee.id} item={committee} />
           ))}
         </div>

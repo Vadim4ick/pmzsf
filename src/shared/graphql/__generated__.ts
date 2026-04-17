@@ -32,6 +32,10 @@ export type Query = {
   readonly __typename?: 'Query';
   readonly about: Maybe<About>;
   readonly about_by_version: Maybe<Version_About>;
+  readonly committees: ReadonlyArray<Committees>;
+  readonly committees_aggregated: ReadonlyArray<Committees_Aggregated>;
+  readonly committees_by_id: Maybe<Committees>;
+  readonly committees_by_version: Maybe<Version_Committees>;
   readonly document: ReadonlyArray<Document>;
   readonly document_aggregated: ReadonlyArray<Document_Aggregated>;
   readonly document_by_id: Maybe<Document>;
@@ -50,6 +54,12 @@ export type Query = {
   readonly documents_files_aggregated: ReadonlyArray<Documents_Files_Aggregated>;
   readonly documents_files_by_id: Maybe<Documents_Files>;
   readonly documents_files_by_version: Maybe<Version_Documents_Files>;
+  readonly expert_advice: Maybe<Expert_Advice>;
+  readonly expert_advice_by_version: Maybe<Version_Expert_Advice>;
+  readonly hierarchy_members: ReadonlyArray<Hierarchy_Members>;
+  readonly hierarchy_members_aggregated: ReadonlyArray<Hierarchy_Members_Aggregated>;
+  readonly hierarchy_members_by_id: Maybe<Hierarchy_Members>;
+  readonly hierarchy_members_by_version: Maybe<Version_Hierarchy_Members>;
   readonly home_page: Maybe<Home_Page>;
   readonly home_page_by_version: Maybe<Version_Home_Page>;
   readonly home_page_news: ReadonlyArray<Home_Page_News>;
@@ -72,6 +82,8 @@ export type Query = {
   readonly representatives_aggregated: ReadonlyArray<Representatives_Aggregated>;
   readonly representatives_by_id: Maybe<Representatives>;
   readonly representatives_by_version: Maybe<Version_Representatives>;
+  readonly structure: Maybe<Structure>;
+  readonly structure_by_version: Maybe<Version_Structure>;
   readonly veterans: ReadonlyArray<Veterans>;
   readonly veterans_aggregated: ReadonlyArray<Veterans_Aggregated>;
   readonly veterans_by_id: Maybe<Veterans>;
@@ -85,6 +97,39 @@ export type QueryAboutArgs = {
 
 
 export type QueryAbout_By_VersionArgs = {
+  version: Scalars['String']['input'];
+};
+
+
+export type QueryCommitteesArgs = {
+  filter: InputMaybe<Committees_Filter>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  page: InputMaybe<Scalars['Int']['input']>;
+  search: InputMaybe<Scalars['String']['input']>;
+  sort: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type QueryCommittees_AggregatedArgs = {
+  filter: InputMaybe<Committees_Filter>;
+  groupBy: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  page: InputMaybe<Scalars['Int']['input']>;
+  search: InputMaybe<Scalars['String']['input']>;
+  sort: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type QueryCommittees_By_IdArgs = {
+  id: Scalars['ID']['input'];
+  version: InputMaybe<Scalars['String']['input']>;
+};
+
+
+export type QueryCommittees_By_VersionArgs = {
+  id: Scalars['ID']['input'];
   version: Scalars['String']['input'];
 };
 
@@ -226,6 +271,49 @@ export type QueryDocuments_Files_By_IdArgs = {
 
 
 export type QueryDocuments_Files_By_VersionArgs = {
+  id: Scalars['ID']['input'];
+  version: Scalars['String']['input'];
+};
+
+
+export type QueryExpert_AdviceArgs = {
+  version: InputMaybe<Scalars['String']['input']>;
+};
+
+
+export type QueryExpert_Advice_By_VersionArgs = {
+  version: Scalars['String']['input'];
+};
+
+
+export type QueryHierarchy_MembersArgs = {
+  filter: InputMaybe<Hierarchy_Members_Filter>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  page: InputMaybe<Scalars['Int']['input']>;
+  search: InputMaybe<Scalars['String']['input']>;
+  sort: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type QueryHierarchy_Members_AggregatedArgs = {
+  filter: InputMaybe<Hierarchy_Members_Filter>;
+  groupBy: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  page: InputMaybe<Scalars['Int']['input']>;
+  search: InputMaybe<Scalars['String']['input']>;
+  sort: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type QueryHierarchy_Members_By_IdArgs = {
+  id: Scalars['ID']['input'];
+  version: InputMaybe<Scalars['String']['input']>;
+};
+
+
+export type QueryHierarchy_Members_By_VersionArgs = {
   id: Scalars['ID']['input'];
   version: Scalars['String']['input'];
 };
@@ -406,6 +494,16 @@ export type QueryRepresentatives_By_VersionArgs = {
 };
 
 
+export type QueryStructureArgs = {
+  version: InputMaybe<Scalars['String']['input']>;
+};
+
+
+export type QueryStructure_By_VersionArgs = {
+  version: Scalars['String']['input'];
+};
+
+
 export type QueryVeteransArgs = {
   filter: InputMaybe<Veterans_Filter>;
   limit: InputMaybe<Scalars['Int']['input']>;
@@ -441,6 +539,7 @@ export type QueryVeterans_By_VersionArgs = {
 export type Subscription = {
   readonly __typename?: 'Subscription';
   readonly about_mutated: Maybe<About_Mutated>;
+  readonly committees_mutated: Maybe<Committees_Mutated>;
   readonly directus_files_mutated: Maybe<Directus_Files_Mutated>;
   readonly directus_users_mutated: Maybe<Directus_Users_Mutated>;
   readonly document_document_mutated: Maybe<Document_Document_Mutated>;
@@ -448,17 +547,25 @@ export type Subscription = {
   readonly documents_document_mutated: Maybe<Documents_Document_Mutated>;
   readonly documents_files_mutated: Maybe<Documents_Files_Mutated>;
   readonly documents_mutated: Maybe<Documents_Mutated>;
+  readonly expert_advice_mutated: Maybe<Expert_Advice_Mutated>;
+  readonly hierarchy_members_mutated: Maybe<Hierarchy_Members_Mutated>;
   readonly home_page_mutated: Maybe<Home_Page_Mutated>;
   readonly home_page_news_mutated: Maybe<Home_Page_News_Mutated>;
   readonly news_files_mutated: Maybe<News_Files_Mutated>;
   readonly news_mutated: Maybe<News_Mutated>;
   readonly regions_mutated: Maybe<Regions_Mutated>;
   readonly representatives_mutated: Maybe<Representatives_Mutated>;
+  readonly structure_mutated: Maybe<Structure_Mutated>;
   readonly veterans_mutated: Maybe<Veterans_Mutated>;
 };
 
 
 export type SubscriptionAbout_MutatedArgs = {
+  event: InputMaybe<EventEnum>;
+};
+
+
+export type SubscriptionCommittees_MutatedArgs = {
   event: InputMaybe<EventEnum>;
 };
 
@@ -498,6 +605,16 @@ export type SubscriptionDocuments_MutatedArgs = {
 };
 
 
+export type SubscriptionExpert_Advice_MutatedArgs = {
+  event: InputMaybe<EventEnum>;
+};
+
+
+export type SubscriptionHierarchy_Members_MutatedArgs = {
+  event: InputMaybe<EventEnum>;
+};
+
+
 export type SubscriptionHome_Page_MutatedArgs = {
   event: InputMaybe<EventEnum>;
 };
@@ -524,6 +641,11 @@ export type SubscriptionRegions_MutatedArgs = {
 
 
 export type SubscriptionRepresentatives_MutatedArgs = {
+  event: InputMaybe<EventEnum>;
+};
+
+
+export type SubscriptionStructure_MutatedArgs = {
   event: InputMaybe<EventEnum>;
 };
 
@@ -576,6 +698,83 @@ export type Boolean_Filter_Operators = {
   readonly _neq: InputMaybe<Scalars['Boolean']['input']>;
   readonly _nnull: InputMaybe<Scalars['Boolean']['input']>;
   readonly _null: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type Committees = {
+  readonly __typename?: 'committees';
+  readonly date_created: Maybe<Scalars['Date']['output']>;
+  readonly date_created_func: Maybe<Datetime_Functions>;
+  readonly date_updated: Maybe<Scalars['Date']['output']>;
+  readonly date_updated_func: Maybe<Datetime_Functions>;
+  readonly id: Scalars['ID']['output'];
+  readonly members: Maybe<ReadonlyArray<Maybe<Hierarchy_Members>>>;
+  readonly members_func: Maybe<Count_Functions>;
+  readonly sort: Maybe<Scalars['Int']['output']>;
+  readonly status: Maybe<Scalars['String']['output']>;
+  readonly title: Maybe<Scalars['String']['output']>;
+};
+
+
+export type CommitteesMembersArgs = {
+  filter: InputMaybe<Hierarchy_Members_Filter>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  page: InputMaybe<Scalars['Int']['input']>;
+  search: InputMaybe<Scalars['String']['input']>;
+  sort: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type Committees_Aggregated = {
+  readonly __typename?: 'committees_aggregated';
+  readonly avg: Maybe<Committees_Aggregated_Fields>;
+  readonly avgDistinct: Maybe<Committees_Aggregated_Fields>;
+  readonly count: Maybe<Committees_Aggregated_Count>;
+  readonly countAll: Maybe<Scalars['Int']['output']>;
+  readonly countDistinct: Maybe<Committees_Aggregated_Count>;
+  readonly group: Maybe<Scalars['JSON']['output']>;
+  readonly max: Maybe<Committees_Aggregated_Fields>;
+  readonly min: Maybe<Committees_Aggregated_Fields>;
+  readonly sum: Maybe<Committees_Aggregated_Fields>;
+  readonly sumDistinct: Maybe<Committees_Aggregated_Fields>;
+};
+
+export type Committees_Aggregated_Count = {
+  readonly __typename?: 'committees_aggregated_count';
+  readonly date_created: Maybe<Scalars['Int']['output']>;
+  readonly date_updated: Maybe<Scalars['Int']['output']>;
+  readonly id: Maybe<Scalars['Int']['output']>;
+  readonly members: Maybe<Scalars['Int']['output']>;
+  readonly sort: Maybe<Scalars['Int']['output']>;
+  readonly status: Maybe<Scalars['Int']['output']>;
+  readonly title: Maybe<Scalars['Int']['output']>;
+};
+
+export type Committees_Aggregated_Fields = {
+  readonly __typename?: 'committees_aggregated_fields';
+  readonly id: Maybe<Scalars['Float']['output']>;
+  readonly sort: Maybe<Scalars['Float']['output']>;
+};
+
+export type Committees_Filter = {
+  readonly _and: InputMaybe<ReadonlyArray<InputMaybe<Committees_Filter>>>;
+  readonly _or: InputMaybe<ReadonlyArray<InputMaybe<Committees_Filter>>>;
+  readonly date_created: InputMaybe<Date_Filter_Operators>;
+  readonly date_created_func: InputMaybe<Datetime_Function_Filter_Operators>;
+  readonly date_updated: InputMaybe<Date_Filter_Operators>;
+  readonly date_updated_func: InputMaybe<Datetime_Function_Filter_Operators>;
+  readonly id: InputMaybe<Number_Filter_Operators>;
+  readonly members: InputMaybe<Hierarchy_Members_Quantifier_Filter>;
+  readonly members_func: InputMaybe<Count_Function_Filter_Operators>;
+  readonly sort: InputMaybe<Number_Filter_Operators>;
+  readonly status: InputMaybe<String_Filter_Operators>;
+  readonly title: InputMaybe<String_Filter_Operators>;
+};
+
+export type Committees_Mutated = {
+  readonly __typename?: 'committees_mutated';
+  readonly data: Maybe<Committees>;
+  readonly event: Maybe<EventEnum>;
+  readonly key: Scalars['ID']['output'];
 };
 
 export type Count_Function_Filter_Operators = {
@@ -736,6 +935,8 @@ export type Directus_Users = {
   readonly email_notifications: Maybe<Scalars['Boolean']['output']>;
   readonly external_identifier: Maybe<Scalars['String']['output']>;
   readonly first_name: Maybe<Scalars['String']['output']>;
+  readonly hierarchy_memberships: Maybe<ReadonlyArray<Maybe<Hierarchy_Members>>>;
+  readonly hierarchy_memberships_func: Maybe<Count_Functions>;
   readonly id: Scalars['ID']['output'];
   readonly language: Maybe<Scalars['String']['output']>;
   readonly last_access: Maybe<Scalars['Date']['output']>;
@@ -773,6 +974,16 @@ export type Directus_UsersAvatarArgs = {
   sort: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
 };
 
+
+export type Directus_UsersHierarchy_MembershipsArgs = {
+  filter: InputMaybe<Hierarchy_Members_Filter>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  page: InputMaybe<Scalars['Int']['input']>;
+  search: InputMaybe<Scalars['String']['input']>;
+  sort: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
+};
+
 export type Directus_Users_Filter = {
   readonly _and: InputMaybe<ReadonlyArray<InputMaybe<Directus_Users_Filter>>>;
   readonly _or: InputMaybe<ReadonlyArray<InputMaybe<Directus_Users_Filter>>>;
@@ -785,6 +996,8 @@ export type Directus_Users_Filter = {
   readonly email_notifications: InputMaybe<Boolean_Filter_Operators>;
   readonly external_identifier: InputMaybe<String_Filter_Operators>;
   readonly first_name: InputMaybe<String_Filter_Operators>;
+  readonly hierarchy_memberships: InputMaybe<Hierarchy_Members_Quantifier_Filter>;
+  readonly hierarchy_memberships_func: InputMaybe<Count_Function_Filter_Operators>;
   readonly id: InputMaybe<Id_Filter_Operators>;
   readonly language: InputMaybe<String_Filter_Operators>;
   readonly last_access: InputMaybe<Date_Filter_Operators>;
@@ -1149,11 +1362,175 @@ export type Documents_Mutated = {
   readonly key: Scalars['ID']['output'];
 };
 
+export type Expert_Advice = {
+  readonly __typename?: 'expert_advice';
+  readonly id: Scalars['ID']['output'];
+  readonly members: Maybe<ReadonlyArray<Maybe<Hierarchy_Members>>>;
+  readonly members_func: Maybe<Count_Functions>;
+};
+
+
+export type Expert_AdviceMembersArgs = {
+  filter: InputMaybe<Hierarchy_Members_Filter>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  page: InputMaybe<Scalars['Int']['input']>;
+  search: InputMaybe<Scalars['String']['input']>;
+  sort: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type Expert_Advice_Filter = {
+  readonly _and: InputMaybe<ReadonlyArray<InputMaybe<Expert_Advice_Filter>>>;
+  readonly _or: InputMaybe<ReadonlyArray<InputMaybe<Expert_Advice_Filter>>>;
+  readonly id: InputMaybe<Number_Filter_Operators>;
+  readonly members: InputMaybe<Hierarchy_Members_Quantifier_Filter>;
+  readonly members_func: InputMaybe<Count_Function_Filter_Operators>;
+};
+
+export type Expert_Advice_Mutated = {
+  readonly __typename?: 'expert_advice_mutated';
+  readonly data: Maybe<Expert_Advice>;
+  readonly event: Maybe<EventEnum>;
+  readonly key: Scalars['ID']['output'];
+};
+
 export type Hash_Filter_Operators = {
   readonly _empty: InputMaybe<Scalars['Boolean']['input']>;
   readonly _nempty: InputMaybe<Scalars['Boolean']['input']>;
   readonly _nnull: InputMaybe<Scalars['Boolean']['input']>;
   readonly _null: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type Hierarchy_Members = {
+  readonly __typename?: 'hierarchy_members';
+  readonly committee: Maybe<Committees>;
+  readonly date_created: Maybe<Scalars['Date']['output']>;
+  readonly date_created_func: Maybe<Datetime_Functions>;
+  readonly date_updated: Maybe<Scalars['Date']['output']>;
+  readonly date_updated_func: Maybe<Datetime_Functions>;
+  readonly expert_advice: Maybe<Expert_Advice>;
+  readonly id: Scalars['ID']['output'];
+  readonly role: Maybe<Scalars['String']['output']>;
+  readonly sort: Maybe<Scalars['Int']['output']>;
+  readonly structure: Maybe<Structure>;
+  readonly user: Maybe<Directus_Users>;
+};
+
+
+export type Hierarchy_MembersCommitteeArgs = {
+  filter: InputMaybe<Committees_Filter>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  page: InputMaybe<Scalars['Int']['input']>;
+  search: InputMaybe<Scalars['String']['input']>;
+  sort: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type Hierarchy_MembersExpert_AdviceArgs = {
+  filter: InputMaybe<Expert_Advice_Filter>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  page: InputMaybe<Scalars['Int']['input']>;
+  search: InputMaybe<Scalars['String']['input']>;
+  sort: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type Hierarchy_MembersStructureArgs = {
+  filter: InputMaybe<Structure_Filter>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  page: InputMaybe<Scalars['Int']['input']>;
+  search: InputMaybe<Scalars['String']['input']>;
+  sort: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type Hierarchy_MembersUserArgs = {
+  filter: InputMaybe<Directus_Users_Filter>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  page: InputMaybe<Scalars['Int']['input']>;
+  search: InputMaybe<Scalars['String']['input']>;
+  sort: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type Hierarchy_Members_Aggregated = {
+  readonly __typename?: 'hierarchy_members_aggregated';
+  readonly avg: Maybe<Hierarchy_Members_Aggregated_Fields>;
+  readonly avgDistinct: Maybe<Hierarchy_Members_Aggregated_Fields>;
+  readonly count: Maybe<Hierarchy_Members_Aggregated_Count>;
+  readonly countAll: Maybe<Scalars['Int']['output']>;
+  readonly countDistinct: Maybe<Hierarchy_Members_Aggregated_Count>;
+  readonly group: Maybe<Scalars['JSON']['output']>;
+  readonly max: Maybe<Hierarchy_Members_Aggregated_Fields>;
+  readonly min: Maybe<Hierarchy_Members_Aggregated_Fields>;
+  readonly sum: Maybe<Hierarchy_Members_Aggregated_Fields>;
+  readonly sumDistinct: Maybe<Hierarchy_Members_Aggregated_Fields>;
+};
+
+export type Hierarchy_Members_Aggregated_Count = {
+  readonly __typename?: 'hierarchy_members_aggregated_count';
+  readonly committee: Maybe<Scalars['Int']['output']>;
+  readonly date_created: Maybe<Scalars['Int']['output']>;
+  readonly date_updated: Maybe<Scalars['Int']['output']>;
+  readonly expert_advice: Maybe<Scalars['Int']['output']>;
+  readonly id: Maybe<Scalars['Int']['output']>;
+  readonly role: Maybe<Scalars['Int']['output']>;
+  readonly sort: Maybe<Scalars['Int']['output']>;
+  readonly structure: Maybe<Scalars['Int']['output']>;
+  readonly user: Maybe<Scalars['Int']['output']>;
+};
+
+export type Hierarchy_Members_Aggregated_Fields = {
+  readonly __typename?: 'hierarchy_members_aggregated_fields';
+  readonly committee: Maybe<Scalars['Float']['output']>;
+  readonly expert_advice: Maybe<Scalars['Float']['output']>;
+  readonly id: Maybe<Scalars['Float']['output']>;
+  readonly sort: Maybe<Scalars['Float']['output']>;
+  readonly structure: Maybe<Scalars['Float']['output']>;
+};
+
+export type Hierarchy_Members_Filter = {
+  readonly _and: InputMaybe<ReadonlyArray<InputMaybe<Hierarchy_Members_Filter>>>;
+  readonly _or: InputMaybe<ReadonlyArray<InputMaybe<Hierarchy_Members_Filter>>>;
+  readonly committee: InputMaybe<Committees_Filter>;
+  readonly date_created: InputMaybe<Date_Filter_Operators>;
+  readonly date_created_func: InputMaybe<Datetime_Function_Filter_Operators>;
+  readonly date_updated: InputMaybe<Date_Filter_Operators>;
+  readonly date_updated_func: InputMaybe<Datetime_Function_Filter_Operators>;
+  readonly expert_advice: InputMaybe<Expert_Advice_Filter>;
+  readonly id: InputMaybe<Number_Filter_Operators>;
+  readonly role: InputMaybe<String_Filter_Operators>;
+  readonly sort: InputMaybe<Number_Filter_Operators>;
+  readonly structure: InputMaybe<Structure_Filter>;
+  readonly user: InputMaybe<Directus_Users_Filter>;
+};
+
+export type Hierarchy_Members_Mutated = {
+  readonly __typename?: 'hierarchy_members_mutated';
+  readonly data: Maybe<Hierarchy_Members>;
+  readonly event: Maybe<EventEnum>;
+  readonly key: Scalars['ID']['output'];
+};
+
+export type Hierarchy_Members_Quantifier_Filter = {
+  readonly _and: InputMaybe<ReadonlyArray<InputMaybe<Hierarchy_Members_Filter>>>;
+  readonly _none: InputMaybe<Hierarchy_Members_Filter>;
+  readonly _or: InputMaybe<ReadonlyArray<InputMaybe<Hierarchy_Members_Filter>>>;
+  readonly _some: InputMaybe<Hierarchy_Members_Filter>;
+  readonly committee: InputMaybe<Committees_Filter>;
+  readonly date_created: InputMaybe<Date_Filter_Operators>;
+  readonly date_created_func: InputMaybe<Datetime_Function_Filter_Operators>;
+  readonly date_updated: InputMaybe<Date_Filter_Operators>;
+  readonly date_updated_func: InputMaybe<Datetime_Function_Filter_Operators>;
+  readonly expert_advice: InputMaybe<Expert_Advice_Filter>;
+  readonly id: InputMaybe<Number_Filter_Operators>;
+  readonly role: InputMaybe<String_Filter_Operators>;
+  readonly sort: InputMaybe<Number_Filter_Operators>;
+  readonly structure: InputMaybe<Structure_Filter>;
+  readonly user: InputMaybe<Directus_Users_Filter>;
 };
 
 export type Home_Page = {
@@ -1644,11 +2021,57 @@ export type String_Filter_Operators = {
   readonly _starts_with: InputMaybe<Scalars['String']['input']>;
 };
 
+export type Structure = {
+  readonly __typename?: 'structure';
+  readonly id: Scalars['ID']['output'];
+  readonly members: Maybe<ReadonlyArray<Maybe<Hierarchy_Members>>>;
+  readonly members_func: Maybe<Count_Functions>;
+};
+
+
+export type StructureMembersArgs = {
+  filter: InputMaybe<Hierarchy_Members_Filter>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  page: InputMaybe<Scalars['Int']['input']>;
+  search: InputMaybe<Scalars['String']['input']>;
+  sort: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type Structure_Filter = {
+  readonly _and: InputMaybe<ReadonlyArray<InputMaybe<Structure_Filter>>>;
+  readonly _or: InputMaybe<ReadonlyArray<InputMaybe<Structure_Filter>>>;
+  readonly id: InputMaybe<Number_Filter_Operators>;
+  readonly members: InputMaybe<Hierarchy_Members_Quantifier_Filter>;
+  readonly members_func: InputMaybe<Count_Function_Filter_Operators>;
+};
+
+export type Structure_Mutated = {
+  readonly __typename?: 'structure_mutated';
+  readonly data: Maybe<Structure>;
+  readonly event: Maybe<EventEnum>;
+  readonly key: Scalars['ID']['output'];
+};
+
 export type Version_About = {
   readonly __typename?: 'version_about';
   readonly about: Maybe<Scalars['String']['output']>;
   readonly id: Scalars['ID']['output'];
   readonly img: Maybe<Scalars['JSON']['output']>;
+};
+
+export type Version_Committees = {
+  readonly __typename?: 'version_committees';
+  readonly date_created: Maybe<Scalars['Date']['output']>;
+  readonly date_created_func: Maybe<Datetime_Functions>;
+  readonly date_updated: Maybe<Scalars['Date']['output']>;
+  readonly date_updated_func: Maybe<Datetime_Functions>;
+  readonly id: Scalars['ID']['output'];
+  readonly members: Maybe<Scalars['JSON']['output']>;
+  readonly members_func: Maybe<Count_Functions>;
+  readonly sort: Maybe<Scalars['Int']['output']>;
+  readonly status: Maybe<Scalars['String']['output']>;
+  readonly title: Maybe<Scalars['String']['output']>;
 };
 
 export type Version_Document = {
@@ -1693,6 +2116,28 @@ export type Version_Documents_Files = {
   readonly directus_files_id: Maybe<Scalars['JSON']['output']>;
   readonly documents_id: Maybe<Scalars['JSON']['output']>;
   readonly id: Scalars['ID']['output'];
+};
+
+export type Version_Expert_Advice = {
+  readonly __typename?: 'version_expert_advice';
+  readonly id: Scalars['ID']['output'];
+  readonly members: Maybe<Scalars['JSON']['output']>;
+  readonly members_func: Maybe<Count_Functions>;
+};
+
+export type Version_Hierarchy_Members = {
+  readonly __typename?: 'version_hierarchy_members';
+  readonly committee: Maybe<Scalars['JSON']['output']>;
+  readonly date_created: Maybe<Scalars['Date']['output']>;
+  readonly date_created_func: Maybe<Datetime_Functions>;
+  readonly date_updated: Maybe<Scalars['Date']['output']>;
+  readonly date_updated_func: Maybe<Datetime_Functions>;
+  readonly expert_advice: Maybe<Scalars['JSON']['output']>;
+  readonly id: Scalars['ID']['output'];
+  readonly role: Maybe<Scalars['String']['output']>;
+  readonly sort: Maybe<Scalars['Int']['output']>;
+  readonly structure: Maybe<Scalars['JSON']['output']>;
+  readonly user: Maybe<Scalars['JSON']['output']>;
 };
 
 export type Version_Home_Page = {
@@ -1749,6 +2194,13 @@ export type Version_Representatives = {
   readonly position: Maybe<Scalars['String']['output']>;
   readonly region: Maybe<Scalars['JSON']['output']>;
   readonly sort: Maybe<Scalars['Int']['output']>;
+};
+
+export type Version_Structure = {
+  readonly __typename?: 'version_structure';
+  readonly id: Scalars['ID']['output'];
+  readonly members: Maybe<Scalars['JSON']['output']>;
+  readonly members_func: Maybe<Count_Functions>;
 };
 
 export type Version_Veterans = {
@@ -1859,6 +2311,22 @@ export type Veterans_Mutated = {
   readonly key: Scalars['ID']['output'];
 };
 
+export type GetCommitteeByIdQueryVariables = Exact<{
+  id: Scalars['ID']['input'];
+}>;
+
+
+export type GetCommitteeByIdQuery = { readonly __typename?: 'Query', readonly committees_by_id: { readonly __typename?: 'committees', readonly id: string, readonly title: string, readonly members: ReadonlyArray<{ readonly __typename?: 'hierarchy_members', readonly id: string, readonly role: string, readonly user: { readonly __typename?: 'directus_users', readonly id: string, readonly last_name: string, readonly email: string, readonly first_name: string, readonly hierarchy_memberships: ReadonlyArray<{ readonly __typename?: 'hierarchy_members', readonly id: string, readonly role: string, readonly committee: { readonly __typename?: 'committees', readonly id: string, readonly title: string, readonly members: ReadonlyArray<{ readonly __typename?: 'hierarchy_members', readonly id: string, readonly user: { readonly __typename?: 'directus_users', readonly first_name: string, readonly last_name: string } }> } }>, readonly avatar: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } } }> } };
+
+export type GetAllCommitteesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetAllCommitteesQuery = { readonly __typename?: 'Query', readonly committees: ReadonlyArray<{ readonly __typename?: 'committees', readonly id: string, readonly title: string, readonly members: ReadonlyArray<{ readonly __typename?: 'hierarchy_members', readonly id: string, readonly role: string, readonly user: { readonly __typename?: 'directus_users', readonly id: string, readonly last_name: string, readonly email: string, readonly first_name: string, readonly avatar: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } } }> }> };
+
+export type HierarchyMembersFragmentFragment = { readonly __typename?: 'hierarchy_members', readonly id: string, readonly role: string, readonly user: { readonly __typename?: 'directus_users', readonly id: string, readonly last_name: string, readonly email: string, readonly first_name: string, readonly avatar: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } } };
+
+export type HierarchyMembersByIdFragmentFragment = { readonly __typename?: 'hierarchy_members', readonly id: string, readonly role: string, readonly user: { readonly __typename?: 'directus_users', readonly id: string, readonly last_name: string, readonly email: string, readonly first_name: string, readonly hierarchy_memberships: ReadonlyArray<{ readonly __typename?: 'hierarchy_members', readonly id: string, readonly role: string, readonly committee: { readonly __typename?: 'committees', readonly id: string, readonly title: string, readonly members: ReadonlyArray<{ readonly __typename?: 'hierarchy_members', readonly id: string, readonly user: { readonly __typename?: 'directus_users', readonly first_name: string, readonly last_name: string } }> } }>, readonly avatar: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } } };
+
 export type MediaFragmentFragment = { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string };
 
 export type NewsFragmentFragment = { readonly __typename?: 'news', readonly id: string, readonly title: string, readonly description: string, readonly date_created: any, readonly date_updated: any, readonly region: { readonly __typename?: 'regions', readonly title: string, readonly id: string }, readonly preview: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } };
@@ -1866,6 +2334,8 @@ export type NewsFragmentFragment = { readonly __typename?: 'news', readonly id: 
 export type RegionFragmentFragment = { readonly __typename?: 'regions', readonly id: string, readonly title: string, readonly code: string };
 
 export type RepresentativesFragmentFragment = { readonly __typename?: 'representatives', readonly id: string, readonly fullName: string, readonly position: string, readonly photo: { readonly __typename?: 'directus_files', readonly id: string }, readonly region: { readonly __typename?: 'regions', readonly id: string, readonly title: string, readonly code: string } };
+
+export type UserFragmentFragment = { readonly __typename?: 'directus_users', readonly id: string, readonly last_name: string, readonly email: string, readonly first_name: string, readonly avatar: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } };
 
 export type VeteransFragmentFragment = { readonly __typename?: 'veterans', readonly id: string, readonly last_name: string, readonly first_name: string, readonly middle_name: string, readonly birth_date: string, readonly birth_place: string, readonly description: string, readonly photo: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } };
 
@@ -1901,10 +2371,20 @@ export type GetDocumentsPageQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GetDocumentsPageQuery = { readonly __typename?: 'Query', readonly documents: { readonly __typename?: 'documents', readonly items: ReadonlyArray<{ readonly __typename?: 'documents_document', readonly document_id: { readonly __typename?: 'document', readonly title: string, readonly date_created: any, readonly file: { readonly __typename?: 'directus_files', readonly type: string, readonly title: string, readonly id: string } } }> } };
 
+export type GetExpertAdvicePageQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetExpertAdvicePageQuery = { readonly __typename?: 'Query', readonly expert_advice: { readonly __typename?: 'expert_advice', readonly members: ReadonlyArray<{ readonly __typename?: 'hierarchy_members', readonly id: string, readonly role: string, readonly user: { readonly __typename?: 'directus_users', readonly id: string, readonly last_name: string, readonly email: string, readonly first_name: string, readonly hierarchy_memberships: ReadonlyArray<{ readonly __typename?: 'hierarchy_members', readonly id: string, readonly role: string, readonly committee: { readonly __typename?: 'committees', readonly id: string, readonly title: string, readonly members: ReadonlyArray<{ readonly __typename?: 'hierarchy_members', readonly id: string, readonly user: { readonly __typename?: 'directus_users', readonly first_name: string, readonly last_name: string } }> } }>, readonly avatar: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } } }> } };
+
 export type GetHomePageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetHomePageQuery = { readonly __typename?: 'Query', readonly home_page: { readonly __typename?: 'home_page', readonly popular_news: ReadonlyArray<{ readonly __typename?: 'home_page_news', readonly id: string, readonly news_id: { readonly __typename?: 'news', readonly id: string, readonly title: string, readonly description: string, readonly date_created: any, readonly date_updated: any, readonly region: { readonly __typename?: 'regions', readonly title: string, readonly id: string }, readonly preview: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } } }> } };
+
+export type GetStructurePageQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetStructurePageQuery = { readonly __typename?: 'Query', readonly structure: { readonly __typename?: 'structure', readonly members: ReadonlyArray<{ readonly __typename?: 'hierarchy_members', readonly id: string, readonly role: string, readonly user: { readonly __typename?: 'directus_users', readonly id: string, readonly last_name: string, readonly email: string, readonly first_name: string, readonly hierarchy_memberships: ReadonlyArray<{ readonly __typename?: 'hierarchy_members', readonly id: string, readonly role: string, readonly committee: { readonly __typename?: 'committees', readonly id: string, readonly title: string, readonly members: ReadonlyArray<{ readonly __typename?: 'hierarchy_members', readonly id: string, readonly user: { readonly __typename?: 'directus_users', readonly first_name: string, readonly last_name: string } }> } }>, readonly avatar: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } } }> } };
 
 export type GetVeteransPageQueryVariables = Exact<{
   page: InputMaybe<Scalars['Int']['input']>;
@@ -1948,6 +2428,50 @@ export const MediaFragmentFragmentDoc = gql`
   type
 }
     `;
+export const UserFragmentFragmentDoc = gql`
+    fragment UserFragment on directus_users {
+  id
+  last_name
+  email
+  avatar {
+    ...MediaFragment
+  }
+  first_name
+}
+    ${MediaFragmentFragmentDoc}`;
+export const HierarchyMembersFragmentFragmentDoc = gql`
+    fragment HierarchyMembersFragment on hierarchy_members {
+  id
+  role
+  user {
+    ...UserFragment
+  }
+}
+    ${UserFragmentFragmentDoc}`;
+export const HierarchyMembersByIdFragmentFragmentDoc = gql`
+    fragment HierarchyMembersByIdFragment on hierarchy_members {
+  id
+  role
+  user {
+    ...UserFragment
+    hierarchy_memberships(filter: {committee: {id: {_nnull: true}}}) {
+      id
+      role
+      committee {
+        id
+        title
+        members(filter: {role: {_eq: "chairman"}}, limit: 1) {
+          id
+          user {
+            first_name
+            last_name
+          }
+        }
+      }
+    }
+  }
+}
+    ${UserFragmentFragmentDoc}`;
 export const NewsFragmentFragmentDoc = gql`
     fragment NewsFragment on news {
   id
@@ -1998,6 +2522,28 @@ export const VeteransFragmentFragmentDoc = gql`
   }
 }
     ${MediaFragmentFragmentDoc}`;
+export const GetCommitteeByIdDocument = gql`
+    query GetCommitteeById($id: ID!) {
+  committees_by_id(id: $id) {
+    id
+    title
+    members(sort: ["sort"]) {
+      ...HierarchyMembersByIdFragment
+    }
+  }
+}
+    ${HierarchyMembersByIdFragmentFragmentDoc}`;
+export const GetAllCommitteesDocument = gql`
+    query GetAllCommittees {
+  committees(filter: {status: {_eq: "published"}}, sort: ["sort"]) {
+    id
+    title
+    members(limit: 1, filter: {role: {_eq: "chairman"}}, sort: ["sort"]) {
+      ...HierarchyMembersFragment
+    }
+  }
+}
+    ${HierarchyMembersFragmentFragmentDoc}`;
 export const GetAllNewsDocument = gql`
     query GetAllNews($page: Int, $limit: Int) {
   news(page: $page, limit: $limit, sort: ["-date_created"]) {
@@ -2061,6 +2607,15 @@ export const GetDocumentsPageDocument = gql`
   }
 }
     `;
+export const GetExpertAdvicePageDocument = gql`
+    query GetExpertAdvicePage {
+  expert_advice {
+    members(sort: ["sort"]) {
+      ...HierarchyMembersByIdFragment
+    }
+  }
+}
+    ${HierarchyMembersByIdFragmentFragmentDoc}`;
 export const GetHomePageDocument = gql`
     query GetHomePage {
   home_page {
@@ -2073,6 +2628,15 @@ export const GetHomePageDocument = gql`
   }
 }
     ${NewsFragmentFragmentDoc}`;
+export const GetStructurePageDocument = gql`
+    query GetStructurePage {
+  structure {
+    members(sort: ["sort"]) {
+      ...HierarchyMembersByIdFragment
+    }
+  }
+}
+    ${HierarchyMembersByIdFragmentFragmentDoc}`;
 export const GetVeteransPageDocument = gql`
     query GetVeteransPage($page: Int, $limit: Int) {
   veterans(
@@ -2138,6 +2702,12 @@ const defaultWrapper: SdkFunctionWrapper = (action, _operationName, _operationTy
 
 export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
   return {
+    GetCommitteeById(variables: GetCommitteeByIdQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<GetCommitteeByIdQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<GetCommitteeByIdQuery>({ document: GetCommitteeByIdDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'GetCommitteeById', 'query', variables);
+    },
+    GetAllCommittees(variables?: GetAllCommitteesQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<GetAllCommitteesQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<GetAllCommitteesQuery>({ document: GetAllCommitteesDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'GetAllCommittees', 'query', variables);
+    },
     GetAllNews(variables?: GetAllNewsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<GetAllNewsQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetAllNewsQuery>({ document: GetAllNewsDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'GetAllNews', 'query', variables);
     },
@@ -2153,8 +2723,14 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     GetDocumentsPage(variables?: GetDocumentsPageQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<GetDocumentsPageQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetDocumentsPageQuery>({ document: GetDocumentsPageDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'GetDocumentsPage', 'query', variables);
     },
+    GetExpertAdvicePage(variables?: GetExpertAdvicePageQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<GetExpertAdvicePageQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<GetExpertAdvicePageQuery>({ document: GetExpertAdvicePageDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'GetExpertAdvicePage', 'query', variables);
+    },
     GetHomePage(variables?: GetHomePageQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<GetHomePageQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetHomePageQuery>({ document: GetHomePageDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'GetHomePage', 'query', variables);
+    },
+    GetStructurePage(variables?: GetStructurePageQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<GetStructurePageQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<GetStructurePageQuery>({ document: GetStructurePageDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'GetStructurePage', 'query', variables);
     },
     GetVeteransPage(variables?: GetVeteransPageQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<GetVeteransPageQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetVeteransPageQuery>({ document: GetVeteransPageDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'GetVeteransPage', 'query', variables);

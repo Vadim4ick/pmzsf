@@ -1,0 +1,19 @@
+query GetCommitteeById($id: ID!) {
+  committees_by_id(id: $id) {
+    id
+    title
+    members(sort: ["sort"]) {
+      ...HierarchyMembersByIdFragment
+    }
+  }
+}
+
+query GetAllCommittees {
+  committees(filter: { status: { _eq: "published" } }, sort: ["sort"]) {
+    id
+    title
+    members(limit: 1, filter: { role: { _eq: "chairman" } }, sort: ["sort"]) {
+      ...HierarchyMembersFragment
+    }
+  }
+}
