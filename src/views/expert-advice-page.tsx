@@ -1,3 +1,5 @@
+"use client";
+
 import { DeputatCard } from "@/components/deputat-card/deputat-card";
 import { SearchInput } from "@/components/search-inp";
 import { GetExpertAdvicePageQuery } from "@/shared/graphql/__generated__";

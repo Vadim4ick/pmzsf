@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import { lato, trola } from "@/shared/assets/fonts";
-import { Footer } from "@/components/footer";
 import { Providers } from "@/shared/providers/providers";
 
 import "@/shared/assets/css/globals.css";
 import "@/shared/assets/css/typography.css";
+import { Header } from "@/components/header";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -46,9 +46,8 @@ export default function RootLayout({
 
       <body className="flex min-h-full flex-col">
         <Providers>
+          <Header />
           {children}
-
-          <Footer />
         </Providers>
       </body>
     </html>

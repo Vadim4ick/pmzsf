@@ -15,3 +15,6 @@ export const getRouteChamberMembers = () => "/chamber-members";
 export const getRouteCommittees = () => "/committees";
 export const getRouteCommitteesById = (id: string = ":id") =>
   `${getRouteCommittees()}/${id}`;
+
+// Private routes
+export const getRouteProfile = () => "/profile";

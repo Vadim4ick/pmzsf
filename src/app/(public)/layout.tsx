@@ -1,6 +1,6 @@
 "use client";
 
-import { Header } from "@/components/header";
+import { Footer } from "@/components/footer/ui/Footer";
 import { VisionPanel } from "@/components/vision-panel";
 import { PADDING_PUBLIC_ROUTES } from "@/shared/const/constants.const";
 import {
@@ -26,8 +26,6 @@ export default function PublicLayout({
     <>
       <VisionPanel />
 
-      <Header />
-
       <main
         className={cn(
           "max-mobile:pb-12 z-3 grow pb-22",
@@ -36,6 +34,8 @@ export default function PublicLayout({
       >
         {children}
       </main>
+
+      <Footer />
     </>
   );
 }

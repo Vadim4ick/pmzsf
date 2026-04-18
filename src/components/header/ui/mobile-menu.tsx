@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/shared/lib/utils";
-import { navbar } from "../model/nav.const";
+import { navbar, privateNavbar } from "../model/nav.const";
 import { Typography } from "@/shared/ui/typography";
 import { Tg } from "@/shared/icons/seti/tg";
 import { Vk } from "@/shared/icons/seti/vk";
@@ -11,6 +11,7 @@ import { TG_LINK, VK_LINK } from "@/shared/const/company.const";
 import { Container } from "@/shared/ui/container";
 import { SignInBtn } from "./sign-in-btn";
 import { Overlay } from "@/shared/ui/overlay";
+import { useAuth } from "@/shared/hooks/useAuth";
 
 interface MobileMenuProps {
   open: boolean;
@@ -19,6 +20,10 @@ interface MobileMenuProps {
 }
 
 const MobileMenu = ({ open, onClose, offsetTop }: MobileMenuProps) => {
+  const isAuth = useAuth();
+
+  const nav = isAuth ? privateNavbar : navbar;
+
   return (
     <>
       <Overlay
@@ -47,7 +52,7 @@ const MobileMenu = ({ open, onClose, offsetTop }: MobileMenuProps) => {
           {/* Навигация */}
           <nav className="mb-4">
             <ul className="divide-border-secondary flex flex-col divide-y">
-              {navbar.map((item, index) => (
+              {nav.map((item, index) => (
                 <li key={index}>
                   <Link
                     href={item.href}
@@ -61,6 +66,7 @@ const MobileMenu = ({ open, onClose, offsetTop }: MobileMenuProps) => {
                     >
                       {item.title}
                     </Typography>
+
                     <svg
                       className="group-hover:text-text-accent text-[#5a5a5a] transition-all group-hover:translate-x-0.5"
                       width="16"
@@ -82,26 +88,33 @@ const MobileMenu = ({ open, onClose, offsetTop }: MobileMenuProps) => {
             </ul>
           </nav>
 
-          <SignInBtn onClick={onClose} className="mb-5 w-full justify-center" />
+          {!isAuth && (
+            <SignInBtn
+              onClick={onClose}
+              className="mb-5 w-full justify-center"
+            />
+          )}
 
           {/* Нижняя панель */}
           <div className="border-border-secondary flex items-center justify-between gap-4 border-t pt-4 pb-2">
             <ThemeSwitcher />
 
-            <div className="flex items-center gap-2">
-              <Link
-                href={TG_LINK}
-                className="border-border-neutral hover:border-text-accent flex size-8 items-center justify-center rounded-full border-2 transition-colors"
-              >
-                <Tg />
-              </Link>
-              <Link
-                href={VK_LINK}
-                className="border-border-neutral hover:border-text-accent flex size-8 items-center justify-center rounded-full border-2 transition-colors"
-              >
-                <Vk />
-              </Link>
-            </div>
+            {!isAuth && (
+              <div className="flex items-center gap-2">
+                <Link
+                  href={TG_LINK}
+                  className="border-border-neutral hover:border-text-accent flex size-8 items-center justify-center rounded-full border-2 transition-colors"
+                >
+                  <Tg />
+                </Link>
+                <Link
+                  href={VK_LINK}
+                  className="border-border-neutral hover:border-text-accent flex size-8 items-center justify-center rounded-full border-2 transition-colors"
+                >
+                  <Vk />
+                </Link>
+              </div>
+            )}
           </div>
         </Container>
       </div>
