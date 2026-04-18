@@ -48,9 +48,9 @@ const CommitteesItemPage = ({
               {members.map((member) => (
                 <article
                   key={member.id}
-                  className="bg-background-primary max-mobile:flex-col flex items-center gap-8 rounded-[8px] p-4"
+                  className="bg-background-primary max-mobile:flex-col flex items-center gap-8 rounded-[12px] p-4"
                 >
-                  <div className="max-mobile:w-full max-mobile:h-[300px] relative size-[112px] shrink-0 overflow-hidden rounded-[4px]">
+                  <div className="max-mobile:w-full max-mobile:h-[300px] relative size-[112px] shrink-0 overflow-hidden rounded-[6px]">
                     <Image
                       src={pathImage(member.user.avatar?.id)}
                       alt={member.user.first_name}

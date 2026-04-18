@@ -12,7 +12,7 @@ const CommitteesCard = ({
     <Link
       key={item.id}
       href={getRouteCommitteesById(`${item.id}`)}
-      className="bg-background-primary group flex min-h-[266px] flex-col justify-between gap-4 rounded-[8px] p-6 transition-shadow duration-300 hover:shadow-lg md:p-8"
+      className="bg-background-primary group flex min-h-[266px] flex-col justify-between gap-4 rounded-[12px] p-6 transition-shadow duration-300 hover:shadow-lg md:p-8"
     >
       <Typography
         variant="header-m-caps"

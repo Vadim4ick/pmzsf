@@ -1,10 +1,9 @@
 import { DeputatCard } from "@/components/deputat-card/deputat-card";
+import { SearchInput } from "@/components/search-inp";
 import { GetExpertAdvicePageQuery } from "@/shared/graphql/__generated__";
-import { Search } from "@/shared/icons/search";
 import { getPlainMembers, groupHierarchyMembers } from "@/shared/lib/hierarchy";
 import { pathImage } from "@/shared/lib/utils";
 import { Container } from "@/shared/ui/container";
-import { Input } from "@/shared/ui/input";
 import { Typography } from "@/shared/ui/typography";
 import Image from "next/image";
 
@@ -24,14 +23,11 @@ const ExpertAdvicePage = ({
             Экспертный совет
           </Typography>
 
-          <div className="relative w-full">
-            <Input
-              placeholder="Введите Фалимию члена совета"
-              className="bg-background-primary max-mobile:text-[16px] max-mobile:leading-6 max-mobile:h-[50px] h-[76px] w-full text-[24px] leading-7"
-            />
-
-            <Search className="absolute top-1/2 right-4 size-5 -translate-y-1/2" />
-          </div>
+          <SearchInput
+            placeholder="Введите Фалимию члена совета"
+            onChange={() => {}}
+            value=""
+          />
         </div>
 
         <div className="flex flex-col gap-16 pt-10">

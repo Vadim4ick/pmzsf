@@ -56,7 +56,7 @@ const DocumentsPage = ({
                     document.document_id.title,
                   )
                 }
-                className="bg-background-primary group flex cursor-pointer items-center gap-2.5 rounded-[8px] p-4 transition-all hover:shadow-xl"
+                className="bg-background-primary group flex cursor-pointer items-center gap-2.5 rounded-[12px] p-4 transition-all hover:shadow-xl"
               >
                 <Pdf className="group-hover:text-text-accent-hover transition-all" />
                 <div className="flex flex-col gap-1">

@@ -11,7 +11,7 @@ const MediaTabPhoto = memo(() => {
           key={idx}
           className="border-border-secondary flex flex-col gap-4 border-b pb-5"
         >
-          <div className="relative h-[240px] overflow-hidden rounded-[8px]">
+          <div className="relative h-[240px] overflow-hidden rounded-[12px]">
             <Image src={item.src} alt="news" fill />
           </div>
 

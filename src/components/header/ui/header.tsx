@@ -17,9 +17,11 @@ import { useVisionStore } from "@/store/vision.store";
 import { getRouteHome } from "@/shared/const/route.const";
 import { SignInBtn } from "./sign-in-btn";
 import { Typography } from "@/shared/ui/typography";
+import { SearchModal } from "./search-modal";
 
 const Header = memo(() => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
 
   const { active, toggle } = useVisionStore();
 
@@ -92,7 +94,10 @@ const Header = memo(() => {
 
             {/* <ThemeSwitcher /> */}
 
-            <button className="text-icon-primary hover:text-text-primary cursor-pointer transition-colors">
+            <button
+              onClick={() => setSearchOpen(true)}
+              className="text-icon-primary hover:text-text-primary cursor-pointer transition-colors"
+            >
               <Search />
             </button>
           </div>
@@ -120,6 +125,7 @@ const Header = memo(() => {
         {/* Фиксированная панель с бургером и поиском */}
         <div className="fixed top-0 right-0 z-50 flex items-center gap-1 p-2">
           <button
+            onClick={() => setSearchOpen(true)}
             aria-label="Поиск"
             className="text-text-primary bg-background-default/80 hover:bg-background-secondary flex size-10 cursor-pointer items-center justify-center rounded-full backdrop-blur-sm transition-colors"
           >
@@ -160,6 +166,8 @@ const Header = memo(() => {
         onClose={() => setMenuOpen(false)}
         offsetTop={56}
       />
+
+      <SearchModal open={searchOpen} onClose={() => setSearchOpen(false)} />
     </>
   );
 });

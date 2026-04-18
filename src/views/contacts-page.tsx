@@ -9,15 +9,11 @@ const ContactsPage = () => {
   return (
     <section>
       <Container>
-        <Typography
-          className="border-border-secondary border-b pb-8"
-          variant="header-xxl"
-          tag="h1"
-        >
+        <Typography className="pb-8" variant="header-xxl" tag="h1">
           Контакты
         </Typography>
 
-        <div className="max-desktop:grid-cols-2 max-mobile:grid-cols-1 max-mobile:pt-8 grid grid-cols-[1.3fr_0.8fr_0.7fr_0.55fr] gap-8 pt-10">
+        <div className="max-desktop:grid-cols-2 bg-background-primary max-mobile:grid-cols-1 max-mobile:pt-8 grid grid-cols-[1.3fr_0.8fr_0.7fr_0.55fr] gap-8 pt-10">
           <div className="mobile:border-border-secondary mobile:border-r mobile:pr-8 flex flex-col gap-4">
             <Typography variant="body-serif" tag="p">
               Адрес

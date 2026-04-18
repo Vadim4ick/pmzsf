@@ -1,8 +1,8 @@
 import { MemberItem } from "@/components/member-item";
+import { SearchInput } from "@/components/search-inp";
 import {
   CHAMBER_MEMBERS,
   ChamberMembersFilter,
-  ChamberMembersSearch,
 } from "@/modules/chamber-members-page";
 import { PADDING_PUBLIC_ROUTES } from "@/shared/const/constants.const";
 import { cn } from "@/shared/lib/utils";
@@ -30,7 +30,11 @@ const ChamberMembersPage = () => {
           </Typography>
         </div>
 
-        <ChamberMembersSearch />
+        <SearchInput
+          placeholder="Введите Фалимию члена палаты"
+          onChange={() => {}}
+          value=""
+        />
 
         <div className="flex flex-col gap-14">
           {CHAMBER_MEMBERS.map((group) => (

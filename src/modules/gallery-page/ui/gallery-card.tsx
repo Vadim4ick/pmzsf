@@ -25,7 +25,7 @@ const GalleryCard = ({ item }: { item: VeteransFragmentFragment }) => {
           {getFullNameVeteran(item)}
         </Typography>
 
-        <div className="max-mobile:flex-col flex gap-8">
+        <div className="flex flex-col gap-4">
           {item.birth_date && (
             <div className="flex flex-col gap-2">
               <Typography

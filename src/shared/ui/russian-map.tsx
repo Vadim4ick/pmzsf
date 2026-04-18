@@ -75,7 +75,7 @@ export const RussianMap = memo(
         };
       }
       return {
-        fill: "var(--background-default-tertiary-hover)",
+        fill: "var(--background-primary-inverse)",
         stroke: "#ffffff",
         strokeWidth: "0.5",
         cursor: "pointer",
@@ -635,7 +635,7 @@ export const RussianMap = memo(
         {/* Тултип */}
         {tooltip && (
           <div
-            className="bg-background-default-default text-text-primary border-border-secondary pointer-events-none absolute z-50 -translate-x-1/2 -translate-y-full rounded-[8px] border px-3 py-1.5 shadow-md"
+            className="bg-background-default-default text-text-primary border-border-secondary pointer-events-none absolute z-50 -translate-x-1/2 -translate-y-full rounded-[12px] border px-3 py-1.5 shadow-md"
             style={{
               left: tooltip.x,
               top: tooltip.y - 8, // 8px выше курсора

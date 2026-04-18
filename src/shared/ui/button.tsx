@@ -9,9 +9,9 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: [
-          "bg-background-secondary text-text-primary",
-          "hover:bg-text-accent-hover hover:text-text-primary-on-color",
-          "active:bg-background-accent-active",
+          "bg-background-tertiary text-text-subtle",
+          "hover:bg-background-secondary hover:text-text-primary",
+          "active:bg-background-secondary-hover",
         ],
         secondary: [
           "bg-background-accent text-text-primary-on-color",
