@@ -2,7 +2,6 @@
 
 import { ArrowRight } from "@/shared/icons/arrow-right";
 import { Exit } from "@/shared/icons/exit";
-import { Pencil } from "@/shared/icons/pencil";
 import { Tg } from "@/shared/icons/seti/tg";
 import { Vk } from "@/shared/icons/seti/vk";
 import { Global } from "@/shared/icons/seti/global";
@@ -10,7 +9,6 @@ import { cn } from "@/shared/lib/utils";
 import { Button } from "@/shared/ui/button";
 import { Container } from "@/shared/ui/container";
 import { Typography } from "@/shared/ui/typography";
-import Image from "next/image";
 import { Mail } from "@/shared/icons/seti/mail";
 import { Phone } from "@/shared/icons/seti/phone";
 import { useState } from "react";
@@ -21,6 +19,7 @@ import {
   SheetTitle,
 } from "@/shared/ui/sheet";
 import { Input } from "@/shared/ui/input";
+import { AvatarUploader } from "@/components/avatar-uploader";
 
 // ── Типы ──────────────────────────────────────────────
 interface ProfileData {
@@ -124,21 +123,12 @@ const ProfilePage = () => {
             {/* Карточка профиля */}
             <div className="bg-background-primary max-mobile:flex-col max-mobile:items-start max-mobile:gap-4 max-mobile:p-4 flex flex-1 items-center gap-6 rounded-[12px] p-6">
               {/* Аватар */}
-              <div className="max-mobile:size-[100px] relative size-[136px] shrink-0 overflow-hidden rounded-[6px]">
-                <Image
-                  src={profile.avatarUrl}
-                  alt={profile.fullName}
-                  fill
-                  className="object-cover"
-                />
-
-                <button
-                  className="bg-background-primary absolute right-2 bottom-2 flex size-8 cursor-pointer items-center justify-center rounded-full"
-                  aria-label="Редактировать фото"
-                >
-                  <Pencil className="h-4 w-4" />
-                </button>
-              </div>
+              <AvatarUploader
+                url={profile.avatarUrl}
+                onUpload={() => {
+                  // загрузка на сервер / formData.append(...)
+                }}
+              />
 
               {/* Информация */}
               <div className="flex w-full flex-col gap-1">

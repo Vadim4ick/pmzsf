@@ -7,6 +7,7 @@ import {
   getRouteMedia,
   getRouteNews,
   getRouteProfile,
+  getRouteSettings,
   getRouteStructure,
 } from "@/shared/const/route.const";
 import { InitiativesIcon } from "@/shared/icons/menu/initiatives-icon";
@@ -65,7 +66,7 @@ export const privateNavbar: NavItem[] = [
   },
   {
     title: "Настройки профиля",
-    href: "#",
+    href: getRouteSettings(),
     icon: SettingsIcon,
   },
   {

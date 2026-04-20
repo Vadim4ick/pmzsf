@@ -18,3 +18,4 @@ export const getRouteCommitteesById = (id: string = ":id") =>
 
 // Private routes
 export const getRouteProfile = () => "/profile";
+export const getRouteSettings = () => "/settings";
