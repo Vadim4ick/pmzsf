@@ -61,7 +61,8 @@ const CommitteesItemPage = ({
 
                   <div className="flex flex-col gap-1">
                     <Typography variant="header-s" tag="h3">
-                      {member.user.first_name} {member.user.last_name}
+                      {member.user.first_name} {member.user.last_name}{" "}
+                      {member.user?.surname}
                     </Typography>
 
                     <Typography variant="subtitle-serif-s" tag="span">

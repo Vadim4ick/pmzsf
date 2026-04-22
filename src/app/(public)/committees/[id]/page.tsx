@@ -23,7 +23,7 @@ export async function generateMetadata({
   };
 }
 
-export const revalidate = 60;
+export const revalidate = 0;
 
 const CommitteesItem = async (props: { params: { id: string } }) => {
   const { id } = await props.params;

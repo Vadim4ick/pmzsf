@@ -65,7 +65,8 @@ const ExpertAdvicePage = ({
 
                   <div className="flex flex-col gap-2">
                     <Typography variant="header-s" tag="p">
-                      {item.user.first_name} {item.user.last_name}
+                      {item.user.first_name} {item.user.last_name}{" "}
+                      {item.user?.surname}
                     </Typography>
 
                     <Typography

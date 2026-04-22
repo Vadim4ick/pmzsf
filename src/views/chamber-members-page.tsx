@@ -9,7 +9,10 @@ import { Typography } from "@/shared/ui/typography";
 import { ChamberMember } from "@/shared/services/get-chamber-members";
 
 function getFullName(member: ChamberMember) {
-  return [member.last_name, member.first_name].filter(Boolean).join(" ").trim();
+  return [member.last_name, member.first_name, member?.surname]
+    .filter(Boolean)
+    .join(" ")
+    .trim();
 }
 
 function groupMembersByLetter(members: ChamberMember[]) {

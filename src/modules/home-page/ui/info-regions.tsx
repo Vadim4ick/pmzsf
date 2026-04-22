@@ -51,7 +51,7 @@ const InfoRegions = memo(
                         </div>
                         <div className="flex flex-col gap-1">
                           <Typography variant="header-s" tag="h3">
-                            {rep.first_name} {rep.last_name}
+                            {rep.first_name} {rep.last_name} {rep.surname}
                           </Typography>
                           {rep.title && (
                             <Typography

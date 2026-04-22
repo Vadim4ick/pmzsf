@@ -23,7 +23,7 @@ export async function generateMetadata({
   };
 }
 
-export const revalidate = 60;
+export const revalidate = 0;
 
 const Biography = async (props: { params: { slug: string } }) => {
   const { slug } = await props.params;

@@ -10,6 +10,7 @@ export type ChamberMember = {
   id: string | number;
   first_name: string | null;
   last_name: string | null;
+  surname: string | null;
   email: string | null;
   title: string | null;
   member: boolean;
@@ -27,6 +28,7 @@ const MEMBERS_FIELDS = [
   "id",
   "first_name",
   "last_name",
+  "surname",
   "email",
   "title",
   "member",
@@ -88,6 +90,7 @@ export type Representative = {
   id: string | number;
   first_name: string | null;
   last_name: string | null;
+  surname: string | null;
   email: string | null;
   title: string | null;
   member: boolean;
@@ -106,6 +109,7 @@ const REPRESENTATIVES_FIELDS = [
   "id",
   "first_name",
   "last_name",
+  "surname",
   "email",
   "member",
   "title",

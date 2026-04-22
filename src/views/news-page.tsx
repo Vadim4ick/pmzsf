@@ -13,7 +13,8 @@ export const NewsPage = ({ news, currentPage, totalPages }: NewsPageProps) => {
   return (
     <>
       <section className="pb-16 md:pb-24">
-        <Container className="flex flex-col gap-10 xl:grid xl:grid-cols-[1fr_296px]">
+        {/* xl:grid-cols-[1fr_296px] */}
+        <Container className="flex flex-col gap-10 xl:grid">
           <AllNews
             news={news}
             currentPage={currentPage}

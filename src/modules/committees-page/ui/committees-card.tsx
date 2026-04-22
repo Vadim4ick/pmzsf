@@ -25,7 +25,8 @@ const CommitteesCard = ({
       {item.members[0] && (
         <div className="flex flex-col gap-1.5">
           <Typography variant="body-m-strong" tag="p">
-            {item.members[0].user.first_name} {item.members[0].user.last_name}
+            {item.members[0].user.first_name} {item.members[0].user.last_name}{" "}
+            {item.members[0].user?.surname}
           </Typography>
 
           <Typography

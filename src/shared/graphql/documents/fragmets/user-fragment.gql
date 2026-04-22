@@ -1,6 +1,10 @@
 fragment UserFragment on directus_users {
   id
   last_name
+  surname
+  start_deadline
+  end_deadline
+  date_of_appointment
   email
   avatar {
     ...MediaFragment
