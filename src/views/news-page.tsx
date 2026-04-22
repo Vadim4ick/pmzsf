@@ -1,5 +1,5 @@
 import { AllNews, NewsSubscription } from "@/modules/news-page";
-import { NewsSidebar } from "@/modules/news-page/ui/news-sidebar";
+// import { NewsSidebar } from "@/modules/news-page/ui/news-sidebar";
 import { GetAllNewsQuery } from "@/shared/graphql/client";
 import { Container } from "@/shared/ui/container";
 
@@ -19,7 +19,7 @@ export const NewsPage = ({ news, currentPage, totalPages }: NewsPageProps) => {
             currentPage={currentPage}
             totalPages={totalPages}
           />
-          <NewsSidebar />
+          {/* <NewsSidebar /> */}
         </Container>
       </section>
       <NewsSubscription />

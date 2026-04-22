@@ -32,7 +32,7 @@ const DocumentsPage = ({
         </Typography>
 
         <div className="flex flex-col gap-2.5">
-          {documents.items.length === 0 ? (
+          {!documents?.items || documents.items.length === 0 ? (
             <div className="flex flex-col items-center gap-3 py-16 text-center">
               <Pdf className="text-text-disabled size-12" />
               <Typography variant="subtitle-serif-l" tag="p">
