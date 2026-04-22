@@ -35,14 +35,14 @@ const InfoRegions = memo(
 
                 {isLoadingRepresentatives ? (
                   <RepresentativesSkeleton />
-                ) : representatives?.representatives?.length ? (
+                ) : representatives?.data?.length ? (
                   <div className="flex flex-col gap-6">
-                    {representatives.representatives.map((rep) => (
+                    {representatives.data.map((rep) => (
                       <article key={rep.id} className="flex items-center gap-6">
                         <div className="size-[112px] shrink-0">
                           <Image
-                            src={pathImage(rep.photo.id)}
-                            alt={rep.fullName}
+                            src={pathImage(rep.avatar?.id ?? "")}
+                            alt={rep?.first_name ?? ""}
                             className="rounded-[6px] object-cover"
                             width={112}
                             height={112}
@@ -51,15 +51,15 @@ const InfoRegions = memo(
                         </div>
                         <div className="flex flex-col gap-1">
                           <Typography variant="header-s" tag="h3">
-                            {rep.fullName}
+                            {rep.first_name} {rep.last_name}
                           </Typography>
-                          {rep.position && (
+                          {rep.title && (
                             <Typography
                               className="text-text-primary"
                               variant="subtitle-serif-s"
                               tag="span"
                             >
-                              {rep.position}
+                              {rep.title}
                             </Typography>
                           )}
                         </div>

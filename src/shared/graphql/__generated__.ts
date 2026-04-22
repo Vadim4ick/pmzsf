@@ -78,10 +78,6 @@ export type Query = {
   readonly regions_aggregated: ReadonlyArray<Regions_Aggregated>;
   readonly regions_by_id: Maybe<Regions>;
   readonly regions_by_version: Maybe<Version_Regions>;
-  readonly representatives: ReadonlyArray<Representatives>;
-  readonly representatives_aggregated: ReadonlyArray<Representatives_Aggregated>;
-  readonly representatives_by_id: Maybe<Representatives>;
-  readonly representatives_by_version: Maybe<Version_Representatives>;
   readonly structure: Maybe<Structure>;
   readonly structure_by_version: Maybe<Version_Structure>;
   readonly veterans: ReadonlyArray<Veterans>;
@@ -461,39 +457,6 @@ export type QueryRegions_By_VersionArgs = {
 };
 
 
-export type QueryRepresentativesArgs = {
-  filter: InputMaybe<Representatives_Filter>;
-  limit: InputMaybe<Scalars['Int']['input']>;
-  offset: InputMaybe<Scalars['Int']['input']>;
-  page: InputMaybe<Scalars['Int']['input']>;
-  search: InputMaybe<Scalars['String']['input']>;
-  sort: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
-};
-
-
-export type QueryRepresentatives_AggregatedArgs = {
-  filter: InputMaybe<Representatives_Filter>;
-  groupBy: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
-  limit: InputMaybe<Scalars['Int']['input']>;
-  offset: InputMaybe<Scalars['Int']['input']>;
-  page: InputMaybe<Scalars['Int']['input']>;
-  search: InputMaybe<Scalars['String']['input']>;
-  sort: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
-};
-
-
-export type QueryRepresentatives_By_IdArgs = {
-  id: Scalars['ID']['input'];
-  version: InputMaybe<Scalars['String']['input']>;
-};
-
-
-export type QueryRepresentatives_By_VersionArgs = {
-  id: Scalars['ID']['input'];
-  version: Scalars['String']['input'];
-};
-
-
 export type QueryStructureArgs = {
   version: InputMaybe<Scalars['String']['input']>;
 };
@@ -554,7 +517,6 @@ export type Subscription = {
   readonly news_files_mutated: Maybe<News_Files_Mutated>;
   readonly news_mutated: Maybe<News_Mutated>;
   readonly regions_mutated: Maybe<Regions_Mutated>;
-  readonly representatives_mutated: Maybe<Representatives_Mutated>;
   readonly structure_mutated: Maybe<Structure_Mutated>;
   readonly veterans_mutated: Maybe<Veterans_Mutated>;
 };
@@ -636,11 +598,6 @@ export type SubscriptionNews_MutatedArgs = {
 
 
 export type SubscriptionRegions_MutatedArgs = {
-  event: InputMaybe<EventEnum>;
-};
-
-
-export type SubscriptionRepresentatives_MutatedArgs = {
   event: InputMaybe<EventEnum>;
 };
 
@@ -949,6 +906,7 @@ export type Directus_Users = {
   readonly policies: Maybe<Scalars['String']['output']>;
   readonly policies_func: Maybe<Count_Functions>;
   readonly provider: Maybe<Scalars['String']['output']>;
+  readonly region: Maybe<Regions>;
   readonly role: Maybe<Scalars['ID']['output']>;
   readonly status: Maybe<Scalars['String']['output']>;
   readonly tags: Maybe<Scalars['JSON']['output']>;
@@ -985,6 +943,16 @@ export type Directus_UsersHierarchy_MembershipsArgs = {
   sort: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
 };
 
+
+export type Directus_UsersRegionArgs = {
+  filter: InputMaybe<Regions_Filter>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  page: InputMaybe<Scalars['Int']['input']>;
+  search: InputMaybe<Scalars['String']['input']>;
+  sort: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
+};
+
 export type Directus_Users_Filter = {
   readonly _and: InputMaybe<ReadonlyArray<InputMaybe<Directus_Users_Filter>>>;
   readonly _or: InputMaybe<ReadonlyArray<InputMaybe<Directus_Users_Filter>>>;
@@ -1011,6 +979,7 @@ export type Directus_Users_Filter = {
   readonly policies: InputMaybe<String_Filter_Operators>;
   readonly policies_func: InputMaybe<Count_Function_Filter_Operators>;
   readonly provider: InputMaybe<String_Filter_Operators>;
+  readonly region: InputMaybe<Regions_Filter>;
   readonly role: InputMaybe<Id_Filter_Operators>;
   readonly status: InputMaybe<String_Filter_Operators>;
   readonly tags: InputMaybe<String_Filter_Operators>;
@@ -1939,85 +1908,6 @@ export type Regions_Mutated = {
   readonly key: Scalars['ID']['output'];
 };
 
-export type Representatives = {
-  readonly __typename?: 'representatives';
-  readonly fullName: Maybe<Scalars['String']['output']>;
-  readonly id: Scalars['ID']['output'];
-  readonly photo: Maybe<Directus_Files>;
-  readonly position: Maybe<Scalars['String']['output']>;
-  readonly region: Maybe<Regions>;
-  readonly sort: Maybe<Scalars['Int']['output']>;
-};
-
-
-export type RepresentativesPhotoArgs = {
-  filter: InputMaybe<Directus_Files_Filter>;
-  limit: InputMaybe<Scalars['Int']['input']>;
-  offset: InputMaybe<Scalars['Int']['input']>;
-  page: InputMaybe<Scalars['Int']['input']>;
-  search: InputMaybe<Scalars['String']['input']>;
-  sort: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
-};
-
-
-export type RepresentativesRegionArgs = {
-  filter: InputMaybe<Regions_Filter>;
-  limit: InputMaybe<Scalars['Int']['input']>;
-  offset: InputMaybe<Scalars['Int']['input']>;
-  page: InputMaybe<Scalars['Int']['input']>;
-  search: InputMaybe<Scalars['String']['input']>;
-  sort: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
-};
-
-export type Representatives_Aggregated = {
-  readonly __typename?: 'representatives_aggregated';
-  readonly avg: Maybe<Representatives_Aggregated_Fields>;
-  readonly avgDistinct: Maybe<Representatives_Aggregated_Fields>;
-  readonly count: Maybe<Representatives_Aggregated_Count>;
-  readonly countAll: Maybe<Scalars['Int']['output']>;
-  readonly countDistinct: Maybe<Representatives_Aggregated_Count>;
-  readonly group: Maybe<Scalars['JSON']['output']>;
-  readonly max: Maybe<Representatives_Aggregated_Fields>;
-  readonly min: Maybe<Representatives_Aggregated_Fields>;
-  readonly sum: Maybe<Representatives_Aggregated_Fields>;
-  readonly sumDistinct: Maybe<Representatives_Aggregated_Fields>;
-};
-
-export type Representatives_Aggregated_Count = {
-  readonly __typename?: 'representatives_aggregated_count';
-  readonly fullName: Maybe<Scalars['Int']['output']>;
-  readonly id: Maybe<Scalars['Int']['output']>;
-  readonly photo: Maybe<Scalars['Int']['output']>;
-  readonly position: Maybe<Scalars['Int']['output']>;
-  readonly region: Maybe<Scalars['Int']['output']>;
-  readonly sort: Maybe<Scalars['Int']['output']>;
-};
-
-export type Representatives_Aggregated_Fields = {
-  readonly __typename?: 'representatives_aggregated_fields';
-  readonly id: Maybe<Scalars['Float']['output']>;
-  readonly region: Maybe<Scalars['Float']['output']>;
-  readonly sort: Maybe<Scalars['Float']['output']>;
-};
-
-export type Representatives_Filter = {
-  readonly _and: InputMaybe<ReadonlyArray<InputMaybe<Representatives_Filter>>>;
-  readonly _or: InputMaybe<ReadonlyArray<InputMaybe<Representatives_Filter>>>;
-  readonly fullName: InputMaybe<String_Filter_Operators>;
-  readonly id: InputMaybe<Number_Filter_Operators>;
-  readonly photo: InputMaybe<Directus_Files_Filter>;
-  readonly position: InputMaybe<String_Filter_Operators>;
-  readonly region: InputMaybe<Regions_Filter>;
-  readonly sort: InputMaybe<Number_Filter_Operators>;
-};
-
-export type Representatives_Mutated = {
-  readonly __typename?: 'representatives_mutated';
-  readonly data: Maybe<Representatives>;
-  readonly event: Maybe<EventEnum>;
-  readonly key: Scalars['ID']['output'];
-};
-
 export type String_Filter_Operators = {
   readonly _contains: InputMaybe<Scalars['String']['input']>;
   readonly _empty: InputMaybe<Scalars['Boolean']['input']>;
@@ -2208,16 +2098,6 @@ export type Version_Regions = {
   readonly title: Maybe<Scalars['String']['output']>;
 };
 
-export type Version_Representatives = {
-  readonly __typename?: 'version_representatives';
-  readonly fullName: Maybe<Scalars['String']['output']>;
-  readonly id: Scalars['ID']['output'];
-  readonly photo: Maybe<Scalars['JSON']['output']>;
-  readonly position: Maybe<Scalars['String']['output']>;
-  readonly region: Maybe<Scalars['JSON']['output']>;
-  readonly sort: Maybe<Scalars['Int']['output']>;
-};
-
 export type Version_Structure = {
   readonly __typename?: 'version_structure';
   readonly id: Scalars['ID']['output'];
@@ -2355,8 +2235,6 @@ export type NewsFragmentFragment = { readonly __typename?: 'news', readonly id: 
 
 export type RegionFragmentFragment = { readonly __typename?: 'regions', readonly id: string, readonly title: string, readonly code: string };
 
-export type RepresentativesFragmentFragment = { readonly __typename?: 'representatives', readonly id: string, readonly fullName: string, readonly position: string, readonly photo: { readonly __typename?: 'directus_files', readonly id: string }, readonly region: { readonly __typename?: 'regions', readonly id: string, readonly title: string, readonly code: string } };
-
 export type UserFragmentFragment = { readonly __typename?: 'directus_users', readonly id: string, readonly last_name: string, readonly email: string, readonly first_name: string, readonly member: boolean, readonly avatar: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } };
 
 export type VeteransFragmentFragment = { readonly __typename?: 'veterans', readonly id: string, readonly last_name: string, readonly first_name: string, readonly middle_name: string, readonly birth_date: string, readonly birth_place: string, readonly description: string, readonly photo: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } };
@@ -2435,18 +2313,6 @@ export type GetAllRegionsQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GetAllRegionsQuery = { readonly __typename?: 'Query', readonly regions: ReadonlyArray<{ readonly __typename?: 'regions', readonly id: string, readonly title: string, readonly code: string }> };
 
-export type GetAllRepresentativesQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type GetAllRepresentativesQuery = { readonly __typename?: 'Query', readonly representatives: ReadonlyArray<{ readonly __typename?: 'representatives', readonly id: string, readonly fullName: string, readonly position: string, readonly photo: { readonly __typename?: 'directus_files', readonly id: string }, readonly region: { readonly __typename?: 'regions', readonly id: string, readonly title: string, readonly code: string } }> };
-
-export type GetRepresentativesByRegionQueryVariables = Exact<{
-  regionCode: Scalars['String']['input'];
-}>;
-
-
-export type GetRepresentativesByRegionQuery = { readonly __typename?: 'Query', readonly representatives: ReadonlyArray<{ readonly __typename?: 'representatives', readonly id: string, readonly fullName: string, readonly position: string, readonly photo: { readonly __typename?: 'directus_files', readonly id: string }, readonly region: { readonly __typename?: 'regions', readonly id: string, readonly title: string, readonly code: string } }> };
-
 export const MediaFragmentFragmentDoc = gql`
     fragment MediaFragment on directus_files {
   id
@@ -2524,19 +2390,6 @@ export const RegionFragmentFragmentDoc = gql`
   code
 }
     `;
-export const RepresentativesFragmentFragmentDoc = gql`
-    fragment RepresentativesFragment on representatives {
-  id
-  photo {
-    id
-  }
-  fullName
-  position
-  region {
-    ...RegionFragment
-  }
-}
-    ${RegionFragmentFragmentDoc}`;
 export const VeteransFragmentFragmentDoc = gql`
     fragment VeteransFragment on veterans {
   id
@@ -2729,20 +2582,6 @@ export const GetAllRegionsDocument = gql`
   }
 }
     ${RegionFragmentFragmentDoc}`;
-export const GetAllRepresentativesDocument = gql`
-    query GetAllRepresentatives {
-  representatives {
-    ...RepresentativesFragment
-  }
-}
-    ${RepresentativesFragmentFragmentDoc}`;
-export const GetRepresentativesByRegionDocument = gql`
-    query GetRepresentativesByRegion($regionCode: String!) {
-  representatives(filter: {region: {code: {_eq: $regionCode}}}) {
-    ...RepresentativesFragment
-  }
-}
-    ${RepresentativesFragmentFragmentDoc}`;
 
 export type SdkFunctionWrapper = <T>(action: (requestHeaders?:Record<string, string>) => Promise<T>, operationName: string, operationType?: string, variables?: any) => Promise<T>;
 
@@ -2792,12 +2631,6 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     GetAllRegions(variables?: GetAllRegionsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<GetAllRegionsQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetAllRegionsQuery>({ document: GetAllRegionsDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'GetAllRegions', 'query', variables);
-    },
-    GetAllRepresentatives(variables?: GetAllRepresentativesQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<GetAllRepresentativesQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<GetAllRepresentativesQuery>({ document: GetAllRepresentativesDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'GetAllRepresentatives', 'query', variables);
-    },
-    GetRepresentativesByRegion(variables: GetRepresentativesByRegionQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<GetRepresentativesByRegionQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<GetRepresentativesByRegionQuery>({ document: GetRepresentativesByRegionDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'GetRepresentativesByRegion', 'query', variables);
     }
   };
 }
