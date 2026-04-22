@@ -6,4 +6,5 @@ fragment UserFragment on directus_users {
     ...MediaFragment
   }
   first_name
+  member
 }

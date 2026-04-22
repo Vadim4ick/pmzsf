@@ -13,7 +13,7 @@ const ContactsPage = () => {
           Контакты
         </Typography>
 
-        <div className="max-desktop:grid-cols-2 bg-background-primary max-mobile:grid-cols-1 max-mobile:pt-8 grid grid-cols-[1.3fr_0.8fr_0.7fr_0.55fr] gap-8 pt-10">
+        <div className="max-desktop:grid-cols-2 bg-background-primary max-mobile:grid-cols-1 grid grid-cols-[1.3fr_0.8fr_0.7fr_0.55fr] gap-8 rounded-[12px] p-6">
           <div className="mobile:border-border-secondary mobile:border-r mobile:pr-8 flex flex-col gap-4">
             <Typography variant="body-serif" tag="p">
               Адрес

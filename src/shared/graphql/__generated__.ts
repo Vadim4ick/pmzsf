@@ -944,6 +944,7 @@ export type Directus_Users = {
   readonly last_name: Maybe<Scalars['String']['output']>;
   readonly last_page: Maybe<Scalars['String']['output']>;
   readonly location: Maybe<Scalars['String']['output']>;
+  readonly member: Maybe<Scalars['Boolean']['output']>;
   readonly password: Maybe<Scalars['Hash']['output']>;
   readonly policies: Maybe<Scalars['String']['output']>;
   readonly policies_func: Maybe<Count_Functions>;
@@ -1005,6 +1006,7 @@ export type Directus_Users_Filter = {
   readonly last_name: InputMaybe<String_Filter_Operators>;
   readonly last_page: InputMaybe<String_Filter_Operators>;
   readonly location: InputMaybe<String_Filter_Operators>;
+  readonly member: InputMaybe<Boolean_Filter_Operators>;
   readonly password: InputMaybe<Hash_Filter_Operators>;
   readonly policies: InputMaybe<String_Filter_Operators>;
   readonly policies_func: InputMaybe<Count_Function_Filter_Operators>;
@@ -2316,16 +2318,16 @@ export type GetCommitteeByIdQueryVariables = Exact<{
 }>;
 
 
-export type GetCommitteeByIdQuery = { readonly __typename?: 'Query', readonly committees_by_id: { readonly __typename?: 'committees', readonly id: string, readonly title: string, readonly members: ReadonlyArray<{ readonly __typename?: 'hierarchy_members', readonly id: string, readonly role: string, readonly user: { readonly __typename?: 'directus_users', readonly id: string, readonly last_name: string, readonly email: string, readonly first_name: string, readonly hierarchy_memberships: ReadonlyArray<{ readonly __typename?: 'hierarchy_members', readonly id: string, readonly role: string, readonly committee: { readonly __typename?: 'committees', readonly id: string, readonly title: string, readonly members: ReadonlyArray<{ readonly __typename?: 'hierarchy_members', readonly id: string, readonly user: { readonly __typename?: 'directus_users', readonly first_name: string, readonly last_name: string } }> } }>, readonly avatar: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } } }> } };
+export type GetCommitteeByIdQuery = { readonly __typename?: 'Query', readonly committees_by_id: { readonly __typename?: 'committees', readonly id: string, readonly title: string, readonly members: ReadonlyArray<{ readonly __typename?: 'hierarchy_members', readonly id: string, readonly role: string, readonly user: { readonly __typename?: 'directus_users', readonly id: string, readonly last_name: string, readonly email: string, readonly first_name: string, readonly member: boolean, readonly hierarchy_memberships: ReadonlyArray<{ readonly __typename?: 'hierarchy_members', readonly id: string, readonly role: string, readonly committee: { readonly __typename?: 'committees', readonly id: string, readonly title: string, readonly members: ReadonlyArray<{ readonly __typename?: 'hierarchy_members', readonly id: string, readonly user: { readonly __typename?: 'directus_users', readonly first_name: string, readonly last_name: string } }> } }>, readonly avatar: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } } }> } };
 
 export type GetAllCommitteesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetAllCommitteesQuery = { readonly __typename?: 'Query', readonly committees: ReadonlyArray<{ readonly __typename?: 'committees', readonly id: string, readonly title: string, readonly members: ReadonlyArray<{ readonly __typename?: 'hierarchy_members', readonly id: string, readonly role: string, readonly user: { readonly __typename?: 'directus_users', readonly id: string, readonly last_name: string, readonly email: string, readonly first_name: string, readonly avatar: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } } }> }> };
+export type GetAllCommitteesQuery = { readonly __typename?: 'Query', readonly committees: ReadonlyArray<{ readonly __typename?: 'committees', readonly id: string, readonly title: string, readonly members: ReadonlyArray<{ readonly __typename?: 'hierarchy_members', readonly id: string, readonly role: string, readonly user: { readonly __typename?: 'directus_users', readonly id: string, readonly last_name: string, readonly email: string, readonly first_name: string, readonly member: boolean, readonly avatar: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } } }> }> };
 
-export type HierarchyMembersFragmentFragment = { readonly __typename?: 'hierarchy_members', readonly id: string, readonly role: string, readonly user: { readonly __typename?: 'directus_users', readonly id: string, readonly last_name: string, readonly email: string, readonly first_name: string, readonly avatar: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } } };
+export type HierarchyMembersFragmentFragment = { readonly __typename?: 'hierarchy_members', readonly id: string, readonly role: string, readonly user: { readonly __typename?: 'directus_users', readonly id: string, readonly last_name: string, readonly email: string, readonly first_name: string, readonly member: boolean, readonly avatar: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } } };
 
-export type HierarchyMembersByIdFragmentFragment = { readonly __typename?: 'hierarchy_members', readonly id: string, readonly role: string, readonly user: { readonly __typename?: 'directus_users', readonly id: string, readonly last_name: string, readonly email: string, readonly first_name: string, readonly hierarchy_memberships: ReadonlyArray<{ readonly __typename?: 'hierarchy_members', readonly id: string, readonly role: string, readonly committee: { readonly __typename?: 'committees', readonly id: string, readonly title: string, readonly members: ReadonlyArray<{ readonly __typename?: 'hierarchy_members', readonly id: string, readonly user: { readonly __typename?: 'directus_users', readonly first_name: string, readonly last_name: string } }> } }>, readonly avatar: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } } };
+export type HierarchyMembersByIdFragmentFragment = { readonly __typename?: 'hierarchy_members', readonly id: string, readonly role: string, readonly user: { readonly __typename?: 'directus_users', readonly id: string, readonly last_name: string, readonly email: string, readonly first_name: string, readonly member: boolean, readonly hierarchy_memberships: ReadonlyArray<{ readonly __typename?: 'hierarchy_members', readonly id: string, readonly role: string, readonly committee: { readonly __typename?: 'committees', readonly id: string, readonly title: string, readonly members: ReadonlyArray<{ readonly __typename?: 'hierarchy_members', readonly id: string, readonly user: { readonly __typename?: 'directus_users', readonly first_name: string, readonly last_name: string } }> } }>, readonly avatar: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } } };
 
 export type MediaFragmentFragment = { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string };
 
@@ -2335,7 +2337,7 @@ export type RegionFragmentFragment = { readonly __typename?: 'regions', readonly
 
 export type RepresentativesFragmentFragment = { readonly __typename?: 'representatives', readonly id: string, readonly fullName: string, readonly position: string, readonly photo: { readonly __typename?: 'directus_files', readonly id: string }, readonly region: { readonly __typename?: 'regions', readonly id: string, readonly title: string, readonly code: string } };
 
-export type UserFragmentFragment = { readonly __typename?: 'directus_users', readonly id: string, readonly last_name: string, readonly email: string, readonly first_name: string, readonly avatar: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } };
+export type UserFragmentFragment = { readonly __typename?: 'directus_users', readonly id: string, readonly last_name: string, readonly email: string, readonly first_name: string, readonly member: boolean, readonly avatar: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } };
 
 export type VeteransFragmentFragment = { readonly __typename?: 'veterans', readonly id: string, readonly last_name: string, readonly first_name: string, readonly middle_name: string, readonly birth_date: string, readonly birth_place: string, readonly description: string, readonly photo: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } };
 
@@ -2374,7 +2376,7 @@ export type GetDocumentsPageQuery = { readonly __typename?: 'Query', readonly do
 export type GetExpertAdvicePageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetExpertAdvicePageQuery = { readonly __typename?: 'Query', readonly expert_advice: { readonly __typename?: 'expert_advice', readonly members: ReadonlyArray<{ readonly __typename?: 'hierarchy_members', readonly id: string, readonly role: string, readonly user: { readonly __typename?: 'directus_users', readonly id: string, readonly last_name: string, readonly email: string, readonly first_name: string, readonly hierarchy_memberships: ReadonlyArray<{ readonly __typename?: 'hierarchy_members', readonly id: string, readonly role: string, readonly committee: { readonly __typename?: 'committees', readonly id: string, readonly title: string, readonly members: ReadonlyArray<{ readonly __typename?: 'hierarchy_members', readonly id: string, readonly user: { readonly __typename?: 'directus_users', readonly first_name: string, readonly last_name: string } }> } }>, readonly avatar: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } } }> } };
+export type GetExpertAdvicePageQuery = { readonly __typename?: 'Query', readonly expert_advice: { readonly __typename?: 'expert_advice', readonly members: ReadonlyArray<{ readonly __typename?: 'hierarchy_members', readonly id: string, readonly role: string, readonly user: { readonly __typename?: 'directus_users', readonly id: string, readonly last_name: string, readonly email: string, readonly first_name: string, readonly member: boolean, readonly hierarchy_memberships: ReadonlyArray<{ readonly __typename?: 'hierarchy_members', readonly id: string, readonly role: string, readonly committee: { readonly __typename?: 'committees', readonly id: string, readonly title: string, readonly members: ReadonlyArray<{ readonly __typename?: 'hierarchy_members', readonly id: string, readonly user: { readonly __typename?: 'directus_users', readonly first_name: string, readonly last_name: string } }> } }>, readonly avatar: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } } }> } };
 
 export type GetHomePageQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -2384,7 +2386,7 @@ export type GetHomePageQuery = { readonly __typename?: 'Query', readonly home_pa
 export type GetStructurePageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetStructurePageQuery = { readonly __typename?: 'Query', readonly structure: { readonly __typename?: 'structure', readonly members: ReadonlyArray<{ readonly __typename?: 'hierarchy_members', readonly id: string, readonly role: string, readonly user: { readonly __typename?: 'directus_users', readonly id: string, readonly last_name: string, readonly email: string, readonly first_name: string, readonly hierarchy_memberships: ReadonlyArray<{ readonly __typename?: 'hierarchy_members', readonly id: string, readonly role: string, readonly committee: { readonly __typename?: 'committees', readonly id: string, readonly title: string, readonly members: ReadonlyArray<{ readonly __typename?: 'hierarchy_members', readonly id: string, readonly user: { readonly __typename?: 'directus_users', readonly first_name: string, readonly last_name: string } }> } }>, readonly avatar: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } } }> } };
+export type GetStructurePageQuery = { readonly __typename?: 'Query', readonly structure: { readonly __typename?: 'structure', readonly members: ReadonlyArray<{ readonly __typename?: 'hierarchy_members', readonly id: string, readonly role: string, readonly user: { readonly __typename?: 'directus_users', readonly id: string, readonly last_name: string, readonly email: string, readonly first_name: string, readonly member: boolean, readonly hierarchy_memberships: ReadonlyArray<{ readonly __typename?: 'hierarchy_members', readonly id: string, readonly role: string, readonly committee: { readonly __typename?: 'committees', readonly id: string, readonly title: string, readonly members: ReadonlyArray<{ readonly __typename?: 'hierarchy_members', readonly id: string, readonly user: { readonly __typename?: 'directus_users', readonly first_name: string, readonly last_name: string } }> } }>, readonly avatar: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } } }> } };
 
 export type GetVeteransPageQueryVariables = Exact<{
   page: InputMaybe<Scalars['Int']['input']>;
@@ -2437,6 +2439,7 @@ export const UserFragmentFragmentDoc = gql`
     ...MediaFragment
   }
   first_name
+  member
 }
     ${MediaFragmentFragmentDoc}`;
 export const HierarchyMembersFragmentFragmentDoc = gql`
