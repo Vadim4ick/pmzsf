@@ -1,12 +1,5 @@
 query GetHomePage {
   home_page {
-    popular_news {
-      id
-      news_id {
-        ...NewsFragment
-      }
-    }
-
     chamber_chairman {
       first_name
       last_name

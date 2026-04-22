@@ -1541,8 +1541,6 @@ export type Home_Page = {
   readonly chairman_video: Maybe<Directus_Files>;
   readonly chamber_chairman: Maybe<Directus_Users>;
   readonly id: Scalars['ID']['output'];
-  readonly popular_news: Maybe<ReadonlyArray<Maybe<Home_Page_News>>>;
-  readonly popular_news_func: Maybe<Count_Functions>;
 };
 
 
@@ -1575,16 +1573,6 @@ export type Home_PageChamber_ChairmanArgs = {
   sort: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
 };
 
-
-export type Home_PagePopular_NewsArgs = {
-  filter: InputMaybe<Home_Page_News_Filter>;
-  limit: InputMaybe<Scalars['Int']['input']>;
-  offset: InputMaybe<Scalars['Int']['input']>;
-  page: InputMaybe<Scalars['Int']['input']>;
-  search: InputMaybe<Scalars['String']['input']>;
-  sort: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
-};
-
 export type Home_Page_Filter = {
   readonly _and: InputMaybe<ReadonlyArray<InputMaybe<Home_Page_Filter>>>;
   readonly _or: InputMaybe<ReadonlyArray<InputMaybe<Home_Page_Filter>>>;
@@ -1592,8 +1580,6 @@ export type Home_Page_Filter = {
   readonly chairman_video: InputMaybe<Directus_Files_Filter>;
   readonly chamber_chairman: InputMaybe<Directus_Users_Filter>;
   readonly id: InputMaybe<Number_Filter_Operators>;
-  readonly popular_news: InputMaybe<Home_Page_News_Quantifier_Filter>;
-  readonly popular_news_func: InputMaybe<Count_Function_Filter_Operators>;
 };
 
 export type Home_Page_Mutated = {
@@ -1671,16 +1657,6 @@ export type Home_Page_News_Mutated = {
   readonly data: Maybe<Home_Page_News>;
   readonly event: Maybe<EventEnum>;
   readonly key: Scalars['ID']['output'];
-};
-
-export type Home_Page_News_Quantifier_Filter = {
-  readonly _and: InputMaybe<ReadonlyArray<InputMaybe<Home_Page_News_Filter>>>;
-  readonly _none: InputMaybe<Home_Page_News_Filter>;
-  readonly _or: InputMaybe<ReadonlyArray<InputMaybe<Home_Page_News_Filter>>>;
-  readonly _some: InputMaybe<Home_Page_News_Filter>;
-  readonly home_page_id: InputMaybe<Home_Page_Filter>;
-  readonly id: InputMaybe<Number_Filter_Operators>;
-  readonly news_id: InputMaybe<News_Filter>;
 };
 
 export type Id_Filter_Operators = {
@@ -2189,8 +2165,6 @@ export type Version_Home_Page = {
   readonly chairman_video: Maybe<Scalars['JSON']['output']>;
   readonly chamber_chairman: Maybe<Scalars['JSON']['output']>;
   readonly id: Scalars['ID']['output'];
-  readonly popular_news: Maybe<Scalars['JSON']['output']>;
-  readonly popular_news_func: Maybe<Count_Functions>;
 };
 
 export type Version_Home_Page_News = {
@@ -2432,7 +2406,7 @@ export type GetExpertAdvicePageQuery = { readonly __typename?: 'Query', readonly
 export type GetHomePageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetHomePageQuery = { readonly __typename?: 'Query', readonly home_page: { readonly __typename?: 'home_page', readonly popular_news: ReadonlyArray<{ readonly __typename?: 'home_page_news', readonly id: string, readonly news_id: { readonly __typename?: 'news', readonly id: string, readonly title: string, readonly description: string, readonly themes: any, readonly date_created: any, readonly date_updated: any, readonly region: { readonly __typename?: 'regions', readonly title: string, readonly id: string }, readonly preview: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } } }>, readonly chamber_chairman: { readonly __typename?: 'directus_users', readonly first_name: string, readonly last_name: string, readonly email: string, readonly avatar: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } }, readonly chairman_featured_news: { readonly __typename?: 'news', readonly id: string, readonly title: string, readonly date_created: any, readonly preview: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } }, readonly chairman_video: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } } };
+export type GetHomePageQuery = { readonly __typename?: 'Query', readonly home_page: { readonly __typename?: 'home_page', readonly chamber_chairman: { readonly __typename?: 'directus_users', readonly first_name: string, readonly last_name: string, readonly email: string, readonly avatar: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } }, readonly chairman_featured_news: { readonly __typename?: 'news', readonly id: string, readonly title: string, readonly date_created: any, readonly preview: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } }, readonly chairman_video: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } } };
 
 export type GetStructurePageQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -2681,12 +2655,6 @@ export const GetExpertAdvicePageDocument = gql`
 export const GetHomePageDocument = gql`
     query GetHomePage {
   home_page {
-    popular_news {
-      id
-      news_id {
-        ...NewsFragment
-      }
-    }
     chamber_chairman {
       first_name
       last_name
@@ -2708,8 +2676,7 @@ export const GetHomePageDocument = gql`
     }
   }
 }
-    ${NewsFragmentFragmentDoc}
-${MediaFragmentFragmentDoc}`;
+    ${MediaFragmentFragmentDoc}`;
 export const GetStructurePageDocument = gql`
     query GetStructurePage {
   structure {
