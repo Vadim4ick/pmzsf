@@ -49,7 +49,7 @@ const Chairman = ({
             <div className="bg-background-primary desktop:p-6 flex items-center gap-4 rounded-[12px] p-4">
               <div className="desktop:size-[72px] size-14 shrink-0">
                 <Image
-                  src={pathImage(chairman.avatar.id)}
+                  src={pathImage(chairman.avatar?.id ?? "")}
                   alt="chairman"
                   className="rounded-[6px] object-cover"
                   width={100}
@@ -72,8 +72,8 @@ const Chairman = ({
               {chairman_video && (
                 <div className="mobile:aspect-auto mobile:w-[45%] mobile:self-stretch aspect-video w-full shrink-0">
                   <CustomVideo
-                    src={pathImage(chairman_video.id)}
-                    poster={pathImage(chairman.avatar.id)}
+                    src={pathImage(chairman_video?.id ?? "")}
+                    poster={pathImage(chairman.avatar?.id ?? "")}
                     title="Граница обучения кадров сделала своё дело"
                     className="h-full"
                   />
@@ -96,7 +96,7 @@ const Chairman = ({
                     </Typography>
                     <div className="desktop:size-[72px] size-14 shrink-0">
                       <Image
-                        src={pathImage(chairman.avatar.id)}
+                        src={pathImage(chairman.avatar?.id ?? "")}
                         alt="news"
                         className="rounded-[6px] object-cover"
                         width={100}
@@ -113,7 +113,7 @@ const Chairman = ({
           {chairman_featured_news && (
             <article className="mobile:min-h-[360px] desktop:h-full desktop:min-h-0 relative min-h-[280px] w-full overflow-hidden rounded-[12px]">
               <Image
-                src={pathImage(chairman_featured_news.preview.id)}
+                src={pathImage(chairman_featured_news.preview.id ?? "")}
                 alt="chairman"
                 className="object-cover"
                 fill
