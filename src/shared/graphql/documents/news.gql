@@ -30,3 +30,9 @@ query GetNewsById($id: ID!) {
     }
   }
 }
+
+query GetTopFiveNews {
+  news(limit: 5, sort: ["-date_created"]) {
+    ...NewsFragment
+  }
+}

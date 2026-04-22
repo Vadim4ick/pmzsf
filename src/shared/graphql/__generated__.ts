@@ -2409,6 +2409,11 @@ export type GetNewsByIdQueryVariables = Exact<{
 
 export type GetNewsByIdQuery = { readonly __typename?: 'Query', readonly news_by_id: { readonly __typename?: 'news', readonly content: string, readonly id: string, readonly title: string, readonly description: string, readonly themes: any, readonly date_created: any, readonly date_updated: any, readonly images: ReadonlyArray<{ readonly __typename?: 'news_files', readonly directus_files_id: { readonly __typename?: 'directus_files', readonly type: string, readonly title: string, readonly id: string } }>, readonly region: { readonly __typename?: 'regions', readonly title: string, readonly id: string }, readonly preview: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } } };
 
+export type GetTopFiveNewsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetTopFiveNewsQuery = { readonly __typename?: 'Query', readonly news: ReadonlyArray<{ readonly __typename?: 'news', readonly id: string, readonly title: string, readonly description: string, readonly themes: any, readonly date_created: any, readonly date_updated: any, readonly region: { readonly __typename?: 'regions', readonly title: string, readonly id: string }, readonly preview: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } }> };
+
 export type GetAboutPageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -2630,6 +2635,13 @@ export const GetNewsByIdDocument = gql`
   }
 }
     ${NewsFragmentFragmentDoc}`;
+export const GetTopFiveNewsDocument = gql`
+    query GetTopFiveNews {
+  news(limit: 5, sort: ["-date_created"]) {
+    ...NewsFragment
+  }
+}
+    ${NewsFragmentFragmentDoc}`;
 export const GetAboutPageDocument = gql`
     query GetAboutPage {
   about {
@@ -2786,6 +2798,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     GetNewsById(variables: GetNewsByIdQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<GetNewsByIdQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetNewsByIdQuery>({ document: GetNewsByIdDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'GetNewsById', 'query', variables);
+    },
+    GetTopFiveNews(variables?: GetTopFiveNewsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<GetTopFiveNewsQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<GetTopFiveNewsQuery>({ document: GetTopFiveNewsDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'GetTopFiveNews', 'query', variables);
     },
     GetAboutPage(variables?: GetAboutPageQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<GetAboutPageQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetAboutPageQuery>({ document: GetAboutPageDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'GetAboutPage', 'query', variables);

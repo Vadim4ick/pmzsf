@@ -3,7 +3,7 @@ import { Button } from "@/shared/ui/button";
 import { Typography } from "@/shared/ui/typography";
 import Image from "next/image";
 import {
-  GetHomePageQuery,
+  GetTopFiveNewsQuery,
   NewsFragmentFragment,
 } from "@/shared/graphql/__generated__";
 import { dateFormatter, pathImage } from "@/shared/lib/utils";
@@ -85,14 +85,10 @@ const PlaceholderCard = () => (
   <article className="group pointer-events-none flex h-full cursor-pointer flex-col opacity-0" />
 );
 
-export const GridNews = ({
-  news,
-}: {
-  news?: GetHomePageQuery["home_page"]["popular_news"];
-}) => {
+export const GridNews = ({ news }: { news?: GetTopFiveNewsQuery["news"] }) => {
   if (!news || news.length === 0) return null;
 
-  const items = news.map((n) => n.news_id).filter(Boolean);
+  const items = news.filter(Boolean);
   const [featured, ...rest] = items;
 
   // Добиваем до 4 элементов заглушками
