@@ -12,7 +12,7 @@ export type ChamberMember = {
   last_name: string | null;
   surname: string | null;
   email: string | null;
-  title: string | null;
+  job: string | null;
   member: boolean;
   avatar?: DirectusFile | null;
 };
@@ -30,7 +30,7 @@ const MEMBERS_FIELDS = [
   "last_name",
   "surname",
   "email",
-  "title",
+  "job",
   "member",
   "avatar.id",
   "avatar.filename_disk",
@@ -92,7 +92,7 @@ export type Representative = {
   last_name: string | null;
   surname: string | null;
   email: string | null;
-  title: string | null;
+  job: string | null;
   member: boolean;
   avatar?: DirectusFile | null;
   region?: RegionFragmentFragment | null;
@@ -112,7 +112,7 @@ const REPRESENTATIVES_FIELDS = [
   "surname",
   "email",
   "member",
-  "title",
+  "job",
   "avatar.id",
   "avatar.filename_disk",
   "region.id",

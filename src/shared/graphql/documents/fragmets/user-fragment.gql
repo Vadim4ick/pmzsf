@@ -2,6 +2,7 @@ fragment UserFragment on directus_users {
   id
   last_name
   surname
+  job
   start_deadline
   end_deadline
   date_of_appointment

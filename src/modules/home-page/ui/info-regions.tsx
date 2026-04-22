@@ -53,13 +53,13 @@ const InfoRegions = memo(
                           <Typography variant="header-s" tag="h3">
                             {rep.first_name} {rep.last_name} {rep.surname}
                           </Typography>
-                          {rep.title && (
+                          {rep?.job && (
                             <Typography
                               className="text-text-primary"
                               variant="subtitle-serif-s"
                               tag="span"
                             >
-                              {rep.title}
+                              {rep.job}
                             </Typography>
                           )}
                         </div>
