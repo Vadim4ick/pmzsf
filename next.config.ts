@@ -11,6 +11,11 @@ const nextConfig: NextConfig = {
         port: "8055",
         pathname: "/assets/**",
       },
+      {
+        protocol: "https",
+        hostname: "admin.pmzsf.tw1.ru",
+        pathname: "/assets/**",
+      },
     ],
 
     dangerouslyAllowSVG: true,
