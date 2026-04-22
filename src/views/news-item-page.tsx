@@ -38,34 +38,21 @@ const NewsItemPage = ({ news }: { news: GetNewsByIdQuery["news_by_id"] }) => {
         <div className="max-mobile:gap-12 mx-auto flex max-w-[850px] flex-col gap-16 px-4">
           <NewsContent content={news.content} />
 
-          <div className="flex flex-wrap gap-2">
-            <Typography
-              className="bg-background-secondary text-text-subtle rounded-[2px] p-1.5"
-              variant="body-s-strong"
-            >
-              Законодательство
-            </Typography>
-            <Typography
-              className="bg-background-secondary text-text-subtle rounded-[2px] p-1.5"
-              variant="body-s-strong"
-            >
-              Регионы
-            </Typography>
-            <Typography
-              className="bg-background-secondary text-text-subtle rounded-[2px] p-1.5"
-              variant="body-s-strong"
-            >
-              Финансы
-            </Typography>
-            <Typography
-              className="bg-background-secondary text-text-subtle rounded-[2px] p-1.5"
-              variant="body-s-strong"
-            >
-              Налоги
-            </Typography>
-          </div>
+          {news.themes && news.themes.length > 0 && (
+            <div className="flex flex-wrap gap-2">
+              {news.themes.map((theme: string) => (
+                <Typography
+                  key={theme}
+                  className="bg-background-secondary text-text-subtle rounded-[2px] p-1.5"
+                  variant="body-s-strong"
+                >
+                  {theme}
+                </Typography>
+              ))}
+            </div>
+          )}
 
-          <div className="flex flex-col gap-12">
+          {/* <div className="flex flex-col gap-12">
             <Typography variant="header-m-caps" tag="h3">
               смотрите также
             </Typography>
@@ -104,7 +91,7 @@ const NewsItemPage = ({ news }: { news: GetNewsByIdQuery["news_by_id"] }) => {
                   </Link>
                 ))}
             </div>
-          </div>
+          </div> */}
 
           <Link href={getRouteNews()}>
             <Button icon={<ArrowBack />} className="w-fit gap-1">

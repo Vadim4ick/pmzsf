@@ -7,12 +7,14 @@ const ROLE_ORDER: Record<string, number> = {
   chairman: 0,
   deputy: 1,
   member: 2,
+  secretary: 3,
 };
 
 export const ROLE_LABELS: Record<string, string> = {
   chairman: "Председатель",
   deputy: "Заместители председателя",
   member: "Член",
+  secretary: "Ответственный секретарь",
 };
 
 type RawHierarchyMemberUser = {

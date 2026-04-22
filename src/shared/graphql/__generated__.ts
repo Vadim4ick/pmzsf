@@ -1719,6 +1719,8 @@ export type News = {
   readonly preview: Maybe<Directus_Files>;
   readonly region: Maybe<Regions>;
   readonly sort: Maybe<Scalars['Int']['output']>;
+  readonly themes: Maybe<Scalars['JSON']['output']>;
+  readonly themes_func: Maybe<Count_Functions>;
   readonly title: Maybe<Scalars['String']['output']>;
 };
 
@@ -1777,6 +1779,7 @@ export type News_Aggregated_Count = {
   readonly preview: Maybe<Scalars['Int']['output']>;
   readonly region: Maybe<Scalars['Int']['output']>;
   readonly sort: Maybe<Scalars['Int']['output']>;
+  readonly themes: Maybe<Scalars['Int']['output']>;
   readonly title: Maybe<Scalars['Int']['output']>;
 };
 
@@ -1881,6 +1884,8 @@ export type News_Filter = {
   readonly preview: InputMaybe<Directus_Files_Filter>;
   readonly region: InputMaybe<Regions_Filter>;
   readonly sort: InputMaybe<Number_Filter_Operators>;
+  readonly themes: InputMaybe<String_Filter_Operators>;
+  readonly themes_func: InputMaybe<Count_Function_Filter_Operators>;
   readonly title: InputMaybe<String_Filter_Operators>;
 };
 
@@ -2209,6 +2214,8 @@ export type Version_News = {
   readonly preview: Maybe<Scalars['JSON']['output']>;
   readonly region: Maybe<Scalars['JSON']['output']>;
   readonly sort: Maybe<Scalars['Int']['output']>;
+  readonly themes: Maybe<Scalars['JSON']['output']>;
+  readonly themes_func: Maybe<Count_Functions>;
   readonly title: Maybe<Scalars['String']['output']>;
 };
 
@@ -2370,7 +2377,7 @@ export type HierarchyMembersByIdFragmentFragment = { readonly __typename?: 'hier
 
 export type MediaFragmentFragment = { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string };
 
-export type NewsFragmentFragment = { readonly __typename?: 'news', readonly id: string, readonly title: string, readonly description: string, readonly date_created: any, readonly date_updated: any, readonly region: { readonly __typename?: 'regions', readonly title: string, readonly id: string }, readonly preview: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } };
+export type NewsFragmentFragment = { readonly __typename?: 'news', readonly id: string, readonly title: string, readonly description: string, readonly themes: any, readonly date_created: any, readonly date_updated: any, readonly region: { readonly __typename?: 'regions', readonly title: string, readonly id: string }, readonly preview: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } };
 
 export type RegionFragmentFragment = { readonly __typename?: 'regions', readonly id: string, readonly title: string, readonly code: string };
 
@@ -2386,7 +2393,7 @@ export type GetAllNewsQueryVariables = Exact<{
 }>;
 
 
-export type GetAllNewsQuery = { readonly __typename?: 'Query', readonly news: ReadonlyArray<{ readonly __typename?: 'news', readonly id: string, readonly title: string, readonly description: string, readonly date_created: any, readonly date_updated: any, readonly region: { readonly __typename?: 'regions', readonly title: string, readonly id: string }, readonly preview: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } }>, readonly news_aggregated: ReadonlyArray<{ readonly __typename?: 'news_aggregated', readonly count: { readonly __typename?: 'news_aggregated_count', readonly id: number } }> };
+export type GetAllNewsQuery = { readonly __typename?: 'Query', readonly news: ReadonlyArray<{ readonly __typename?: 'news', readonly id: string, readonly title: string, readonly description: string, readonly themes: any, readonly date_created: any, readonly date_updated: any, readonly region: { readonly __typename?: 'regions', readonly title: string, readonly id: string }, readonly preview: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } }>, readonly news_aggregated: ReadonlyArray<{ readonly __typename?: 'news_aggregated', readonly count: { readonly __typename?: 'news_aggregated_count', readonly id: number } }> };
 
 export type GetNewsByRegionQueryVariables = Exact<{
   regionCode: Scalars['String']['input'];
@@ -2400,7 +2407,7 @@ export type GetNewsByIdQueryVariables = Exact<{
 }>;
 
 
-export type GetNewsByIdQuery = { readonly __typename?: 'Query', readonly news_by_id: { readonly __typename?: 'news', readonly content: string, readonly id: string, readonly title: string, readonly description: string, readonly date_created: any, readonly date_updated: any, readonly images: ReadonlyArray<{ readonly __typename?: 'news_files', readonly directus_files_id: { readonly __typename?: 'directus_files', readonly type: string, readonly title: string, readonly id: string } }>, readonly region: { readonly __typename?: 'regions', readonly title: string, readonly id: string }, readonly preview: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } } };
+export type GetNewsByIdQuery = { readonly __typename?: 'Query', readonly news_by_id: { readonly __typename?: 'news', readonly content: string, readonly id: string, readonly title: string, readonly description: string, readonly themes: any, readonly date_created: any, readonly date_updated: any, readonly images: ReadonlyArray<{ readonly __typename?: 'news_files', readonly directus_files_id: { readonly __typename?: 'directus_files', readonly type: string, readonly title: string, readonly id: string } }>, readonly region: { readonly __typename?: 'regions', readonly title: string, readonly id: string }, readonly preview: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } } };
 
 export type GetAboutPageQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -2420,7 +2427,7 @@ export type GetExpertAdvicePageQuery = { readonly __typename?: 'Query', readonly
 export type GetHomePageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetHomePageQuery = { readonly __typename?: 'Query', readonly home_page: { readonly __typename?: 'home_page', readonly popular_news: ReadonlyArray<{ readonly __typename?: 'home_page_news', readonly id: string, readonly news_id: { readonly __typename?: 'news', readonly id: string, readonly title: string, readonly description: string, readonly date_created: any, readonly date_updated: any, readonly region: { readonly __typename?: 'regions', readonly title: string, readonly id: string }, readonly preview: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } } }>, readonly chamber_chairman: { readonly __typename?: 'directus_users', readonly first_name: string, readonly last_name: string, readonly email: string, readonly avatar: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } }, readonly chairman_featured_news: { readonly __typename?: 'news', readonly id: string, readonly title: string, readonly date_created: any, readonly preview: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } }, readonly chairman_video: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } } };
+export type GetHomePageQuery = { readonly __typename?: 'Query', readonly home_page: { readonly __typename?: 'home_page', readonly popular_news: ReadonlyArray<{ readonly __typename?: 'home_page_news', readonly id: string, readonly news_id: { readonly __typename?: 'news', readonly id: string, readonly title: string, readonly description: string, readonly themes: any, readonly date_created: any, readonly date_updated: any, readonly region: { readonly __typename?: 'regions', readonly title: string, readonly id: string }, readonly preview: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } } }>, readonly chamber_chairman: { readonly __typename?: 'directus_users', readonly first_name: string, readonly last_name: string, readonly email: string, readonly avatar: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } }, readonly chairman_featured_news: { readonly __typename?: 'news', readonly id: string, readonly title: string, readonly date_created: any, readonly preview: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } }, readonly chairman_video: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } } };
 
 export type GetStructurePageQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -2526,6 +2533,7 @@ export const NewsFragmentFragmentDoc = gql`
   preview {
     ...MediaFragment
   }
+  themes
   date_created
   date_updated
 }

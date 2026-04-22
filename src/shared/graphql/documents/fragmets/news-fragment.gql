@@ -9,6 +9,7 @@ fragment NewsFragment on news {
   preview {
     ...MediaFragment
   }
+  themes
   date_created
   date_updated
 }
