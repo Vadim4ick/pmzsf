@@ -1537,9 +1537,42 @@ export type Hierarchy_Members_Quantifier_Filter = {
 
 export type Home_Page = {
   readonly __typename?: 'home_page';
+  readonly chairman_featured_news: Maybe<News>;
+  readonly chairman_video: Maybe<Directus_Files>;
+  readonly chamber_chairman: Maybe<Directus_Users>;
   readonly id: Scalars['ID']['output'];
   readonly popular_news: Maybe<ReadonlyArray<Maybe<Home_Page_News>>>;
   readonly popular_news_func: Maybe<Count_Functions>;
+};
+
+
+export type Home_PageChairman_Featured_NewsArgs = {
+  filter: InputMaybe<News_Filter>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  page: InputMaybe<Scalars['Int']['input']>;
+  search: InputMaybe<Scalars['String']['input']>;
+  sort: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type Home_PageChairman_VideoArgs = {
+  filter: InputMaybe<Directus_Files_Filter>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  page: InputMaybe<Scalars['Int']['input']>;
+  search: InputMaybe<Scalars['String']['input']>;
+  sort: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type Home_PageChamber_ChairmanArgs = {
+  filter: InputMaybe<Directus_Users_Filter>;
+  limit: InputMaybe<Scalars['Int']['input']>;
+  offset: InputMaybe<Scalars['Int']['input']>;
+  page: InputMaybe<Scalars['Int']['input']>;
+  search: InputMaybe<Scalars['String']['input']>;
+  sort: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
@@ -1555,6 +1588,9 @@ export type Home_PagePopular_NewsArgs = {
 export type Home_Page_Filter = {
   readonly _and: InputMaybe<ReadonlyArray<InputMaybe<Home_Page_Filter>>>;
   readonly _or: InputMaybe<ReadonlyArray<InputMaybe<Home_Page_Filter>>>;
+  readonly chairman_featured_news: InputMaybe<News_Filter>;
+  readonly chairman_video: InputMaybe<Directus_Files_Filter>;
+  readonly chamber_chairman: InputMaybe<Directus_Users_Filter>;
   readonly id: InputMaybe<Number_Filter_Operators>;
   readonly popular_news: InputMaybe<Home_Page_News_Quantifier_Filter>;
   readonly popular_news_func: InputMaybe<Count_Function_Filter_Operators>;
@@ -2144,6 +2180,9 @@ export type Version_Hierarchy_Members = {
 
 export type Version_Home_Page = {
   readonly __typename?: 'version_home_page';
+  readonly chairman_featured_news: Maybe<Scalars['JSON']['output']>;
+  readonly chairman_video: Maybe<Scalars['JSON']['output']>;
+  readonly chamber_chairman: Maybe<Scalars['JSON']['output']>;
   readonly id: Scalars['ID']['output'];
   readonly popular_news: Maybe<Scalars['JSON']['output']>;
   readonly popular_news_func: Maybe<Count_Functions>;
@@ -2381,7 +2420,7 @@ export type GetExpertAdvicePageQuery = { readonly __typename?: 'Query', readonly
 export type GetHomePageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetHomePageQuery = { readonly __typename?: 'Query', readonly home_page: { readonly __typename?: 'home_page', readonly popular_news: ReadonlyArray<{ readonly __typename?: 'home_page_news', readonly id: string, readonly news_id: { readonly __typename?: 'news', readonly id: string, readonly title: string, readonly description: string, readonly date_created: any, readonly date_updated: any, readonly region: { readonly __typename?: 'regions', readonly title: string, readonly id: string }, readonly preview: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } } }> } };
+export type GetHomePageQuery = { readonly __typename?: 'Query', readonly home_page: { readonly __typename?: 'home_page', readonly popular_news: ReadonlyArray<{ readonly __typename?: 'home_page_news', readonly id: string, readonly news_id: { readonly __typename?: 'news', readonly id: string, readonly title: string, readonly description: string, readonly date_created: any, readonly date_updated: any, readonly region: { readonly __typename?: 'regions', readonly title: string, readonly id: string }, readonly preview: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } } }>, readonly chamber_chairman: { readonly __typename?: 'directus_users', readonly first_name: string, readonly last_name: string, readonly email: string, readonly avatar: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } }, readonly chairman_featured_news: { readonly __typename?: 'news', readonly id: string, readonly title: string, readonly date_created: any, readonly preview: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } }, readonly chairman_video: { readonly __typename?: 'directus_files', readonly id: string, readonly width: number, readonly height: number, readonly type: string } } };
 
 export type GetStructurePageQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -2628,9 +2667,29 @@ export const GetHomePageDocument = gql`
         ...NewsFragment
       }
     }
+    chamber_chairman {
+      first_name
+      last_name
+      email
+      avatar {
+        ...MediaFragment
+      }
+    }
+    chairman_featured_news {
+      id
+      title
+      preview {
+        ...MediaFragment
+      }
+      date_created
+    }
+    chairman_video {
+      ...MediaFragment
+    }
   }
 }
-    ${NewsFragmentFragmentDoc}`;
+    ${NewsFragmentFragmentDoc}
+${MediaFragmentFragmentDoc}`;
 export const GetStructurePageDocument = gql`
     query GetStructurePage {
   structure {

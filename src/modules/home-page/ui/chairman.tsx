@@ -1,9 +1,13 @@
+import { getRouteNewsById } from "@/shared/const/route.const";
+import { GetHomePageQuery } from "@/shared/graphql/__generated__";
+import { dateFormatter, pathImage } from "@/shared/lib/utils";
 import { Button } from "@/shared/ui/button";
 import { Container } from "@/shared/ui/container";
 import { GradientShadow } from "@/shared/ui/gradient-shadow";
 import { Typography } from "@/shared/ui/typography";
 import { CustomVideo } from "@/shared/ui/сustom-video";
 import Image from "next/image";
+import Link from "next/link";
 
 const newsItems = [
   {
@@ -21,7 +25,15 @@ const newsItems = [
   },
 ];
 
-const Chairman = () => {
+const Chairman = ({
+  chairman,
+  chairman_video,
+  chairman_featured_news,
+}: {
+  chairman: GetHomePageQuery["home_page"]["chamber_chairman"];
+  chairman_video?: GetHomePageQuery["home_page"]["chairman_video"];
+  chairman_featured_news?: GetHomePageQuery["home_page"]["chairman_featured_news"];
+}) => {
   return (
     <section className="desktop:pb-24 pb-12">
       <Container className="desktop:gap-14 flex flex-col gap-8">
@@ -37,7 +49,7 @@ const Chairman = () => {
             <div className="bg-background-primary desktop:p-6 flex items-center gap-4 rounded-[12px] p-4">
               <div className="desktop:size-[72px] size-14 shrink-0">
                 <Image
-                  src="/img/chairman.png"
+                  src={pathImage(chairman.avatar.id)}
                   alt="chairman"
                   className="rounded-[6px] object-cover"
                   width={100}
@@ -46,7 +58,7 @@ const Chairman = () => {
               </div>
               <div>
                 <Typography variant="header-m" tag="h3">
-                  Соболев Михаил Владимирович
+                  {chairman.last_name} {chairman.first_name}
                 </Typography>
                 <Typography variant="subtitle-serif-s" tag="p">
                   Председатель Палаты молодых законодателей при Совете Федерации
@@ -57,14 +69,16 @@ const Chairman = () => {
             {/* Видео + новости */}
             <div className="mobile:flex-row desktop:gap-10 flex flex-col gap-6">
               {/* Видео — квадратное превью */}
-              <div className="mobile:aspect-auto mobile:w-[45%] mobile:self-stretch aspect-video w-full shrink-0">
-                <CustomVideo
-                  src="https://www.w3schools.com/html/mov_bbb.mp4"
-                  poster="/img/chairman.png"
-                  title="Граница обучения кадров сделала своё дело"
-                  className="h-full"
-                />
-              </div>
+              {chairman_video && (
+                <div className="mobile:aspect-auto mobile:w-[45%] mobile:self-stretch aspect-video w-full shrink-0">
+                  <CustomVideo
+                    src={pathImage(chairman_video.id)}
+                    poster={pathImage(chairman.avatar.id)}
+                    title="Граница обучения кадров сделала своё дело"
+                    className="h-full"
+                  />
+                </div>
+              )}
 
               {/* Список новостей */}
               <div className="desktop:gap-4 flex w-full flex-col gap-3">
@@ -82,7 +96,7 @@ const Chairman = () => {
                     </Typography>
                     <div className="desktop:size-[72px] size-14 shrink-0">
                       <Image
-                        src="/img/chairman.png"
+                        src={pathImage(chairman.avatar.id)}
                         alt="news"
                         className="rounded-[6px] object-cover"
                         width={100}
@@ -96,40 +110,44 @@ const Chairman = () => {
           </div>
 
           {/* Правая колонка — большое фото */}
-          <article className="mobile:min-h-[360px] desktop:h-full desktop:min-h-0 relative min-h-[280px] w-full overflow-hidden rounded-[12px]">
-            <Image
-              src="/img/chairman/1.png"
-              alt="chairman"
-              className="object-cover"
-              fill
-            />
+          {chairman_featured_news && (
+            <article className="mobile:min-h-[360px] desktop:h-full desktop:min-h-0 relative min-h-[280px] w-full overflow-hidden rounded-[12px]">
+              <Image
+                src={pathImage(chairman_featured_news.preview.id)}
+                alt="chairman"
+                className="object-cover"
+                fill
+              />
 
-            <GradientShadow />
+              <GradientShadow />
 
-            <div className="desktop:gap-6 desktop:p-6 absolute bottom-0 left-0 flex flex-col gap-4 p-4">
-              <Typography
-                variant="subtitle-serif-l"
-                tag="p"
-                className="text-white"
-              >
-                Рабочие встречи молодых законодателей в Ереване продолжаются
-              </Typography>
-
-              <div className="flex items-end justify-between gap-4 text-white">
-                <Button className="hover:border-text-accent hover:text-text-accent text-text-primary-on-color border-white hover:bg-transparent">
-                  Читать далее
-                </Button>
-
+              <div className="desktop:gap-6 desktop:p-6 absolute bottom-0 left-0 flex flex-col gap-4 p-4">
                 <Typography
-                  variant="body-s-strong"
-                  tag="span"
-                  className="text-white/80"
+                  variant="subtitle-serif-l"
+                  tag="p"
+                  className="text-white"
                 >
-                  10 ноября 2026
+                  {chairman_featured_news.title}
                 </Typography>
+
+                <div className="flex items-end justify-between gap-4 text-white">
+                  <Link href={getRouteNewsById(chairman_featured_news.id)}>
+                    <Button className="hover:border-text-accent hover:text-text-accent text-text-primary-on-color border-white hover:bg-transparent">
+                      Читать далее
+                    </Button>
+                  </Link>
+
+                  <Typography
+                    variant="body-s-strong"
+                    tag="span"
+                    className="text-white/80"
+                  >
+                    {dateFormatter(chairman_featured_news.date_created)}
+                  </Typography>
+                </div>
               </div>
-            </div>
-          </article>
+            </article>
+          )}
         </div>
       </Container>
     </section>

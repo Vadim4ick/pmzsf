@@ -17,11 +17,20 @@ const HomePage = async () => {
   const homePageVal = getSettledValue(homePage);
 
   const news = homePageVal?.home_page.popular_news;
+  const chairman = homePageVal?.home_page.chamber_chairman;
+  const chairman_video = homePageVal?.home_page.chairman_video;
+  const chairman_featured_news = homePageVal?.home_page.chairman_featured_news;
 
   return (
     <>
       {news && <GridNews news={news} />}
-      <Chairman />
+      {chairman && (
+        <Chairman
+          chairman={chairman}
+          chairman_video={chairman_video}
+          chairman_featured_news={chairman_featured_news}
+        />
+      )}
       <InfoRegions regions={regionsVal?.regions || []} />
       <GosServiceLinks />
     </>
