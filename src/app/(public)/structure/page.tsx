@@ -5,6 +5,8 @@ export const metadata = {
   title: "Структура",
 };
 
+export const revalidate = 60;
+
 const Structure = async () => {
   const structure = await gql.GetStructurePage();
 

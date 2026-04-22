@@ -5,6 +5,8 @@ export const metadata = {
   title: "Комитеты",
 };
 
+export const revalidate = 60;
+
 const Committees = async () => {
   const committees = await gql.GetAllCommittees();
 
