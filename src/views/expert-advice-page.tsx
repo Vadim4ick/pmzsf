@@ -1,22 +1,14 @@
 "use client";
 
-import { DeputatCard } from "@/components/deputat-card/deputat-card";
+import { DeputatCard } from "@/components/deputat-card";
 import { SearchInput } from "@/components/search-inp";
-import { GetExpertAdvicePageQuery } from "@/shared/graphql/__generated__";
-import { getPlainMembers, groupHierarchyMembers } from "@/shared/lib/hierarchy";
+import { experts } from "@/shared/const/mock/chamberPeople.mock";
 import { pathImage } from "@/shared/lib/utils";
 import { Container } from "@/shared/ui/container";
 import { Typography } from "@/shared/ui/typography";
 import Image from "next/image";
 
-const ExpertAdvicePage = ({
-  expertAdvice,
-}: {
-  expertAdvice: GetExpertAdvicePageQuery["expert_advice"];
-}) => {
-  const members = getPlainMembers(expertAdvice.members);
-  const grouped = groupHierarchyMembers(expertAdvice.members);
-
+const ExpertAdvicePage = () => {
   return (
     <section>
       <Container>
@@ -33,16 +25,33 @@ const ExpertAdvicePage = ({
         </div>
 
         <div className="flex flex-col gap-16 pt-10">
-          {grouped.map((group) => (
+          {/* {grouped.map((group) => (
             <DeputatCard
               key={group.roleKey}
               role={group.role}
               users={group.users}
             />
-          ))}
+          ))} */}
+
+          <div className="flex flex-col gap-6 md:gap-10">
+            <Typography variant="header-m-caps" tag="h2">
+              Председатель
+            </Typography>
+
+            <div className="flex flex-col gap-4">
+              <DeputatCard
+                position={experts.chairman.position}
+                fullFio={experts.chairman.fullFio}
+                id={experts.chairman.id}
+                image={experts.chairman.image}
+                authorityDate={experts.chairman.authorityDate}
+                committees={[]}
+              />
+            </div>
+          </div>
         </div>
 
-        {members.length > 0 && (
+        {/* {members.length > 0 && (
           <div className="flex flex-col gap-10 pt-16">
             <Typography variant="header-m-caps" tag="h3">
               Члены совета
@@ -81,7 +90,7 @@ const ExpertAdvicePage = ({
               ))}
             </div>
           </div>
-        )}
+        )} */}
       </Container>
     </section>
   );

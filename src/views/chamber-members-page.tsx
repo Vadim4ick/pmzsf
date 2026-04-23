@@ -1,25 +1,25 @@
-import { Pagination } from "@/components/pagination";
-import { MemberItem } from "@/components/member-item";
 import { ChamberMembersFilter } from "@/modules/chamber-members-page";
 import { PADDING_PUBLIC_ROUTES } from "@/shared/const/constants.const";
-import { getRouteChamberMembers } from "@/shared/const/route.const";
-import { cn, pathImage } from "@/shared/lib/utils";
+import { members, People } from "@/shared/const/mock/chamberPeople.mock";
+import { cn } from "@/shared/lib/utils";
 import { Container } from "@/shared/ui/container";
 import { Typography } from "@/shared/ui/typography";
-import { ChamberMember } from "@/shared/services/get-chamber-members";
+import Image from "next/image";
 
-function getFullName(member: ChamberMember) {
-  return [member.last_name, member.first_name, member?.surname]
-    .filter(Boolean)
-    .join(" ")
-    .trim();
+type MembersGroup = {
+  letter: string;
+  members: People[];
+};
+
+function getSurnameLetter(fullFio: string) {
+  return fullFio.trim()[0]?.toUpperCase() || "#";
 }
 
-function groupMembersByLetter(members: ChamberMember[]) {
-  const grouped = new Map<string, ChamberMember[]>();
+function groupMembersByLetter(data: People[]): MembersGroup[] {
+  const grouped = new Map<string, People[]>();
 
-  for (const member of members) {
-    const letter = member.last_name?.trim()?.[0]?.toUpperCase() || "#";
+  for (const member of data) {
+    const letter = getSurnameLetter(member.fullFio);
 
     if (!grouped.has(letter)) {
       grouped.set(letter, []);
@@ -32,20 +32,20 @@ function groupMembersByLetter(members: ChamberMember[]) {
     .sort(([a], [b]) => a.localeCompare(b, "ru"))
     .map(([letter, members]) => ({
       letter,
-      members,
+      members: members.sort((a, b) => a.fullFio.localeCompare(b.fullFio, "ru")),
     }));
 }
 
-const ChamberMembersPage = ({
-  members,
-  currentPage,
-  totalPages,
-}: {
-  members: ChamberMember[];
-  currentPage: number;
-  totalPages: number;
-}) => {
-  const groupedMembers = groupMembersByLetter(members);
+const ChamberMembersPage = ({ letter }: { letter?: string }) => {
+  const normalizedLetter = letter?.trim()?.toUpperCase();
+
+  const filteredMembers = normalizedLetter
+    ? members.filter(
+        (member) => getSurnameLetter(member.fullFio) === normalizedLetter,
+      )
+    : members;
+
+  const groupedMembers = groupMembersByLetter(filteredMembers);
 
   return (
     <section>
@@ -72,43 +72,60 @@ const ChamberMembersPage = ({
           </Typography>
         </div>
 
-        {groupedMembers.length === 0 ? (
-          <div className="flex flex-col items-center gap-3 py-16 text-center">
-            <Typography variant="subtitle-serif-l" tag="p">
-              Список пуст
-            </Typography>
-          </div>
-        ) : (
-          <div className="flex flex-col gap-14">
-            {groupedMembers.map((group) => (
-              <div key={group.letter} className="flex flex-col gap-8">
-                <Typography
-                  className="text-background-default-tertiary-hover"
-                  variant="header-xxl"
-                  tag="p"
-                >
-                  {group.letter}
-                </Typography>
+        <div className="flex flex-col gap-14">
+          {groupedMembers.map((group) => (
+            <div key={group.letter} className="flex flex-col gap-8">
+              <Typography
+                className="text-background-default-tertiary-hover"
+                variant="header-xxl"
+                tag="p"
+              >
+                {group.letter}
+              </Typography>
 
-                <div className="max-tablet:grid-cols-2 max-mobile:grid-cols-1 grid grid-cols-3 gap-8">
-                  {group.members.map((member) => (
-                    <MemberItem
-                      key={member.id}
-                      image={pathImage(member.avatar?.id ?? "")}
-                      name={getFullName(member)}
+              <div className="max-tablet:grid-cols-2 max-mobile:grid-cols-1 grid grid-cols-3 gap-8">
+                {group.members.map((member) => (
+                  <div
+                    key={member.id}
+                    className="max-mobile:gap-4 flex items-center gap-8 pr-8"
+                  >
+                    <Image
+                      src={member.image}
+                      width={112}
+                      height={112}
+                      alt={member.fullFio}
+                      className="shrink-0 rounded-[4px] object-cover"
                     />
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
 
-        <Pagination
-          currentPage={currentPage}
-          totalPages={totalPages}
-          basePath={getRouteChamberMembers()}
-        />
+                    <div className="flex flex-col gap-1">
+                      <Typography variant="header-s" tag="p">
+                        {member.fullFio}
+                      </Typography>
+
+                      {member.position && (
+                        <Typography
+                          className="text-text-secondary"
+                          variant="body-s"
+                          tag="p"
+                        >
+                          {member.position}
+                        </Typography>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+
+          {groupedMembers.length === 0 && (
+            <div className="flex flex-col items-center gap-3 py-16 text-center">
+              <Typography variant="subtitle-serif-l" tag="p">
+                Список пуст
+              </Typography>
+            </div>
+          )}
+        </div>
       </Container>
     </section>
   );

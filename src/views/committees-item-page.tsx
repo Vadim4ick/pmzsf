@@ -7,6 +7,7 @@ import { Typography } from "@/shared/ui/typography";
 import Link from "next/link";
 
 const CommitteesItemPage = ({ committee }: { committee: Committees }) => {
+  console.log(committee);
   return (
     <section>
       <Container className="max-mobile:gap-8 flex flex-col gap-14">
@@ -43,6 +44,28 @@ const CommitteesItemPage = ({ committee }: { committee: Committees }) => {
               />
             </div>
           </div>
+
+          {committee.deputies.length > 0 && (
+            <div className="flex flex-col gap-6 md:gap-10">
+              <Typography variant="header-m-caps" tag="h2">
+                Заместители председателя
+              </Typography>
+
+              <div className="flex flex-col gap-4">
+                {committee.deputies.map((member) => (
+                  <DeputatCard
+                    key={member.id}
+                    position={member.position}
+                    fullFio={member.fullFio}
+                    id={member.id}
+                    image={member.image}
+                    authorityDate={member.authorityDate}
+                    committees={[]}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
         </div>
 
         {/* {members.length > 0 && (
