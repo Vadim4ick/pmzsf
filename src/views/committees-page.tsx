@@ -1,13 +1,9 @@
 import { CommitteesCard } from "@/modules/committees-page";
-import { GetAllCommitteesQuery } from "@/shared/graphql/__generated__";
+import { committees } from "@/shared/const/mock/chamberPeople.mock";
 import { Container } from "@/shared/ui/container";
 import { Typography } from "@/shared/ui/typography";
 
-const CommitteesPage = ({
-  committees,
-}: {
-  committees: GetAllCommitteesQuery["committees"];
-}) => {
+const CommitteesPage = () => {
   return (
     <section>
       <Container className="max-mobile:gap-8 flex flex-col gap-14">

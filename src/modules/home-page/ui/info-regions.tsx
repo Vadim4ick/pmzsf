@@ -7,12 +7,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { RegionPicker } from "./region-picker";
 import { useGetNewsByRegion } from "@/shared/services/news.service";
-import { useGetRepresentativesByRegion } from "@/shared/services/representatives.service";
 import { getRouteNewsById } from "@/shared/const/route.const";
-import { dateFormatter, pathImage } from "@/shared/lib/utils";
+import { dateFormatter } from "@/shared/lib/utils";
 import { memo, useState } from "react";
 import { Skeleton } from "@/shared/ui/skeleton";
+import { members } from "@/shared/const/mock/chamberPeople.mock";
 import { GetAllRegionsQuery } from "@/shared/graphql/__generated__";
+// import { GetAllRegionsQuery } from "@/shared/graphql/__generated__";
 
 const InfoRegions = memo(
   ({ regions }: { regions: GetAllRegionsQuery["regions"] }) => {
@@ -20,9 +21,11 @@ const InfoRegions = memo(
 
     const { data: news, isLoading: isLoadingNews } =
       useGetNewsByRegion(selectedCode);
-    const { data: representatives, isLoading: isLoadingRepresentatives } =
-      useGetRepresentativesByRegion(selectedCode);
-
+    // const { data: representatives, isLoading: isLoadingRepresentatives } =
+    //   useGetRepresentativesByRegion(selectedCode);
+    const representatives = members.filter(
+      (member) => member.regionCode === selectedCode,
+    );
     return (
       <>
         <section className="pb-10">
@@ -33,16 +36,16 @@ const InfoRegions = memo(
                   Представители в регионах
                 </Typography>
 
-                {isLoadingRepresentatives ? (
+                {false ? (
                   <RepresentativesSkeleton />
-                ) : representatives?.data?.length ? (
+                ) : representatives?.length ? (
                   <div className="flex flex-col gap-6">
-                    {representatives.data.map((rep) => (
+                    {representatives.map((rep) => (
                       <article key={rep.id} className="flex items-center gap-6">
                         <div className="size-[112px] shrink-0">
                           <Image
-                            src={pathImage(rep.avatar?.id ?? "")}
-                            alt={rep?.first_name ?? ""}
+                            src={rep.image ?? ""}
+                            alt={rep.fullFio}
                             className="rounded-[6px] object-cover"
                             width={112}
                             height={112}
@@ -51,15 +54,15 @@ const InfoRegions = memo(
                         </div>
                         <div className="flex flex-col gap-1">
                           <Typography variant="header-s" tag="h3">
-                            {rep.first_name} {rep.last_name} {rep.surname}
+                            {rep.fullFio}
                           </Typography>
-                          {rep?.job && (
+                          {rep?.position && (
                             <Typography
                               className="text-text-primary"
                               variant="subtitle-serif-s"
                               tag="span"
                             >
-                              {rep.job}
+                              {rep?.position}
                             </Typography>
                           )}
                         </div>

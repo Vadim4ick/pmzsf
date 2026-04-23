@@ -1,22 +1,12 @@
-import { DeputatCard } from "@/components/deputat-card/deputat-card";
+import { DeputatCard } from "@/components/deputat-card";
+import { Committees } from "@/shared/const/mock/chamberPeople.mock";
 import { getRouteCommittees } from "@/shared/const/route.const";
-import { GetCommitteeByIdQuery } from "@/shared/graphql/__generated__";
-import { getPlainMembers, groupHierarchyMembers } from "@/shared/lib/hierarchy";
-import { pathImage } from "@/shared/lib/utils";
 import { Button } from "@/shared/ui/button";
 import { Container } from "@/shared/ui/container";
 import { Typography } from "@/shared/ui/typography";
-import Image from "next/image";
 import Link from "next/link";
 
-const CommitteesItemPage = ({
-  committee,
-}: {
-  committee: GetCommitteeByIdQuery["committees_by_id"];
-}) => {
-  const members = getPlainMembers(committee.members);
-  const grouped = groupHierarchyMembers(committee.members);
-
+const CommitteesItemPage = ({ committee }: { committee: Committees }) => {
   return (
     <section>
       <Container className="max-mobile:gap-8 flex flex-col gap-14">
@@ -29,16 +19,33 @@ const CommitteesItemPage = ({
         </Typography>
 
         <div className="flex flex-col gap-16">
-          {grouped.map((group) => (
+          {/* {grouped.map((group) => (
             <DeputatCard
               key={group.roleKey}
               role={group.role}
               users={group.users}
             />
-          ))}
+          ))} */}
+
+          <div className="flex flex-col gap-6 md:gap-10">
+            <Typography variant="header-m-caps" tag="h2">
+              Председатель
+            </Typography>
+
+            <div className="flex flex-col gap-4">
+              <DeputatCard
+                position={committee.chairman.position}
+                fullFio={committee.chairman.fullFio}
+                id={committee.chairman.id}
+                image={committee.chairman.image}
+                authorityDate={committee.chairman.authorityDate}
+                committees={[]}
+              />
+            </div>
+          </div>
         </div>
 
-        {members.length > 0 && (
+        {/* {members.length > 0 && (
           <div className="flex flex-col gap-10">
             <Typography variant="header-m-caps" tag="h3">
               Члены комитета
@@ -73,7 +80,7 @@ const CommitteesItemPage = ({
               ))}
             </div>
           </div>
-        )}
+        )} */}
 
         <Link href={getRouteCommittees()}>
           <Button variant="tertiary" className="w-fit">

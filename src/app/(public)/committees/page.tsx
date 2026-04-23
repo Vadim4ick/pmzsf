@@ -1,4 +1,3 @@
-import { gql } from "@/shared/graphql/client";
 import { CommitteesPage } from "@/views/committees-page";
 
 export const metadata = {
@@ -8,9 +7,9 @@ export const metadata = {
 export const revalidate = 0;
 
 const Committees = async () => {
-  const committees = await gql.GetAllCommittees();
+  // const committees = await gql.GetAllCommittees();
 
-  return <CommitteesPage committees={committees.committees} />;
+  return <CommitteesPage />;
 };
 
 export default Committees;

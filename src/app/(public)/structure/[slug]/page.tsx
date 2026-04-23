@@ -1,4 +1,4 @@
-import { MOCK_MEMBERS } from "@/shared/const/mockMembers.const";
+import { members } from "@/shared/const/mock/chamberPeople.mock";
 import { BiographyPage } from "@/views/biography-page";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -10,7 +10,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
 
-  const member = MOCK_MEMBERS.find((item) => item.slug === slug);
+  const member = members.find((item) => item.id === Number(slug));
 
   if (!member) {
     return {
@@ -19,7 +19,7 @@ export async function generateMetadata({
   }
 
   return {
-    title: member.name,
+    title: member.fullFio,
   };
 }
 
@@ -28,13 +28,13 @@ export const revalidate = 0;
 const Biography = async (props: { params: { slug: string } }) => {
   const { slug } = await props.params;
 
-  const member = MOCK_MEMBERS.find((item) => item.slug === slug);
+  const member = members.find((item) => item.id === Number(slug));
 
   if (!member) {
     return notFound();
   }
 
-  return <BiographyPage />;
+  return <BiographyPage member={member} />;
 };
 
 export default Biography;

@@ -1,3 +1,4 @@
+import { members, People } from "@/shared/const/mock/chamberPeople.mock";
 import { getRouteNewsById } from "@/shared/const/route.const";
 import { GetHomePageQuery } from "@/shared/graphql/__generated__";
 import { dateFormatter, pathImage } from "@/shared/lib/utils";
@@ -26,14 +27,13 @@ const newsItems = [
 ];
 
 const Chairman = ({
-  chairman,
   chairman_video,
   chairman_featured_news,
 }: {
-  chairman: GetHomePageQuery["home_page"]["chamber_chairman"];
   chairman_video?: GetHomePageQuery["home_page"]["chairman_video"];
   chairman_featured_news?: GetHomePageQuery["home_page"]["chairman_featured_news"];
 }) => {
+  const chairman = members.find((member) => member.id === 1) as People;
   return (
     <section className="desktop:pb-24 pb-12">
       <Container className="desktop:gap-14 flex flex-col gap-8">
@@ -49,7 +49,7 @@ const Chairman = ({
             <div className="bg-background-primary desktop:p-6 flex items-center gap-4 rounded-[12px] p-4">
               <div className="desktop:size-[72px] size-14 shrink-0">
                 <Image
-                  src={pathImage(chairman.avatar?.id ?? "")}
+                  src={chairman?.image ?? ""}
                   alt="chairman"
                   className="rounded-[6px] object-cover"
                   width={100}
@@ -58,7 +58,7 @@ const Chairman = ({
               </div>
               <div>
                 <Typography variant="header-m" tag="h3">
-                  {chairman.last_name} {chairman.first_name}
+                  {chairman.fullFio}
                 </Typography>
                 <Typography variant="subtitle-serif-s" tag="p">
                   Председатель Палаты молодых законодателей при Совете Федерации
@@ -69,7 +69,7 @@ const Chairman = ({
             {/* Видео + новости */}
             <div className="mobile:flex-row desktop:gap-10 flex flex-col gap-6">
               {/* Видео — квадратное превью */}
-              {chairman_video && (
+              {/* {chairman_video && (
                 <div className="mobile:aspect-auto mobile:w-[45%] mobile:self-stretch aspect-video w-full shrink-0">
                   <CustomVideo
                     src={pathImage(chairman_video?.id ?? "")}
@@ -78,7 +78,7 @@ const Chairman = ({
                     className="h-full"
                   />
                 </div>
-              )}
+              )} */}
 
               {/* Список новостей */}
               <div className="desktop:gap-4 flex w-full flex-col gap-3">
@@ -96,7 +96,7 @@ const Chairman = ({
                     </Typography>
                     <div className="desktop:size-[72px] size-14 shrink-0">
                       <Image
-                        src={pathImage(chairman.avatar?.id ?? "")}
+                        src={chairman.image ?? ""}
                         alt="news"
                         className="rounded-[6px] object-cover"
                         width={100}

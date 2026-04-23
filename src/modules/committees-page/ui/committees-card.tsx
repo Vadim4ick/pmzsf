@@ -1,13 +1,9 @@
 import Link from "next/link";
 import { getRouteCommitteesById } from "@/shared/const/route.const";
 import { Typography } from "@/shared/ui/typography";
-import { GetAllCommitteesQuery } from "@/shared/graphql/__generated__";
+import { Committees } from "@/shared/const/mock/chamberPeople.mock";
 
-const CommitteesCard = ({
-  item,
-}: {
-  item: GetAllCommitteesQuery["committees"][0];
-}) => {
+const CommitteesCard = ({ item }: { item: Committees }) => {
   return (
     <Link
       key={item.id}
@@ -22,22 +18,15 @@ const CommitteesCard = ({
         {item.title}
       </Typography>
 
-      {item.members[0] && (
-        <div className="flex flex-col gap-1.5">
-          <Typography variant="body-m-strong" tag="p">
-            {item.members[0].user.first_name} {item.members[0].user.last_name}{" "}
-            {item.members[0].user?.surname}
-          </Typography>
+      <div className="flex flex-col gap-1.5">
+        <Typography variant="body-m-strong" tag="p">
+          {item.chairman.fullFio}
+        </Typography>
 
-          <Typography
-            className="text-text-secondary"
-            variant="body-m"
-            tag="span"
-          >
-            Председатель
-          </Typography>
-        </div>
-      )}
+        <Typography className="text-text-secondary" variant="body-m" tag="span">
+          Председатель
+        </Typography>
+      </div>
     </Link>
   );
 };

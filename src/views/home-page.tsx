@@ -28,7 +28,7 @@ const HomePage = async () => {
       {news && <GridNews news={news} />}
       {chairman && (
         <Chairman
-          chairman={chairman}
+          // chairman={chairman}
           chairman_video={chairman_video}
           chairman_featured_news={chairman_featured_news}
         />
