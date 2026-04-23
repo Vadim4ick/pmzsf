@@ -1039,12 +1039,122 @@ export const committees: Committees[] = [
   },
 ];
 
+export const expertsPeoples: People[] = [
+  {
+    id: 1,
+    fullFio: "Ножечкин Илья Владимирович",
+    image: "/img/avatars/exp_1.png",
+    position:
+      "Председатель Экспертного совета, Председатель Ульяновской городской Думы",
+    authorityDate: "",
+    biography: {
+      birth: {
+        date: "",
+        place: "",
+      },
+      publicActivity: [],
+    },
+    workPlace: "",
+    region: "",
+    regionCode: "",
+    delegatedBy: "",
+    socialAccounts: [],
+    committees: [],
+  },
+  {
+    id: 2,
+    fullFio: "Глушак Ольга Сергеевна",
+    image: "/img/avatars/exp_2.png",
+    position:
+      "Заместитель председателя Думы Анучинского муниципального округа Приморского края, коммерческий директор ИП Глушак С.М.",
+    authorityDate: "",
+    biography: {
+      birth: {
+        date: "",
+        place: "",
+      },
+      publicActivity: [],
+    },
+    workPlace: "",
+    region: "",
+    regionCode: "",
+    delegatedBy: "",
+    socialAccounts: [],
+    committees: [],
+  },
+  {
+    id: 3,
+    fullFio: "Данилов Константин Альбертович",
+    image: "/img/avatars/exp_3.png",
+    position:
+      "депутат Змиевского поселкового Совета народных депутатов Орловской области",
+    authorityDate: "",
+    biography: {
+      birth: {
+        date: "",
+        place: "",
+      },
+      publicActivity: [],
+    },
+    workPlace: "",
+    region: "",
+    regionCode: "",
+    delegatedBy: "",
+    socialAccounts: [],
+    committees: [],
+  },
+  {
+    id: 4,
+    fullFio: "Зернов Иван Сергеевич",
+    image: "/img/avatars/exp_4.png",
+    position:
+      "депутат Думы городского округа Верхняя Пышма Свердловской области",
+    authorityDate: "",
+    biography: {
+      birth: {
+        date: "",
+        place: "",
+      },
+      publicActivity: [],
+    },
+    workPlace: "",
+    region: "",
+    regionCode: "",
+    delegatedBy: "",
+    socialAccounts: [],
+    committees: [],
+  },
+  {
+    id: 5,
+    fullFio: "Каптелинина  Наталья Олеговна",
+    image: "/img/avatars/exp_5.png",
+    position: "Депутат Красноярского городского Совета депутатов",
+    authorityDate: "",
+    biography: {
+      birth: {
+        date: "",
+        place: "",
+      },
+      publicActivity: [],
+    },
+    workPlace: "",
+    region: "",
+    regionCode: "",
+    delegatedBy: "",
+    socialAccounts: [],
+    committees: [],
+  },
+];
+
 export const experts: {
   chairman: People;
-  deputies: People[];
   members: People[];
 } = {
-  chairman: findUser(1),
-  deputies: [],
-  members: [],
+  chairman: expertsPeoples[0],
+  members: [
+    expertsPeoples[1],
+    expertsPeoples[2],
+    expertsPeoples[3],
+    expertsPeoples[4],
+  ],
 };

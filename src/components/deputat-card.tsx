@@ -24,6 +24,7 @@ type DeputatCardProps = {
   id: number;
   authorityDate: string;
   committees: number[];
+  experts?: boolean;
 };
 
 const DeputatCard = memo(
@@ -34,6 +35,7 @@ const DeputatCard = memo(
     authorityDate,
     id,
     committees,
+    experts,
   }: DeputatCardProps) => {
     const [isOpen, setIsOpen] = useState(false);
 
@@ -70,9 +72,11 @@ const DeputatCard = memo(
               </Typography>
             </div>
 
-            <Link href={getRouteBiography(String(id))}>
-              <Button className="w-fit">О персоне</Button>
-            </Link>
+            {!experts && (
+              <Link href={getRouteBiography(String(id))}>
+                <Button className="w-fit">О персоне</Button>
+              </Link>
+            )}
           </div>
 
           <div className="flex flex-row items-center justify-between gap-4 max-lg:col-start-2 lg:flex-col lg:items-end lg:justify-between">

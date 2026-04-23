@@ -46,36 +46,36 @@ const ExpertAdvicePage = () => {
                 image={experts.chairman.image}
                 authorityDate={experts.chairman.authorityDate}
                 committees={[]}
+                experts={true}
               />
             </div>
           </div>
         </div>
 
-        {/* {members.length > 0 && (
+        {experts.members.length > 0 && (
           <div className="flex flex-col gap-10 pt-16">
             <Typography variant="header-m-caps" tag="h3">
               Члены совета
             </Typography>
 
             <div className="grid grid-cols-[repeat(auto-fill,minmax(296px,1fr))] gap-10">
-              {members.map((item) => (
+              {experts.members.map((item) => (
                 <article
                   key={item.id}
                   className="border-border-secondary flex flex-col gap-4 border-b pb-10"
                 >
                   <div className="relative h-[296px] w-full overflow-hidden rounded-[6px]">
                     <Image
-                      src={pathImage(item.user.avatar?.id ?? "")}
+                      src={item.image}
                       fill
-                      alt={item.user.first_name}
+                      alt={item.fullFio}
                       className="object-cover"
                     />
                   </div>
 
                   <div className="flex flex-col gap-2">
                     <Typography variant="header-s" tag="p">
-                      {item.user.first_name} {item.user.last_name}{" "}
-                      {item.user?.surname}
+                      {item.fullFio}
                     </Typography>
 
                     <Typography
@@ -83,14 +83,14 @@ const ExpertAdvicePage = () => {
                       variant="subtitle-serif-s"
                       tag="p"
                     >
-                      Должность
+                      {item.position}
                     </Typography>
                   </div>
                 </article>
               ))}
             </div>
           </div>
-        )} */}
+        )}
       </Container>
     </section>
   );
