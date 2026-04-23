@@ -8,7 +8,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 const CommitteesItemPage = ({ committee }: { committee: Committees }) => {
-  console.log(committee);
   return (
     <section>
       <Container className="max-mobile:gap-8 flex flex-col gap-14">

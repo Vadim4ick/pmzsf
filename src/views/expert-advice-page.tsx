@@ -17,11 +17,11 @@ const ExpertAdvicePage = () => {
             Экспертный совет
           </Typography>
 
-          <SearchInput
+          {/* <SearchInput
             placeholder="Введите Фалимию члена совета"
             onChange={() => {}}
             value=""
-          />
+          /> */}
         </div>
 
         <div className="flex flex-col gap-16 pt-10">
