@@ -4,6 +4,7 @@ import { getRouteCommittees } from "@/shared/const/route.const";
 import { Button } from "@/shared/ui/button";
 import { Container } from "@/shared/ui/container";
 import { Typography } from "@/shared/ui/typography";
+import Image from "next/image";
 import Link from "next/link";
 
 const CommitteesItemPage = ({ committee }: { committee: Committees }) => {
@@ -68,22 +69,22 @@ const CommitteesItemPage = ({ committee }: { committee: Committees }) => {
           )}
         </div>
 
-        {/* {members.length > 0 && (
+        {committee.members.length > 0 && (
           <div className="flex flex-col gap-10">
             <Typography variant="header-m-caps" tag="h3">
               Члены комитета
             </Typography>
 
             <div className="max-tablet:gap-5 max-mobile:grid-cols-1 grid grid-cols-2 gap-10">
-              {members.map((member) => (
+              {committee.members.map((member) => (
                 <article
                   key={member.id}
                   className="bg-background-primary max-mobile:flex-col flex items-center gap-8 rounded-[12px] p-4"
                 >
                   <div className="max-mobile:w-full max-mobile:h-[300px] relative size-[112px] shrink-0 overflow-hidden rounded-[6px]">
                     <Image
-                      src={pathImage(member.user.avatar?.id)}
-                      alt={member.user.first_name}
+                      src={member.image}
+                      alt={member.fullFio}
                       className="object-cover"
                       fill
                     />
@@ -91,19 +92,18 @@ const CommitteesItemPage = ({ committee }: { committee: Committees }) => {
 
                   <div className="flex flex-col gap-1">
                     <Typography variant="header-s" tag="h3">
-                      {member.user.first_name} {member.user.last_name}{" "}
-                      {member.user?.surname}
+                      {member.fullFio}
                     </Typography>
 
                     <Typography variant="subtitle-serif-s" tag="span">
-                      ДОЛЖНОСТЬ
+                      {member.position}
                     </Typography>
                   </div>
                 </article>
               ))}
             </div>
           </div>
-        )} */}
+        )}
 
         <Link href={getRouteCommittees()}>
           <Button variant="tertiary" className="w-fit">
